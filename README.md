@@ -1,6 +1,6 @@
 ## iOS Roadie User Stories
 
-**Version 1.0**
+**Version 1.0** [Required]
 
 - [ ] Home page should have following functionality
 	- [ ] Default to load Google Maps
@@ -19,7 +19,7 @@
 	- [ ] Image view of hotels, hotel description, price, location, book button
 	- [ ] After users finish booking, users are asked to select checkout time and pops back to home page with updated route information
 
-**Version 2.0**
+**Version 2.0** [Optional]
 
 - [ ] Home page improvement
 	- [ ] Hotels are selected based on live calls
@@ -28,7 +28,7 @@
 - [ ] Deal details page improvement
 	- [ ] Users are able to browse through photos gallery
 
-**Version 3.0**
+**Version 3.0** [Optional]
 
 - [ ] Users are able to save their planned trip, public or private
 - [ ] Hamburger menu
@@ -38,7 +38,7 @@
 - [ ] Trip details page
 	- [ ] Load Google Maps along with route information and deals information
 
-**Version 4.0**
+**Version 4.0** [Optional]
 
 - [ ] Hamburger menu
 	- [ ] Inspire Me: this should redirect users to inspire me page
@@ -47,13 +47,13 @@
 - [ ] Trip details page
 	- [ ] Users are able to comment, rating etc
 
-**Version 5.0**
+**Version 5.0** [Optional]
 
 - [ ] Trip details page
 	- [ ] Users are able to upload images
 	- [ ] Share on Facebook
 
-**Version 6.0**
+**Version 6.0** [Optional]
 
 - [ ] Integrate with third party on real deals
 - [ ] Hamburgers page
