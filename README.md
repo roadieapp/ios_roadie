@@ -2,14 +2,14 @@
 
 **Version 1.0**
 
-- [] Home page should have following functionality
-	- [] Default to load Google Maps
-	- [] Users should be able to select departure date and time
-	- [] Two text fields where users can input starting point and destination, they should support destination auto complete
-	- [] When users finish inputing, call Google Maps API to get route information
-	- [] A subview where users can browse hotel deals images, hotel deals should come from certain distance along the route (mock)
-- [] Hamburger menu
-	- [] Login: this should redirect users to login page
+- [ ] Home page should have following functionality
+	- [ ] Default to load Google Maps
+	- [ ] Users should be able to select departure date and time
+	- [ ] Two text fields where users can input starting point and destination, they should support destination auto complete
+	- [ ] When users finish inputing, call Google Maps API to get route information
+	- [ ] A subview where users can browse hotel deals images, hotel deals should come from certain distance along the route (mock)
+- [ ] Hamburger menu
+	- [ ] Login: this should redirect users to login page
 	- [ ] Logout
 - [ ] Login page
 	- [ ] Login with Facebook
