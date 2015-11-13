@@ -1,4 +1,10 @@
-## iOS Roadie User Stories
+# iOS Roadie
+## Team members
+- Robin Wu
+- Xin Suo
+- Dawei Wang
+
+## User Stories
 
 **Version 1.0** [Required]
 
