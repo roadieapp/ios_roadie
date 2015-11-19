@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+@import GoogleMaps;
+#import "HomeViewController.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +21,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [Parse setApplicationId:@"aYDdJFZaS5jPGV4y3dWf2ZErM4nk35hvoO9xThQh"
+                  clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
+    
+    User *user = [User currentUser];
+    if (user != nil) {
+        NSLog(@"Welcome %@", user.username);
+    } else {
+        NSLog(@"Not logged in");
+    }
+    
+    UIColor *themeColor = [UIColor colorWithRed:82/255.0 green:104/255.0 blue:185/255.0 alpha:1];
+    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+    self.window.rootViewController = nvc;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
+    view.backgroundColor = themeColor;
+    [self.window.rootViewController.view addSubview:view];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
