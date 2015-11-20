@@ -19,8 +19,8 @@
 	- [ ] Logout
 - [ ] Login page
 	- [ ] Login with Facebook
-	- [ ] Login with username & password
-	- [ ] Sign up with Parse
+	- [X] Login with username & password
+	- [X] Sign up with Parse
 - [ ] Deal details page
 	- [ ] Image view of hotels, hotel description, price, location, book button
 	- [ ] After users finish booking, users are asked to select checkout time and pops back to home page with updated route information
