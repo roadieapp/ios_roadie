@@ -46,8 +46,7 @@
 }
 
 - (IBAction)onAlreadyHaveAnAccountTapped:(id)sender {
-    UIViewController *vc = [[LoginViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setUpTapGestureRecognizer {
