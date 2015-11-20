@@ -10,6 +10,7 @@
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
 #import "User.h"
+#import "Constants.h"
 
 @interface LoginViewController ()
 
@@ -60,8 +61,7 @@
 - (void)setUpNavigationBar {
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     // set background color
-    UIColor *themeColor = [UIColor colorWithRed:82/255.0 green:104/255.0 blue:185/255.0 alpha:1];
-    [navigationBar setBarTintColor:themeColor];
+    [navigationBar setBarTintColor:[[Constants sharedInstance] themeColor]];
     [navigationBar setTranslucent:NO];
     // remove bottom line
     [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];

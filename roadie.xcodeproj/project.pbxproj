@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02EB00131BFEA28500B81A53 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00121BFEA28500B81A53 /* Constants.m */; };
 		02EBFFB71BFCF18E00B81A53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFB61BFCF18E00B81A53 /* main.m */; };
 		02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFB91BFCF18E00B81A53 /* AppDelegate.m */; };
 		02EBFFC01BFCF18E00B81A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02EBFFBE1BFCF18E00B81A53 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02EB00111BFEA28500B81A53 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		02EB00121BFEA28500B81A53 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		02EBFFB21BFCF18E00B81A53 /* roadie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roadie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02EBFFB61BFCF18E00B81A53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02EBFFB81BFCF18E00B81A53 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02EB00101BFEA0D500B81A53 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				02EB00111BFEA28500B81A53 /* Constants.h */,
+				02EB00121BFEA28500B81A53 /* Constants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		02EBFFA91BFCF18E00B81A53 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +92,7 @@
 		02EBFFB41BFCF18E00B81A53 /* roadie */ = {
 			isa = PBXGroup;
 			children = (
+				02EB00101BFEA0D500B81A53 /* Constants */,
 				02EBFFE71BFDA9DD00B81A53 /* Clients */,
 				02EBFFE31BFDA9A000B81A53 /* Models */,
 				02EBFFCC1BFCF82000B81A53 /* View Controllers */,
@@ -280,6 +293,7 @@
 				02EBFFE61BFDA9C100B81A53 /* User.m in Sources */,
 				02EBFFB71BFCF18E00B81A53 /* main.m in Sources */,
 				02EBFFD01BFCF83100B81A53 /* HomeViewController.m in Sources */,
+				02EB00131BFEA28500B81A53 /* Constants.m in Sources */,
 				02EBFFE11BFD911900B81A53 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
