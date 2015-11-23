@@ -15,6 +15,7 @@
 #import "Constants.h"
 #import "HamburgerViewController.h"
 #import "MenuViewController.h"
+#import "SearchResultViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,8 @@
     
     [Parse setApplicationId:@"aYDdJFZaS5jPGV4y3dWf2ZErM4nk35hvoO9xThQh"
                   clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
+    
+    [GMSServices provideAPIKey:@"AIzaSyAzOtPd9_Aii3k8ZM7WhMhuarh3gFhtE3A"];
     
     User *user = [User currentUser];
     if (user != nil) {
