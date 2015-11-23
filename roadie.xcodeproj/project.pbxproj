@@ -21,6 +21,14 @@
 		02EBFFE21BFD911900B81A53 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EBFFE01BFD911900B81A53 /* SignupViewController.xib */; };
 		02EBFFE61BFDA9C100B81A53 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFE51BFDA9C100B81A53 /* User.m */; };
 		23B4C287AE5E146B9BC5D53A /* libPods-roadie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED29B5D9F0CE02497D50DB7 /* libPods-roadie.a */; };
+		8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FAFE1C02D87600E58895 /* HamburgerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB031C02D8A300E58895 /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8374FB061C02D8A300E58895 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB041C02D8A300E58895 /* MenuViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB081C02D8F700E58895 /* RedViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB091C02D8F700E58895 /* RedViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8374FB0F1C02D93200E58895 /* BlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* BlueViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8374FB101C02D93200E58895 /* BlueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* BlueViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +56,18 @@
 		0905DEE4C4454E00584AADB0 /* Pods-roadie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roadie.release.xcconfig"; path = "Pods/Target Support Files/Pods-roadie/Pods-roadie.release.xcconfig"; sourceTree = "<group>"; };
 		5ED29B5D9F0CE02497D50DB7 /* libPods-roadie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-roadie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB7A208CD0EBCB44AC52F59 /* Pods-roadie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roadie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roadie/Pods-roadie.debug.xcconfig"; sourceTree = "<group>"; };
+		8374FAFD1C02D87600E58895 /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
+		8374FAFE1C02D87600E58895 /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
+		8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
+		8374FB021C02D8A300E58895 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		8374FB031C02D8A300E58895 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		8374FB041C02D8A300E58895 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		8374FB071C02D8F700E58895 /* RedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedViewController.h; sourceTree = "<group>"; };
+		8374FB081C02D8F700E58895 /* RedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedViewController.m; sourceTree = "<group>"; };
+		8374FB091C02D8F700E58895 /* RedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedViewController.xib; sourceTree = "<group>"; };
+		8374FB0C1C02D93200E58895 /* BlueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueViewController.h; sourceTree = "<group>"; };
+		8374FB0D1C02D93200E58895 /* BlueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueViewController.m; sourceTree = "<group>"; };
+		8374FB0E1C02D93200E58895 /* BlueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlueViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +138,12 @@
 		02EBFFCC1BFCF82000B81A53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8374FB021C02D8A300E58895 /* MenuViewController.h */,
+				8374FB031C02D8A300E58895 /* MenuViewController.m */,
+				8374FB041C02D8A300E58895 /* MenuViewController.xib */,
+				8374FAFD1C02D87600E58895 /* HamburgerViewController.h */,
+				8374FAFE1C02D87600E58895 /* HamburgerViewController.m */,
+				8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */,
 				02EBFFCD1BFCF83100B81A53 /* HomeViewController.h */,
 				02EBFFCE1BFCF83100B81A53 /* HomeViewController.m */,
 				02EBFFCF1BFCF83100B81A53 /* HomeViewController.xib */,
@@ -127,6 +153,12 @@
 				02EBFFDE1BFD911900B81A53 /* SignupViewController.h */,
 				02EBFFDF1BFD911900B81A53 /* SignupViewController.m */,
 				02EBFFE01BFD911900B81A53 /* SignupViewController.xib */,
+				8374FB071C02D8F700E58895 /* RedViewController.h */,
+				8374FB081C02D8F700E58895 /* RedViewController.m */,
+				8374FB091C02D8F700E58895 /* RedViewController.xib */,
+				8374FB0C1C02D93200E58895 /* BlueViewController.h */,
+				8374FB0D1C02D93200E58895 /* BlueViewController.m */,
+				8374FB0E1C02D93200E58895 /* BlueViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -225,9 +257,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */,
 				02EBFFE21BFD911900B81A53 /* SignupViewController.xib in Resources */,
 				02EBFFD61BFD54AC00B81A53 /* LoginViewController.xib in Resources */,
+				8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */,
+				8374FB061C02D8A300E58895 /* MenuViewController.xib in Resources */,
 				02EBFFC51BFCF18E00B81A53 /* LaunchScreen.storyboard in Resources */,
+				8374FB101C02D93200E58895 /* BlueViewController.xib in Resources */,
 				02EBFFC21BFCF18E00B81A53 /* Assets.xcassets in Resources */,
 				02EBFFC01BFCF18E00B81A53 /* Main.storyboard in Resources */,
 				02EBFFD11BFCF83100B81A53 /* HomeViewController.xib in Resources */,
@@ -289,8 +325,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */,
+				8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */,
 				02EBFFD51BFD54AC00B81A53 /* LoginViewController.m in Sources */,
 				02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */,
+				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
+				8374FB0F1C02D93200E58895 /* BlueViewController.m in Sources */,
 				02EBFFE61BFDA9C100B81A53 /* User.m in Sources */,
 				02EBFFB71BFCF18E00B81A53 /* main.m in Sources */,
 				02EBFFD01BFCF83100B81A53 /* HomeViewController.m in Sources */,

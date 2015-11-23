@@ -13,6 +13,8 @@
 #import "LoginViewController.h"
 #import "User.h"
 #import "Constants.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -39,6 +41,20 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
     view.backgroundColor = [[Constants sharedInstance] themeColor];
     [self.window.rootViewController.view addSubview:view];
+
+    
+    // Begin: init the hamburger menu block
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    
+//    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+//    
+//    self.window.rootViewController = hamburgerVC;
+//    MenuViewController *menuVC = [[MenuViewController alloc] init];
+//    
+//    [menuVC setHamburgerViewController:hamburgerVC];
+//    [hamburgerVC setMenuViewController:menuVC];
+    // End: init the hamburger menu block
+
     [self.window makeKeyAndVisible];
     
     return YES;
