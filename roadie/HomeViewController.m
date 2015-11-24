@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "Constants.h"
 
 @interface HomeViewController ()
 
@@ -16,7 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setUpNavigationBar];
+}
+
+- (void)setUpNavigationBar {
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    // set background color
+    [navigationBar setBarTintColor:[[Constants sharedInstance] themeColor]];
+    [navigationBar setTranslucent:NO];
+    // remove bottom line
+    [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 - (void)didReceiveMemoryWarning {

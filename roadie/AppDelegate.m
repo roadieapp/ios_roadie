@@ -32,13 +32,13 @@
     [GMSServices provideAPIKey:@"AIzaSyAzOtPd9_Aii3k8ZM7WhMhuarh3gFhtE3A"];
     
     User *user = [User currentUser];
+    UINavigationController *nvc;
     if (user != nil) {
-        NSLog(@"Welcome %@", user.username);
+        nvc = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     } else {
-        NSLog(@"Not logged in");
+        nvc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     }
     
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     self.window.rootViewController = nvc;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
@@ -47,15 +47,15 @@
 
     
     // Begin: init the hamburger menu block
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    
-//    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
-//    
-//    self.window.rootViewController = hamburgerVC;
-//    MenuViewController *menuVC = [[MenuViewController alloc] init];
-//    
-//    [menuVC setHamburgerViewController:hamburgerVC];
-//    [hamburgerVC setMenuViewController:menuVC];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+    
+    self.window.rootViewController = hamburgerVC;
+    MenuViewController *menuVC = [[MenuViewController alloc] init];
+    
+    [menuVC setHamburgerViewController:hamburgerVC];
+    [hamburgerVC setMenuViewController:menuVC];
     // End: init the hamburger menu block
 
     [self.window makeKeyAndVisible];
