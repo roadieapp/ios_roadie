@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class StayPlaceCell;
+
+@protocol StayPlaceCellDelegate <NSObject>
+
+- (void)stayPlaceCell: (StayPlaceCell *)cell;
+
+@end
+
 @interface StayPlaceCell : UITableViewCell
+
+@property (nonatomic, weak) id<StayPlaceCellDelegate> delegate;
 
 @end

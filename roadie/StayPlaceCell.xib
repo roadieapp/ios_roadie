@@ -25,6 +25,9 @@
                         <animations/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
                         <state key="normal" title="Add"/>
+                        <connections>
+                            <action selector="onAdd:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cSr-br-YjB"/>
+                        </connections>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-cv-tHm">
                         <rect key="frame" x="83" y="7" width="181.5" height="30"/>

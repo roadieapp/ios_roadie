@@ -13,7 +13,7 @@
 #import "StayPlaceCell.h"
 @import GoogleMaps;
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger numOfStayPlaces;
@@ -46,6 +46,11 @@
     self.tableView.allowsSelection = NO;
 }
 
+- (void)stayPlaceCell:(StayPlaceCell *)cell {
+    self.numOfStayPlaces = self.numOfStayPlaces + 1;
+    [self.tableView reloadData];
+}
+
 - (void)destinationCellDelegate {
     // Place autocomplete
 }
@@ -58,7 +63,6 @@
     if (indexPath.row == 0) {
         StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
         [cell.timeButton setTitle:self.pickedDate forState:UIControlStateNormal];
-        NSLog(@"%@", self.pickedDate);
         return cell;
     } else if (indexPath.row == 1) {
         DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
@@ -72,6 +76,7 @@
         return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        cell.delegate = self;
         return cell;
     }
 }

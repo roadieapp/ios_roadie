@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onAdd:(id)sender {
+    [self.delegate stayPlaceCell:self];
+}
+
 @end
