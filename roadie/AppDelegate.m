@@ -29,7 +29,7 @@
     [Parse setApplicationId:@"aYDdJFZaS5jPGV4y3dWf2ZErM4nk35hvoO9xThQh"
                   clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
     
-    [GMSServices provideAPIKey:@"AIzaSyAzOtPd9_Aii3k8ZM7WhMhuarh3gFhtE3A"];
+    [GMSServices provideAPIKey:@"AIzaSyAR1Ya-VtjBagXDulRx5IuE1q6UAI_nUnU"];
     
     User *user = [User currentUser];
     UINavigationController *nvc;
@@ -47,15 +47,15 @@
 
     
     // Begin: init the hamburger menu block
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
-    
-    self.window.rootViewController = hamburgerVC;
-    MenuViewController *menuVC = [[MenuViewController alloc] init];
-    
-    [menuVC setHamburgerViewController:hamburgerVC];
-    [hamburgerVC setMenuViewController:menuVC];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    
+//    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+//    
+//    self.window.rootViewController = hamburgerVC;
+//    MenuViewController *menuVC = [[MenuViewController alloc] init];
+//    
+//    [menuVC setHamburgerViewController:hamburgerVC];
+//    [hamburgerVC setMenuViewController:menuVC];
     // End: init the hamburger menu block
 
     [self.window makeKeyAndVisible];

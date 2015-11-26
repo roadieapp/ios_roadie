@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		02EB00131BFEA28500B81A53 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00121BFEA28500B81A53 /* Constants.m */; };
+		02EB00261C04037800B81A53 /* DestinationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00241C04037800B81A53 /* DestinationCell.m */; };
+		02EB00271C04037800B81A53 /* DestinationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EB00251C04037800B81A53 /* DestinationCell.xib */; };
+		02EB002B1C04072E00B81A53 /* StayPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00291C04072E00B81A53 /* StayPlaceCell.m */; };
+		02EB002C1C04072E00B81A53 /* StayPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EB002A1C04072E00B81A53 /* StayPlaceCell.xib */; };
+		02EB00301C04080B00B81A53 /* StartTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB002E1C04080B00B81A53 /* StartTimeCell.m */; };
+		02EB00311C04080B00B81A53 /* StartTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EB002F1C04080B00B81A53 /* StartTimeCell.xib */; };
 		02EBFFB71BFCF18E00B81A53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFB61BFCF18E00B81A53 /* main.m */; };
 		02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFB91BFCF18E00B81A53 /* AppDelegate.m */; };
 		02EBFFC01BFCF18E00B81A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02EBFFBE1BFCF18E00B81A53 /* Main.storyboard */; };
@@ -21,24 +27,33 @@
 		02EBFFE21BFD911900B81A53 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EBFFE01BFD911900B81A53 /* SignupViewController.xib */; };
 		02EBFFE61BFDA9C100B81A53 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EBFFE51BFDA9C100B81A53 /* User.m */; };
 		23B4C287AE5E146B9BC5D53A /* libPods-roadie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED29B5D9F0CE02497D50DB7 /* libPods-roadie.a */; };
-		8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FAFE1C02D87600E58895 /* HamburgerViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB031C02D8A300E58895 /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8374FB061C02D8A300E58895 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB041C02D8A300E58895 /* MenuViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB081C02D8F700E58895 /* RedViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB091C02D8F700E58895 /* RedViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		8374FB0F1C02D93200E58895 /* BlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* BlueViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8374FB101C02D93200E58895 /* BlueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* BlueViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		C7F140251C02EACB00FBC0ED /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140231C02EACB00FBC0ED /* SearchResultViewController.m */; settings = {ASSET_TAGS = (); }; };
-		C7F140261C02EACB00FBC0ED /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F140241C02EACB00FBC0ED /* SearchResultViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		C7F1402B1C02F6F200FBC0ED /* HotelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140291C02F6F200FBC0ED /* HotelViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		C7F1402C1C02F6F200FBC0ED /* HotelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F1402A1C02F6F200FBC0ED /* HotelViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		C7F1402F1C02FB2D00FBC0ED /* Hotel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F1402E1C02FB2D00FBC0ED /* Hotel.m */; settings = {ASSET_TAGS = (); }; };
+		8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FAFE1C02D87600E58895 /* HamburgerViewController.m */; };
+		8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */; };
+		8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB031C02D8A300E58895 /* MenuViewController.m */; };
+		8374FB061C02D8A300E58895 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB041C02D8A300E58895 /* MenuViewController.xib */; };
+		8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB081C02D8F700E58895 /* RedViewController.m */; };
+		8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB091C02D8F700E58895 /* RedViewController.xib */; };
+		8374FB0F1C02D93200E58895 /* BlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* BlueViewController.m */; };
+		8374FB101C02D93200E58895 /* BlueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* BlueViewController.xib */; };
+		C7F140251C02EACB00FBC0ED /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140231C02EACB00FBC0ED /* SearchResultViewController.m */; };
+		C7F140261C02EACB00FBC0ED /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F140241C02EACB00FBC0ED /* SearchResultViewController.xib */; };
+		C7F1402B1C02F6F200FBC0ED /* HotelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140291C02F6F200FBC0ED /* HotelViewCell.m */; };
+		C7F1402C1C02F6F200FBC0ED /* HotelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F1402A1C02F6F200FBC0ED /* HotelViewCell.xib */; };
+		C7F1402F1C02FB2D00FBC0ED /* Hotel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F1402E1C02FB2D00FBC0ED /* Hotel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02EB00111BFEA28500B81A53 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		02EB00121BFEA28500B81A53 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		02EB00231C04037800B81A53 /* DestinationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationCell.h; sourceTree = "<group>"; };
+		02EB00241C04037800B81A53 /* DestinationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationCell.m; sourceTree = "<group>"; };
+		02EB00251C04037800B81A53 /* DestinationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationCell.xib; sourceTree = "<group>"; };
+		02EB00281C04072E00B81A53 /* StayPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayPlaceCell.h; sourceTree = "<group>"; };
+		02EB00291C04072E00B81A53 /* StayPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StayPlaceCell.m; sourceTree = "<group>"; };
+		02EB002A1C04072E00B81A53 /* StayPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StayPlaceCell.xib; sourceTree = "<group>"; };
+		02EB002D1C04080B00B81A53 /* StartTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTimeCell.h; sourceTree = "<group>"; };
+		02EB002E1C04080B00B81A53 /* StartTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTimeCell.m; sourceTree = "<group>"; };
+		02EB002F1C04080B00B81A53 /* StartTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeCell.xib; sourceTree = "<group>"; };
 		02EBFFB21BFCF18E00B81A53 /* roadie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roadie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02EBFFB61BFCF18E00B81A53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02EBFFB81BFCF18E00B81A53 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +227,15 @@
 				C7F140281C02F6F200FBC0ED /* HotelViewCell.h */,
 				C7F140291C02F6F200FBC0ED /* HotelViewCell.m */,
 				C7F1402A1C02F6F200FBC0ED /* HotelViewCell.xib */,
+				02EB00231C04037800B81A53 /* DestinationCell.h */,
+				02EB00241C04037800B81A53 /* DestinationCell.m */,
+				02EB00251C04037800B81A53 /* DestinationCell.xib */,
+				02EB00281C04072E00B81A53 /* StayPlaceCell.h */,
+				02EB00291C04072E00B81A53 /* StayPlaceCell.m */,
+				02EB002A1C04072E00B81A53 /* StayPlaceCell.xib */,
+				02EB002D1C04080B00B81A53 /* StartTimeCell.h */,
+				02EB002E1C04080B00B81A53 /* StartTimeCell.m */,
+				02EB002F1C04080B00B81A53 /* StartTimeCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -288,6 +312,9 @@
 			files = (
 				8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */,
 				02EBFFE21BFD911900B81A53 /* SignupViewController.xib in Resources */,
+				02EB002C1C04072E00B81A53 /* StayPlaceCell.xib in Resources */,
+				02EB00311C04080B00B81A53 /* StartTimeCell.xib in Resources */,
+				02EB00271C04037800B81A53 /* DestinationCell.xib in Resources */,
 				02EBFFD61BFD54AC00B81A53 /* LoginViewController.xib in Resources */,
 				8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */,
 				8374FB061C02D8A300E58895 /* MenuViewController.xib in Resources */,
@@ -356,11 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EB002B1C04072E00B81A53 /* StayPlaceCell.m in Sources */,
 				8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */,
 				8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */,
 				02EBFFD51BFD54AC00B81A53 /* LoginViewController.m in Sources */,
 				02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */,
 				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
+				02EB00261C04037800B81A53 /* DestinationCell.m in Sources */,
+				02EB00301C04080B00B81A53 /* StartTimeCell.m in Sources */,
 				8374FB0F1C02D93200E58895 /* BlueViewController.m in Sources */,
 				02EBFFE61BFDA9C100B81A53 /* User.m in Sources */,
 				02EBFFB71BFCF18E00B81A53 /* main.m in Sources */,
