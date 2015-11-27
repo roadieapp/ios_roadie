@@ -8,6 +8,7 @@
 
 #import "TripDetailController.h"
 #import "TripCell.h"
+#import "TripUnit.h"
 
 @interface TripDetailController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,6 +19,16 @@
 @end
 
 @implementation TripDetailController
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        [self initTrip];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,5 +62,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.trip.count;
 }
+
+- (void) initTrip {
+    NSArray *tripInput = @[
+                  @{@"location": @"Seattle, WA",
+                    @"hotelName": @"", @"hotelAddress": @"",
+                    @"hotelCheckIn": @"", @"hotelCheckOut": @""},
+                  @{@"location": @"Portland, OR",
+                    @"hotelName": @"Hotel Lucia", @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                    @"hotelCheckIn": @"2015-12-02", @"hotelCheckOut": @"2015-12-04"},
+                  @{@"location": @"San Francisco, CA",
+                    @"hotelName": @"Parc 55", @"hotelAddress": @"55 Cyril Magnin St, San Francisco, CA 94102",
+                    @"hotelCheckIn": @"2015-12-04", @"hotelCheckOut": @"2015012007"},
+                  @{@"location": @"Los Angeles, CA",
+                    @"hotelName": @"", @"hotelAddress": @"",
+                    @"hotelCheckIn": @"", @"hotelCheckOut": @""}
+                 ];
+    
+    self.trip = [TripUnit tripWithArray:tripInput];
+}
+
 
 @end

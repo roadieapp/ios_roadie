@@ -16,6 +16,7 @@
 #import "HamburgerViewController.h"
 #import "MenuViewController.h"
 #import "SearchResultViewController.h"
+#import "TripDetailController.h"
 
 @interface AppDelegate ()
 
@@ -30,7 +31,7 @@
                   clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
     
     [GMSServices provideAPIKey:@"AIzaSyAR1Ya-VtjBagXDulRx5IuE1q6UAI_nUnU"];
-    
+
     User *user = [User currentUser];
     UINavigationController *nvc;
     if (user != nil) {
@@ -57,6 +58,12 @@
 //    [menuVC setHamburgerViewController:hamburgerVC];
 //    [hamburgerVC setMenuViewController:menuVC];
     // End: init the hamburger menu block
+    
+    // Begin: TripDetailController block
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    TripDetailController *tripDetailController = [[TripDetailController alloc] init];
+//    self.window.rootViewController = tripDetailController;
+    // End: TripDetailController block
 
     [self.window makeKeyAndVisible];
     
