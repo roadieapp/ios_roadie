@@ -46,6 +46,11 @@
     self.hotelAddressLabel.text = tripUnit.hotelAddress;
     [self.hotelAddressLabel sizeToFit];
     
+    if ([tripUnit.hotelName isEqualToString:@""]) {
+        [self.checkInLabel setHidden:YES];
+        [self.checkOutLabel setHidden:YES];
+    }
+    
     self.checkInDateLabel.text = tripUnit.hotelCheckIn;
     self.checkOutDateLabel.text = tripUnit.hotelCheckOut;
 }
