@@ -27,8 +27,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [Parse setApplicationId:@"aYDdJFZaS5jPGV4y3dWf2ZErM4nk35hvoO9xThQh"
-                  clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
+    // old Parse Key (Xin's personal key)
+//    [Parse setApplicationId:@"aYDdJFZaS5jPGV4y3dWf2ZErM4nk35hvoO9xThQh"
+//                  clientKey:@"KzcNGKS5NXC06AohgfWQyOWFOXpm1eJP2cpv1AGt"];
+    
+    // new Parse Key for team use
+    [Parse setApplicationId:@"wmswWgLA79PXgf0XbE6yKp5YCWjUvxH5pmJb61eu"
+                  clientKey:@"qCNpMHDhdzvNRADDTpJDUeY71zQyE4hc2nvbTtXQ"];
     
     [GMSServices provideAPIKey:@"AIzaSyAR1Ya-VtjBagXDulRx5IuE1q6UAI_nUnU"];
 
