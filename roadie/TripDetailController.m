@@ -8,6 +8,7 @@
 
 #import "TripDetailController.h"
 #import "TripCell.h"
+#import "TripHeaderCell.h"
 #import "TripUnit.h"
 
 @interface TripDetailController () <UITableViewDelegate, UITableViewDataSource>
@@ -45,6 +46,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TripCell" bundle:nil] forCellReuseIdentifier:@"TripCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TripHeaderCell" bundle:nil] forCellReuseIdentifier:@"TripHeaderCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,10 +55,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TripCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TripCell"];
-    [cell setTripUnit:self.trip[indexPath.row]];
-    
-    return cell;
+    if (indexPath.row == 0) {
+        TripHeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TripHeaderCell"];
+        [cell setTripUnit:self.trip[indexPath.row] withHeader:YES];
+        return cell;
+    } else if (indexPath.row == self.trip.count - 1) {
+        TripHeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TripHeaderCell"];
+        [cell setTripUnit:self.trip[indexPath.row] withHeader:NO];
+        return cell;
+    } else {
+        TripCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TripCell"];
+        [cell setTripUnit:self.trip[indexPath.row]];
+        return cell;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
