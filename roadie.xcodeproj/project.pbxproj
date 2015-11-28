@@ -34,6 +34,8 @@
 		831531BD1C0813D30038F6CD /* TripUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 831531BC1C0813D30038F6CD /* TripUnit.m */; settings = {ASSET_TAGS = (); }; };
 		831531C11C096A790038F6CD /* TripHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 831531BF1C096A790038F6CD /* TripHeaderCell.m */; settings = {ASSET_TAGS = (); }; };
 		831531C21C096A790038F6CD /* TripHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831531C01C096A790038F6CD /* TripHeaderCell.xib */; settings = {ASSET_TAGS = (); }; };
+		831531C61C097FE90038F6CD /* HotelDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831531C41C097FE90038F6CD /* HotelDetailController.m */; settings = {ASSET_TAGS = (); }; };
+		831531C71C097FE90038F6CD /* HotelDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831531C51C097FE90038F6CD /* HotelDetailController.xib */; settings = {ASSET_TAGS = (); }; };
 		8374FB001C02D87600E58895 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FAFE1C02D87600E58895 /* HamburgerViewController.m */; };
 		8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */; };
 		8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB031C02D8A300E58895 /* MenuViewController.m */; };
@@ -94,6 +96,9 @@
 		831531BE1C096A790038F6CD /* TripHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripHeaderCell.h; sourceTree = "<group>"; };
 		831531BF1C096A790038F6CD /* TripHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripHeaderCell.m; sourceTree = "<group>"; };
 		831531C01C096A790038F6CD /* TripHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripHeaderCell.xib; sourceTree = "<group>"; };
+		831531C31C097FE90038F6CD /* HotelDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailController.h; sourceTree = "<group>"; };
+		831531C41C097FE90038F6CD /* HotelDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailController.m; sourceTree = "<group>"; };
+		831531C51C097FE90038F6CD /* HotelDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotelDetailController.xib; sourceTree = "<group>"; };
 		8374FAFD1C02D87600E58895 /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
 		8374FAFE1C02D87600E58895 /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
 		8374FAFF1C02D87600E58895 /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
@@ -212,6 +217,9 @@
 				831531B61C07BFAA0038F6CD /* TripDetailController.h */,
 				831531B71C07BFAA0038F6CD /* TripDetailController.m */,
 				831531B81C07BFAA0038F6CD /* TripDetailController.xib */,
+				831531C31C097FE90038F6CD /* HotelDetailController.h */,
+				831531C41C097FE90038F6CD /* HotelDetailController.m */,
+				831531C51C097FE90038F6CD /* HotelDetailController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 				02EBFFC51BFCF18E00B81A53 /* LaunchScreen.storyboard in Resources */,
 				8374FB101C02D93200E58895 /* BlueViewController.xib in Resources */,
 				831531C21C096A790038F6CD /* TripHeaderCell.xib in Resources */,
+				831531C71C097FE90038F6CD /* HotelDetailController.xib in Resources */,
 				02EBFFC21BFCF18E00B81A53 /* Assets.xcassets in Resources */,
 				831531BA1C07BFAA0038F6CD /* TripDetailController.xib in Resources */,
 				831531B01C07B55D0038F6CD /* TripCell.xib in Resources */,
@@ -432,6 +441,7 @@
 				02EBFFB71BFCF18E00B81A53 /* main.m in Sources */,
 				C7F1402F1C02FB2D00FBC0ED /* Hotel.m in Sources */,
 				C7F1402B1C02F6F200FBC0ED /* HotelViewCell.m in Sources */,
+				831531C61C097FE90038F6CD /* HotelDetailController.m in Sources */,
 				02EBFFD01BFCF83100B81A53 /* HomeViewController.m in Sources */,
 				02EB00131BFEA28500B81A53 /* Constants.m in Sources */,
 				02EBFFE11BFD911900B81A53 /* SignupViewController.m in Sources */,
