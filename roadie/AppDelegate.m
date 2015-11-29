@@ -17,6 +17,7 @@
 #import "MenuViewController.h"
 #import "SearchResultViewController.h"
 #import "TripDetailController.h"
+#import "HotelDetailController.h"
 
 @interface AppDelegate ()
 
@@ -69,6 +70,12 @@
 //    TripDetailController *tripDetailController = [[TripDetailController alloc] init];
 //    self.window.rootViewController = tripDetailController;
     // End: TripDetailController block
+
+    // Begin: HotelDetailController block
+//        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        HotelDetailController *hotelDetailController = [[HotelDetailController alloc] init];
+//        self.window.rootViewController = hotelDetailController;
+    // End: HotelDetailController block
 
     [self.window makeKeyAndVisible];
     

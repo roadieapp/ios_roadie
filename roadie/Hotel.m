@@ -16,13 +16,15 @@
     if (self) {
         self.hotelID = dictionary[@"hotelID"];
         self.hotelName = dictionary[@"hotelName"];
+        self.hotelAddress = dictionary[@"hotelAddress"];
         self.location = dictionary[@"location"];
         
         NSString *imageUrlString = dictionary[@"imageUrl"];
         self.imageUrl = [NSURL URLWithString:imageUrlString];
         
-        NSString *starsUrlString = dictionary[@"starsUrl"];
-        self.starsUrl = [NSURL URLWithString:starsUrlString];
+        // Note: need to work out the stars image url from CDN
+//        NSString *starsUrlString = dictionary[@"starsUrl"];
+//        self.starsUrl = [NSURL URLWithString:starsUrlString];
         
         // store price in NSString
         self.price = [dictionary[@"price"] intValue];

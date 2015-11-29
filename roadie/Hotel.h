@@ -12,11 +12,14 @@
 
 @property (strong, nonatomic) NSString *hotelID;
 @property (strong, nonatomic) NSString *hotelName;
+@property (strong, nonatomic) NSString *hotelAddress;
 
 // Note: title may be the same name as hotel name. to check later
 @property (strong, nonatomic) NSString *title;
 
 @property (strong, nonatomic) NSURL *imageUrl;
+
+// location is the city, state info, something like Seattle, WA
 @property (strong, nonatomic) NSString *location;
 
 // Note: price is based on the date, it will be adjusted later

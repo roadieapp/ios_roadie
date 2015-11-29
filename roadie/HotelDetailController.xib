@@ -11,10 +11,10 @@
                 <outlet property="checkOutTextField" destination="FCa-sE-Ymc" id="P9v-FM-oTt"/>
                 <outlet property="descriptionLabel" destination="Jdb-Vq-Km2" id="xl7-vD-GFc"/>
                 <outlet property="finePrintLabel" destination="H37-f9-fxx" id="9jl-vK-hkx"/>
+                <outlet property="hotelAddressLabel" destination="Os4-Kb-HEf" id="QKG-jo-pDn"/>
                 <outlet property="hotelImageView" destination="eKa-PT-C4y" id="fLJ-4b-QHn"/>
                 <outlet property="hotelName" destination="wiI-zc-0JZ" id="9ae-0w-KfR"/>
                 <outlet property="hotelStarsImageView" destination="y5b-to-zxA" id="d3x-Ha-KTm"/>
-                <outlet property="locationLabel" destination="Os4-Kb-HEf" id="zHe-ne-Pvb"/>
                 <outlet property="priceLabel" destination="k40-49-6qp" id="Y5c-lp-wtK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

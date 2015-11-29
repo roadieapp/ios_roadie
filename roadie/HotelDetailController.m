@@ -7,6 +7,7 @@
 //
 
 #import "HotelDetailController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface HotelDetailController ()
 
@@ -20,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *amenitiesLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hotelAddressLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
@@ -37,21 +38,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self initHotel];
+    [self updateView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) initHotel {
+    NSDictionary *dictionary = @{@"location": @"Portland, OR",
+                                 @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                                 @"hotelName": @"Hotel Lucia",
+                                 @"hotelId": @"12345",
+                                 @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
+                                 @"starsUrl": @"",
+                                 @"price": @"189",
+                                 @"currencyCode": @"USD",
+                                 @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
+                                 @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
+                                 @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."};
+    
+    _hotel = [[Hotel alloc]initWithDictionary:dictionary];
 }
-*/
+
+- (void) updateView {
+    self.hotelName.text = self.hotel.hotelName;
+    [self.hotelName sizeToFit];
+    
+    self.hotelAddressLabel.text = self.hotel.hotelAddress;
+    [self.hotelAddressLabel sizeToFit];
+    
+    [self.hotelImageView setImageWithURL:self.hotel.imageUrl];
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"$%ld", (long)self.hotel.price];
+    
+    self.descriptionLabel.text = self.hotel.hotelDescription;
+    [self.descriptionLabel sizeToFit];
+    
+    self.amenitiesLabel.text = self.hotel.amenities;
+    [self.amenitiesLabel sizeToFit];
+    
+    self.finePrintLabel.text = self.hotel.finePrint;
+    [self.finePrintLabel sizeToFit];
+}
 
 @end
