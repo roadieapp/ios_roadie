@@ -11,6 +11,7 @@
 #import "StartTimeCell.h"
 #import "DestinationCell.h"
 #import "StayPlaceCell.h"
+#import "SearchResultViewController.h"
 @import GoogleMaps;
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate>
@@ -19,7 +20,7 @@
 @property (nonatomic) NSInteger numOfStayPlaces;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) NSString *pickedDate;
-@property (weak, nonatomic) IBOutlet UIButton *mybutton;
+//@property (weak, nonatomic) IBOutlet UIButton *mybutton;
 
 @end
 
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     _placesClient = [[GMSPlacesClient alloc] init];
     [self setUpNavigationBar];
+    [self customizeRightNavBarButtons];
     [self setUpInitialData];
     [self setUpTable];
 }
@@ -112,19 +114,26 @@
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Search"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(onSearchButton)];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void) onSearchButton {
+    SearchResultViewController *resultVC = [[SearchResultViewController alloc] init];
+    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:resultVC];
+    
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
