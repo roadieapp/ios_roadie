@@ -56,6 +56,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HotelViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelViewCell"];
+    [cell setHotel:self.hotels[indexPath.row]];
+    
     return cell;
 }
 @end

@@ -12,6 +12,7 @@
 #import "DestinationCell.h"
 #import "StayPlaceCell.h"
 #import "SearchResultViewController.h"
+#import "Hotel.h"
 @import GoogleMaps;
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate>
@@ -21,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) NSString *pickedDate;
 //@property (weak, nonatomic) IBOutlet UIButton *mybutton;
+
+// Array of Dictionary
+@property (nonatomic, strong) NSArray *searchResults;
 
 @end
 
@@ -125,11 +129,64 @@
 }
 
 - (void) onSearchButton {
+    [self initSearchResult];
+    NSArray *hotels = [self hotelsWithArray:self.searchResults];
+    
     SearchResultViewController *resultVC = [[SearchResultViewController alloc] init];
+    resultVC.hotels = hotels;
     
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:resultVC];
     
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (NSArray *) hotelsWithArray: (NSArray *)array {
+    NSMutableArray *hotels = [NSMutableArray array];
+    
+    for (NSDictionary *dictionary in array) {
+        [hotels addObject:[[Hotel alloc] initWithDictionary:dictionary]];
+    }
+    
+    return hotels;
+}
+
+- (void) initSearchResult {
+    self.searchResults = @[
+                           @{@"location": @"Portland, OR",
+                             @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                             @"hotelName": @"Hotel Lucia",
+                             @"hotelId": @"12345",
+                             @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
+                             @"starsUrl": @"",
+                             @"price": @"189",
+                             @"currencyCode": @"USD",
+                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
+                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
+                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
+                           @{@"location": @"Portland, OR",
+                             @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                             @"hotelName": @"Hotel Lucia",
+                             @"hotelId": @"12345",
+                             @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
+                             @"starsUrl": @"",
+                             @"price": @"189",
+                             @"currencyCode": @"USD",
+                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
+                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
+                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
+                           @{@"location": @"Portland, OR",
+                             @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                             @"hotelName": @"Hotel Lucia",
+                             @"hotelId": @"12345",
+                             @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
+                             @"starsUrl": @"",
+                             @"price": @"189",
+                             @"currencyCode": @"USD",
+                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
+                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
+                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."}
+                           
+                           ];
 }
 
 - (void)didReceiveMemoryWarning {
