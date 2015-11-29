@@ -77,6 +77,13 @@
                 </constraints>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="hotelAddressLabel" destination="37m-d9-Amp" id="7uE-3P-WrT"/>
+                <outlet property="hotelImageView" destination="fr0-01-lQK" id="Mxg-Vc-NMF"/>
+                <outlet property="hotelNameLabel" destination="U5x-QE-w1a" id="RlK-3n-V32"/>
+                <outlet property="hotelStarsImageView" destination="89X-1D-17v" id="1eV-Ht-IWL"/>
+                <outlet property="priceLabel" destination="7Fr-77-WFA" id="KLm-ej-epZ"/>
+            </connections>
             <point key="canvasLocation" x="273.5" y="319.5"/>
         </tableViewCell>
     </objects>

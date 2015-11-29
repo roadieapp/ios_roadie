@@ -11,15 +11,13 @@
 @import GoogleMaps;
 
 @interface SearchResultViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *hotels;
 
 @end
 
-@implementation SearchResultViewController {
-
-}
+@implementation SearchResultViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,9 +42,7 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerNib:[UINib nibWithNibName:@"HotelViewCell" bundle:nil] forCellReuseIdentifier:@"HotelViewCell"];
-
-    
-    
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {

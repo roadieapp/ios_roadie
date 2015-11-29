@@ -27,6 +27,9 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
     UIViewController *blueViewController = [[BlueViewController alloc]init];
     UINavigationController *blueNVC = [[UINavigationController alloc] initWithRootViewController:blueViewController];
