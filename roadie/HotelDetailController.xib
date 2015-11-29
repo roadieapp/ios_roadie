@@ -133,6 +133,9 @@
                         <constraint firstAttribute="width" constant="98" id="Zun-fp-aar"/>
                     </constraints>
                     <state key="normal" title="Book"/>
+                    <connections>
+                        <action selector="bookButtonTapped:" destination="-1" eventType="touchUpInside" id="jqe-Gb-IcK"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amenities" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-j7-fcm">
                     <rect key="frame" x="14" y="241" width="292" height="14.5"/>

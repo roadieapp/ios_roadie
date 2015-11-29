@@ -82,6 +82,30 @@
     
     self.finePrintLabel.text = self.hotel.finePrint;
     [self.finePrintLabel sizeToFit];
+    
+    self.checkInTextField.text = [self defaultCheckInDate];
+    self.checkOutTextField.text = [self defaultCheckOutDate];
+}
+
+- (NSString *) defaultCheckInDate {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    return [formatter stringFromDate:[NSDate date]];
+}
+
+- (NSString *) defaultCheckOutDate {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    
+    NSDate *now = [NSDate date];
+    int daysToAdd = 1;
+    NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
+    return [formatter stringFromDate:newDate];
+}
+
+
+- (IBAction)bookButtonTapped:(UIButton *)sender {
+    NSLog(@"Hotel has been booked");
 }
 
 @end
