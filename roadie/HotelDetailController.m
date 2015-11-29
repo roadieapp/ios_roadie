@@ -10,6 +10,26 @@
 
 @interface HotelDetailController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *hotelImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *hotelName;
+
+@property (weak, nonatomic) IBOutlet UIImageView *hotelStarsImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *amenitiesLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *finePrintLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *checkInTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *checkOutTextField;
+
 @end
 
 @implementation HotelDetailController

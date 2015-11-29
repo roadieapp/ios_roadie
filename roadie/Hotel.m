@@ -10,4 +10,30 @@
 
 @implementation Hotel
 
+- (id) initWithDictionary: (NSDictionary *) dictionary {
+    self = [super init];
+    
+    if (self) {
+        self.hotelID = dictionary[@"hotelID"];
+        self.hotelName = dictionary[@"hotelName"];
+        self.location = dictionary[@"location"];
+        
+        NSString *imageUrlString = dictionary[@"imageUrl"];
+        self.imageUrl = [NSURL URLWithString:imageUrlString];
+        
+        NSString *starsUrlString = dictionary[@"starsUrl"];
+        self.starsUrl = [NSURL URLWithString:starsUrlString];
+        
+        // store price in NSString
+        self.price = [dictionary[@"price"] intValue];
+        
+        self.currencyCode = dictionary[@"currencyCode"];
+        self.amenities = dictionary[@"amenities"];
+        self.hotelDescription = dictionary[@"description"];
+        self.finePrint = dictionary[@"finePrint"];
+    }
+    
+    return self;
+}
+
 @end

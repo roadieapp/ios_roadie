@@ -6,6 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HotelDetailController">
             <connections>
+                <outlet property="amenitiesLabel" destination="6GM-j7-fcm" id="aYH-eW-dYB"/>
+                <outlet property="checkInTextField" destination="4mt-F6-2F8" id="Sln-C8-xXe"/>
+                <outlet property="checkOutTextField" destination="FCa-sE-Ymc" id="P9v-FM-oTt"/>
+                <outlet property="descriptionLabel" destination="Jdb-Vq-Km2" id="xl7-vD-GFc"/>
+                <outlet property="finePrintLabel" destination="H37-f9-fxx" id="9jl-vK-hkx"/>
+                <outlet property="hotelImageView" destination="eKa-PT-C4y" id="fLJ-4b-QHn"/>
+                <outlet property="hotelName" destination="wiI-zc-0JZ" id="9ae-0w-KfR"/>
+                <outlet property="hotelStarsImageView" destination="y5b-to-zxA" id="d3x-Ha-KTm"/>
+                <outlet property="locationLabel" destination="Os4-Kb-HEf" id="zHe-ne-Pvb"/>
+                <outlet property="priceLabel" destination="k40-49-6qp" id="Y5c-lp-wtK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -115,14 +125,14 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sI-h5-hOq">
-                    <rect key="frame" x="111" y="528" width="98" height="24"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sI-h5-hOq">
+                    <rect key="frame" x="111" y="525" width="98" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="9iM-u8-ayl"/>
                         <constraint firstAttribute="width" constant="98" id="Zun-fp-aar"/>
                     </constraints>
-                    <state key="normal" title="Buy"/>
+                    <state key="normal" title="Book"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amenities" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-j7-fcm">
                     <rect key="frame" x="14" y="241" width="292" height="14.5"/>
