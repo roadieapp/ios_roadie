@@ -9,6 +9,10 @@
 #import "MenuViewController.h"
 #import "BlueViewController.h"
 #import "RedViewController.h"
+#import "LoginViewController.h"
+#import "HomeViewController.h"
+#import "TripDetailController.h"
+#import "User.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -35,12 +39,26 @@
     UINavigationController *blueNVC = [[UINavigationController alloc] initWithRootViewController:blueViewController];
     
     UIViewController *redViewController = [[RedViewController alloc]init];
-    UINavigationController *redNVC = [[UINavigationController alloc] initWithRootViewController:redViewController];
+    UINavigationController *logoutNVC = [[UINavigationController alloc] initWithRootViewController:redViewController];
     
-    self.viewControllers = [NSArray arrayWithObjects:blueNVC, redNVC, nil];
+    UIViewController *loginViewController = [[LoginViewController alloc]init];
+    UINavigationController *loginNVC = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+
+    UIViewController *homeViewController = [[HomeViewController alloc]init];
+    UINavigationController *homeNVC = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+
+    UIViewController *tripDetailController = [[TripDetailController alloc]init];
+    UINavigationController *tripNVC = [[UINavigationController alloc] initWithRootViewController:tripDetailController];
+
+    self.viewControllers = [NSArray arrayWithObjects:loginNVC, homeNVC, tripNVC, blueNVC, logoutNVC, nil];
     
-    self.hamburgerViewController.contentViewController = blueNVC;
-    
+    User *user = [User currentUser];
+    if (user != nil) {
+        self.hamburgerViewController.contentViewController = homeNVC;
+    } else {
+        self.hamburgerViewController.contentViewController = loginNVC;
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,17 +69,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Blue View";
+            cell.textLabel.text = @"Login";
             break;
         case 1:
-            cell.textLabel.text = @"Red View";
+            cell.textLabel.text = @"Home";
+            break;
+        case 2:
+            cell.textLabel.text = @"My Trip";
+            break;
+        case 3:
+            cell.textLabel.text = @"Settings";
+            break;
+        case 4:
+            cell.textLabel.text = @"Logout";
             break;
     }
     

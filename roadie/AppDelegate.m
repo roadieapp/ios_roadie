@@ -38,31 +38,32 @@
     
     [GMSServices provideAPIKey:@"AIzaSyAR1Ya-VtjBagXDulRx5IuE1q6UAI_nUnU"];
 
-    User *user = [User currentUser];
-    UINavigationController *nvc;
-    if (user != nil) {
-        nvc = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
-    } else {
-        nvc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
-    }
-    
-    self.window.rootViewController = nvc;
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
-    view.backgroundColor = [[Constants sharedInstance] themeColor];
-    [self.window.rootViewController.view addSubview:view];
+//    User *user = [User currentUser];
+//    UINavigationController *nvc;
+//    if (user != nil) {
+//        nvc = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
+//    } else {
+//        nvc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+//    }
+//    
+//    self.window.rootViewController = nvc;
+//    
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
+//    view.backgroundColor = [[Constants sharedInstance] themeColor];
+//    [self.window.rootViewController.view addSubview:view];
 
     
     // Begin: init the hamburger menu block
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    
-//    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
-//    
-//    self.window.rootViewController = hamburgerVC;
-//    MenuViewController *menuVC = [[MenuViewController alloc] init];
-//    
-//    [menuVC setHamburgerViewController:hamburgerVC];
-//    [hamburgerVC setMenuViewController:menuVC];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+    
+    self.window.rootViewController = hamburgerVC;
+    MenuViewController *menuVC = [[MenuViewController alloc] init];
+    UINavigationController *menuNVC = [[UINavigationController alloc]initWithRootViewController:menuVC];
+    
+    [menuVC setHamburgerViewController:hamburgerVC];
+    [hamburgerVC setMenuViewController:menuNVC];
     // End: init the hamburger menu block
     
     // Begin: TripDetailController block
