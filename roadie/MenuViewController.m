@@ -99,8 +99,7 @@
     
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21];
     cell.textLabel.textColor = [UIColor whiteColor];
-    // use twitter color https://about.twitter.com/press/brand-assets
-    cell.backgroundColor = [UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+    cell.backgroundColor = [[Constants sharedInstance] themeColor];
     
     return cell;
 }
