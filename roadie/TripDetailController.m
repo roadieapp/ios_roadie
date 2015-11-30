@@ -10,6 +10,7 @@
 #import "TripCell.h"
 #import "TripHeaderCell.h"
 #import "TripUnit.h"
+#import "Constants.h"
 
 @interface TripDetailController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -34,8 +35,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpNavigationBar];
     [self setUpTableView];
 }
+
+- (void)setUpNavigationBar {
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    // set background color
+    [navigationBar setBarTintColor:[[Constants sharedInstance] themeColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.title = @"My Trip";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    [navigationBar setTranslucent:NO];
+    // remove bottom line
+    [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [navigationBar setShadowImage:[[UIImage alloc] init]];
+}
+
 
 - (void)setUpTableView {
     self.tableView.dataSource = self;
