@@ -135,9 +135,8 @@
     SearchResultViewController *resultVC = [[SearchResultViewController alloc] init];
     resultVC.hotels = hotels;
     
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:resultVC];
-    
-    [self presentViewController:nvc animated:YES completion:nil];
+    [self.navigationController pushViewController:resultVC animated:YES];
+
 }
 
 - (NSArray *) hotelsWithArray: (NSArray *)array {

@@ -8,6 +8,7 @@
 
 #import "SearchResultViewController.h"
 #import "HotelViewCell.h"
+#import "HotelDetailController.h"
 @import GoogleMaps;
 
 @interface SearchResultViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -62,6 +63,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HotelDetailController *vc = [[HotelDetailController alloc] init];
+    vc.hotel = self.hotels[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
