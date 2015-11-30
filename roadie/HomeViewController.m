@@ -112,6 +112,10 @@
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     // set background color
     [navigationBar setBarTintColor:[[Constants sharedInstance] themeColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.title = @"Home";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+
     [navigationBar setTranslucent:NO];
     // remove bottom line
     [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];

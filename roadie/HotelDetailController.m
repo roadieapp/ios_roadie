@@ -39,7 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self initHotel];
+//    [self initHotel];
     [self updateView];
 }
 
@@ -70,6 +70,11 @@
     self.hotelAddressLabel.text = self.hotel.hotelAddress;
     [self.hotelAddressLabel sizeToFit];
     
+    CALayer *layer = [self.hotelImageView layer];
+    [layer setCornerRadius:6.0];
+    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [layer setBorderWidth:3.0];
+    [layer setMasksToBounds:YES];
     [self.hotelImageView setImageWithURL:self.hotel.imageUrl];
     
     self.priceLabel.text = [NSString stringWithFormat:@"$%ld", (long)self.hotel.price];

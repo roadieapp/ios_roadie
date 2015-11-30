@@ -13,6 +13,7 @@
 #import "HomeViewController.h"
 #import "TripDetailController.h"
 #import "User.h"
+#import "Constants.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -28,6 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.navigationController.navigationBar setBarTintColor:[[Constants sharedInstance] themeColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

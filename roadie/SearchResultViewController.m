@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Search Results";
+    
     // Init Map View
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:47.5980774
                                                             longitude:-122.3306292
