@@ -7,7 +7,7 @@
 //
 
 #import "MenuViewController.h"
-#import "BlueViewController.h"
+#import "DataInputViewController.h"
 #import "RedViewController.h"
 #import "LoginViewController.h"
 #import "HomeViewController.h"
@@ -40,7 +40,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
-    UIViewController *blueViewController = [[BlueViewController alloc]init];
+    UIViewController *blueViewController = [[DataInputViewController alloc]init];
     UINavigationController *blueNVC = [[UINavigationController alloc] initWithRootViewController:blueViewController];
     
     UIViewController *redViewController = [[RedViewController alloc]init];

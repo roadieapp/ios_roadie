@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlueViewController : UIViewController
+@interface DataInputViewController : UIViewController
 
 @end
