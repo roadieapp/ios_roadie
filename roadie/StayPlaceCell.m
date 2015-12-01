@@ -21,7 +21,15 @@
 }
 
 - (IBAction)onAdd:(id)sender {
-    [self.delegate stayPlaceCell:self];
+    [self.delegate stayPlaceCell:self click:0];
+}
+
+- (IBAction)onRemove:(id)sender {
+    [self.delegate stayPlaceCell:self click:1];
+}
+
+- (IBAction)onTouchDown:(id)sender {
+    [self.destinationDelegate stayPlaceCell:self];
 }
 
 @end

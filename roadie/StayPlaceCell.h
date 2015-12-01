@@ -12,12 +12,23 @@
 
 @protocol StayPlaceCellDelegate <NSObject>
 
+- (void)stayPlaceCell: (StayPlaceCell *)cell click:(int)buttonType;
+
+@end
+
+@protocol StayPlaceCellDestinationDelegate <NSObject>
+
 - (void)stayPlaceCell: (StayPlaceCell *)cell;
 
 @end
 
 @interface StayPlaceCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UITextField *destinationTextField;
+
 @property (nonatomic, weak) id<StayPlaceCellDelegate> delegate;
+@property (nonatomic, weak) id<StayPlaceCellDestinationDelegate> destinationDelegate;
 
 @end

@@ -15,14 +15,16 @@
 #import "Hotel.h"
 #import "Parse.h"
 @import GoogleMaps;
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger numOfStayPlaces;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) NSString *pickedDate;
 //@property (weak, nonatomic) IBOutlet UIButton *mybutton;
+@property (nonatomic, strong) UITextField *currentTextField;
 
 // Array of Dictionary
 @property (nonatomic, strong) NSArray *searchResults;
@@ -53,13 +55,52 @@
     self.tableView.allowsSelection = NO;
 }
 
-- (void)stayPlaceCell:(StayPlaceCell *)cell {
-    self.numOfStayPlaces = self.numOfStayPlaces + 1;
+- (void)stayPlaceCell:(StayPlaceCell *)cell click:(int)buttonType{
+    if (buttonType == 0) {
+        self.numOfStayPlaces = self.numOfStayPlaces + 1;
+    } else {
+        self.numOfStayPlaces = self.numOfStayPlaces - 1;
+    }
     [self.tableView reloadData];
 }
 
-- (void)destinationCellDelegate {
-    // Place autocomplete
+- (void)stayPlaceCell:(StayPlaceCell *)cell {
+    self.currentTextField = cell.destinationTextField;
+    [self presentPlaceAutoComplete];
+}
+
+- (void)destinationCellDelegate:(DestinationCell *)cell {
+    self.currentTextField = cell.destinationField;
+    [self presentPlaceAutoComplete];
+}
+
+- (void)presentPlaceAutoComplete {
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+    [self presentViewController:acController animated:YES completion:nil];
+}
+
+// Handle the user's selection.
+- (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // Do something with the selected place.
+    self.currentTextField.text = place.formattedAddress;
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithError:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // TODO: handle the error.
+    NSLog(@"Error: %@", [error description]);
+}
+
+// User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+    NSLog(@"Error: %@", [error description]);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -68,22 +109,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
-        [cell.timeButton setTitle:self.pickedDate forState:UIControlStateNormal];
-        return cell;
-    } else if (indexPath.row == 1) {
         DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
-        cell.label.text = @"Departure";
+        [cell.destinationField setPlaceholder:@"Choose your departure place"];
+        cell.delegate = self;
+        return cell;
+    } else if (indexPath.row == self.numOfStayPlaces + 1) {
+        DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
+        [cell.destinationField setPlaceholder:@"Choose your destination"];
         cell.delegate = self;
         return cell;
     } else if (indexPath.row == self.numOfStayPlaces + 2) {
-        DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
-        cell.label.text = @"Arrival      ";
-        cell.delegate = self;
+        StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
+        [cell.timeButton setTitle:self.pickedDate forState:UIControlStateNormal];
         return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
         cell.delegate = self;
+        cell.destinationDelegate = self;
+        cell.addButton.hidden = YES;
+        cell.removeButton.hidden = YES;
+        if (indexPath.row == self.numOfStayPlaces) {
+            cell.addButton.hidden = NO;
+            cell.removeButton.hidden = NO;
+        }
         return cell;
     }
 }

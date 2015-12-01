@@ -12,13 +12,13 @@
 
 @protocol DestinationCellDelegate <NSObject>
 
-- (void)destinationCellDelegate;
+- (void)destinationCellDelegate: (DestinationCell *)cell;
 
 @end
 
 @interface DestinationCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIImageView *destinationImage;
 @property (weak, nonatomic) IBOutlet UITextField *destinationField;
 
 @property (nonatomic, weak) id<DestinationCellDelegate> delegate;

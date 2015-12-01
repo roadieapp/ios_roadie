@@ -20,8 +20,8 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)onEditingChanged:(id)sender {
-    [self.delegate destinationCellDelegate];
+- (IBAction)onTouchDown:(id)sender {
+    [self.delegate destinationCellDelegate:self];
 }
 
 @end
