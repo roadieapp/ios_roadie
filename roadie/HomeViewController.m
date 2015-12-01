@@ -13,6 +13,7 @@
 #import "StayPlaceCell.h"
 #import "SearchResultViewController.h"
 #import "Hotel.h"
+#import "Parse.h"
 @import GoogleMaps;
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate>
@@ -133,14 +134,33 @@
 }
 
 - (void) onSearchButton {
-    [self initSearchResult];
+//    [self initSearchResult];
+    PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved hotels");
+            // Do something with the found objects
+            
+            self.searchResults = objects;
+            [self displaySearchResult];
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+
+}
+
+- (void) displaySearchResult {
     NSArray *hotels = [self hotelsWithArray:self.searchResults];
     
     SearchResultViewController *resultVC = [[SearchResultViewController alloc] init];
     resultVC.hotels = hotels;
     
     [self.navigationController pushViewController:resultVC animated:YES];
-
 }
 
 - (NSArray *) hotelsWithArray: (NSArray *)array {
@@ -153,6 +173,37 @@
     return hotels;
 }
 
+// Note, this is used for populate data based on the array of dictionary.
+// Please DO NOT call it.
+- (void) saveHotelData {
+    // the array can be changed to another array for data population only.
+    for (NSDictionary *dictionary in self.searchResults) {
+        PFObject *hotelObject = [PFObject objectWithClassName:@"Hotel"];
+        hotelObject[@"location"] = dictionary[@"location"];
+        hotelObject[@"hotelAddress"] = dictionary[@"hotelAddress"];
+        hotelObject[@"hotelName"] = dictionary[@"hotelName"];
+        hotelObject[@"hotelId"] = dictionary[@"hotelId"];
+        hotelObject[@"imageUrl"] = dictionary[@"imageUrl"];
+        hotelObject[@"starsUrl"] = dictionary[@"starsUrl"];
+        hotelObject[@"price"] = dictionary[@"price"];
+        hotelObject[@"currencyCode"] = dictionary[@"currencyCode"];
+        hotelObject[@"amenities"] = dictionary[@"amenities"];
+        hotelObject[@"description"] = dictionary[@"description"];
+        hotelObject[@"finePrint"] = dictionary[@"finePrint"];
+        [hotelObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // The object has been saved.
+                NSLog(@"Hotel has been saved");
+            } else {
+                // There was a problem, check error.description
+            }
+        }];
+        
+    }
+}
+
+// NOTE: no longer used.
+// it will only be used for data population later.
 - (void) initSearchResult {
     self.searchResults = @[
                            @{@"location": @"Portland, OR",
