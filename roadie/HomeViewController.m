@@ -133,63 +133,10 @@
 }
 
 - (void) onSearchButton {
-    [self initSearchResult];
-    NSArray *hotels = [self hotelsWithArray:self.searchResults];
-    
     SearchResultViewController *resultVC = [[SearchResultViewController alloc] init];
-    resultVC.hotels = hotels;
+    [resultVC searchWithLocation];
     
     [self.navigationController pushViewController:resultVC animated:YES];
-
-}
-
-- (NSArray *) hotelsWithArray: (NSArray *)array {
-    NSMutableArray *hotels = [NSMutableArray array];
-    
-    for (NSDictionary *dictionary in array) {
-        [hotels addObject:[[Hotel alloc] initWithDictionary:dictionary]];
-    }
-    
-    return hotels;
-}
-
-- (void) initSearchResult {
-    self.searchResults = @[
-                           @{@"location": @"Portland, OR",
-                             @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
-                             @"hotelName": @"Hotel Lucia",
-                             @"hotelId": @"12345",
-                             @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
-                             @"starsUrl": @"",
-                             @"price": @"189",
-                             @"currencyCode": @"USD",
-                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
-                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
-                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
-                           @{@"location": @"Portland, OR",
-                             @"hotelAddress": @"506 SW Washington St, Portland, OR 97204",
-                             @"hotelName": @"Hotel Monaco Portland",
-                             @"hotelId": @"12346",
-                             @"imageUrl": @"http://vp.cdn.cityvoterinc.com/GetImage.ashx?img=00/00/00/39/01/98/390198-367513.jpg",
-                             @"starsUrl": @"",
-                             @"price": @"229",
-                             @"currencyCode": @"USD",
-                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
-                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
-                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
-                           @{@"location": @"Portland, OR",
-                             @"hotelAddress": @"319 SW Pine St, Portland, OR 97204",
-                             @"hotelName": @"Embassy Suites by Hilton",
-                             @"hotelId": @"12347",
-                             @"imageUrl": @"http://embassysuites3.hilton.com/resources/media/es/PDXPSES/en_US/img/shared/full_page_image_gallery/main/ES_entrance2_2_712x342_FitToBoxSmallDimension_LowerCenter.jpg",
-                             @"starsUrl": @"",
-                             @"price": @"253",
-                             @"currencyCode": @"USD",
-                             @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
-                             @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
-                             @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."}
-                           
-                           ];
 }
 
 - (void)didReceiveMemoryWarning {

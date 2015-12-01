@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSArray *hotels;
 
+- (void)searchWithLocation;
+
 @end

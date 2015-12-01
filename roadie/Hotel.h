@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSString *hotelID;
 @property (strong, nonatomic) NSString *hotelName;
 @property (strong, nonatomic) NSString *hotelAddress;
+@property (assign, nonatomic) double lat;
+@property (assign, nonatomic) double lng;
 
 // Note: title may be the same name as hotel name. to check later
 @property (strong, nonatomic) NSString *title;

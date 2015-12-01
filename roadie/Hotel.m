@@ -18,6 +18,8 @@
         self.hotelName = dictionary[@"hotelName"];
         self.hotelAddress = dictionary[@"hotelAddress"];
         self.location = dictionary[@"location"];
+        self.lat = [dictionary[@"lat"] doubleValue];
+        self.lng = [dictionary[@"lng"] doubleValue];
         
         NSString *imageUrlString = dictionary[@"imageUrl"];
         self.imageUrl = [NSURL URLWithString:imageUrlString];
