@@ -118,4 +118,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)searchWithLocation {
+    NSLog(@"searchWithLocation Not implemented");
+}
+
 @end
