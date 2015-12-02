@@ -183,6 +183,7 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (void) onSearchButton {
 //    [self initSearchResult];
+//    [self displaySearchResult];
     PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
