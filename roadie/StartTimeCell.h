@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class StartTimeCell;
+
+@protocol StartTimeCellDelegate <NSObject>
+
+- (void)startTimeCell: (StartTimeCell *)cell;
+
+@end
+
 @interface StartTimeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
+
+@property (nonatomic, weak) id<StartTimeCellDelegate> delegate;
 
 @end
