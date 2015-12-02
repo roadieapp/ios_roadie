@@ -10,26 +10,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-d5-6W4">
-                        <rect key="frame" x="8" y="14" width="56" height="15"/>
-                        <animations/>
-                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0Z-QU-4xK">
-                        <rect key="frame" x="72" y="5" width="202" height="34"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0Z-QU-4xK">
+                        <rect key="frame" x="8" y="5" width="304" height="34"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
                         <state key="normal">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="onClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wfG-Li-GKv"/>
+                        </connections>
                     </button>
                 </subviews>
                 <animations/>
+                <constraints>
+                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="76c-EZ-5mO"/>
+                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BMZ-Xd-vO0"/>
+                    <constraint firstAttribute="bottom" secondItem="G0Z-QU-4xK" secondAttribute="bottom" constant="4.5" id="Cgk-XV-tfK"/>
+                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Pg1-NB-Dh2"/>
+                    <constraint firstAttribute="trailing" secondItem="G0Z-QU-4xK" secondAttribute="trailing" constant="8" id="vKg-oC-bgE"/>
+                </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>

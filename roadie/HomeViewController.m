@@ -17,7 +17,7 @@
 @import GoogleMaps;
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate, StartTimeCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger numOfStayPlaces;
@@ -28,6 +28,8 @@
 
 // Array of Dictionary
 @property (nonatomic, strong) NSArray *searchResults;
+
+@property (nonatomic) BOOL isDatePickerVisible;
 
 @end
 
@@ -72,6 +74,16 @@
 - (void)destinationCellDelegate:(DestinationCell *)cell {
     self.currentTextField = cell.destinationField;
     [self presentPlaceAutoComplete];
+}
+
+- (void)startTimeCell:(StartTimeCell *)cell {
+    if (self.isDatePickerVisible) {
+        [self.datePicker setHidden:YES];
+        self.isDatePickerVisible = NO;
+    } else {
+        [self.datePicker setHidden:NO];
+        self.isDatePickerVisible = YES;
+    }
 }
 
 - (void)presentPlaceAutoComplete {
@@ -121,6 +133,7 @@ didFailAutocompleteWithError:(NSError *)error {
     } else if (indexPath.row == self.numOfStayPlaces + 2) {
         StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
         [cell.timeButton setTitle:self.pickedDate forState:UIControlStateNormal];
+        cell.delegate = self;
         return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
@@ -155,6 +168,7 @@ didFailAutocompleteWithError:(NSError *)error {
 - (void)setUpInitialData {
     self.numOfStayPlaces = 1;
     self.pickedDate = [self getCurrentDateString];
+    self.isDatePickerVisible = YES;
 }
 
 - (void)setUpNavigationBar {

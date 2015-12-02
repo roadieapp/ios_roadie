@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onClick:(id)sender {
+    [self.delegate startTimeCell:self];
+}
+
 @end
