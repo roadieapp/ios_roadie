@@ -9,7 +9,8 @@
 #import "SearchResultViewController.h"
 #import "HotelViewCell.h"
 #import "HotelDetailController.h"
-@import GoogleMaps;
+#import "MDDirectionService.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface SearchResultViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,7 +19,10 @@
 
 @end
 
-@implementation SearchResultViewController
+@implementation SearchResultViewController {
+    NSMutableArray *waypoints_;
+    NSMutableArray *waypointStrings_;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +40,7 @@
     // Init Map View
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:45.5263883
                                                             longitude:-122.7042106
-                                                                 zoom:13];
+                                                                 zoom:6];
     self.mapView.camera = camera;
     self.mapView.myLocationEnabled = YES;
     
@@ -48,11 +52,51 @@
         marker.snippet = hotel.hotelAddress;
         marker.map = self.mapView;
     }
+    
+    waypoints_ = [[NSMutableArray alloc]init];
+    waypointStrings_ = [[NSMutableArray alloc]init];
+    
+    CLLocationCoordinate2D seattle = CLLocationCoordinate2DMake(47.6149942,-122.4759891);
+    [self mapView:self.mapView addSpot:seattle];
+    
+    CLLocationCoordinate2D sanfrancisco = CLLocationCoordinate2DMake(37.757815,-122.50764);
+    [self mapView:self.mapView addSpot:sanfrancisco];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)mapView:(GMSMapView *)mapView addSpot:
+(CLLocationCoordinate2D)coordinate {
+    
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(coordinate.latitude,
+                                                                 coordinate.longitude);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.map = self.mapView;
+    [waypoints_ addObject:marker];
+    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
+                                coordinate.latitude,coordinate.longitude];
+    [waypointStrings_ addObject:positionString];
+    if([waypoints_ count]>1){
+        NSString *sensor = @"false";
+        NSArray *parameters = [NSArray arrayWithObjects:sensor, waypointStrings_,
+                               nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
+        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
+                                                          forKeys:keys];
+        MDDirectionService *mds=[[MDDirectionService alloc] init];
+        SEL selector = @selector(addDirections:);
+        [mds setDirectionsQuery:query
+                   withSelector:selector
+                   withDelegate:self];
+    }
+}
+- (void)addDirections:(NSDictionary *)json {
+    
+    NSDictionary *routes = [json objectForKey:@"routes"][0];
+    
+    NSDictionary *route = [routes objectForKey:@"overview_polyline"];
+    NSString *overview_route = [route objectForKey:@"points"];
+    GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
+    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+    polyline.map = self.mapView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,6 +116,10 @@
     [self.navigationController pushViewController:vc animated:YES];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)searchWithLocation {
+    NSLog(@"searchWithLocation Not implemented");
 }
 
 @end
