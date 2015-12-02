@@ -41,6 +41,8 @@
     [layer setBorderWidth:3.0];
     [layer setMasksToBounds:YES];
     [self.hotelImageView setImageWithURL:self.hotel.imageUrl];
+    NSString *starImageName = [NSString stringWithFormat:@"%@_%@", self.hotel.starRating, @"stars"];
+    self.hotelStarsImageView.image = [UIImage imageNamed: starImageName];
     
     self.priceLabel.text = [NSString stringWithFormat:@"$%ld", (long)self.hotel.price];
 }

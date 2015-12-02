@@ -27,6 +27,7 @@
         // Note: need to work out the stars image url from CDN
 //        NSString *starsUrlString = dictionary[@"starsUrl"];
 //        self.starsUrl = [NSURL URLWithString:starsUrlString];
+        self.starRating = dictionary[@"starRating"];
         
         // store price in NSString
         self.price = [dictionary[@"price"] intValue];
