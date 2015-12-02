@@ -29,8 +29,6 @@
 // Array of Dictionary
 @property (nonatomic, strong) NSArray *searchResults;
 
-@property (nonatomic) BOOL isDatePickerVisible;
-
 @end
 
 @implementation HomeViewController {
@@ -77,12 +75,10 @@
 }
 
 - (void)startTimeCell:(StartTimeCell *)cell {
-    if (self.isDatePickerVisible) {
-        [self.datePicker setHidden:YES];
-        self.isDatePickerVisible = NO;
-    } else {
+    if ([self.datePicker isHidden]) {
         [self.datePicker setHidden:NO];
-        self.isDatePickerVisible = YES;
+    } else {
+        [self.datePicker setHidden:YES];
     }
 }
 
@@ -132,7 +128,7 @@ didFailAutocompleteWithError:(NSError *)error {
         return cell;
     } else if (indexPath.row == self.numOfStayPlaces + 2) {
         StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
-        [cell.timeButton setTitle:self.pickedDate forState:UIControlStateNormal];
+        [cell.timeButton setTitle:[NSString stringWithFormat:@"Leave by %@", self.pickedDate] forState:UIControlStateNormal];
         cell.delegate = self;
         return cell;
     } else {
@@ -168,7 +164,7 @@ didFailAutocompleteWithError:(NSError *)error {
 - (void)setUpInitialData {
     self.numOfStayPlaces = 1;
     self.pickedDate = [self getCurrentDateString];
-    self.isDatePickerVisible = YES;
+    [self.datePicker setHidden:YES];
 }
 
 - (void)setUpNavigationBar {
