@@ -44,6 +44,7 @@
                       @"hotelId": @"12345",
                       @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
                       @"starsUrl": @"",
+                      @"starRating": @"4.0",
                       @"price": @"189",
                       @"currencyCode": @"USD",
                       @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
@@ -57,6 +58,7 @@
                       @"hotelId": @"12346",
                       @"imageUrl": @"http://vp.cdn.cityvoterinc.com/GetImage.ashx?img=00/00/00/39/01/98/390198-367513.jpg",
                       @"starsUrl": @"",
+                      @"starRating": @"3.5",
                       @"price": @"229",
                       @"currencyCode": @"USD",
                       @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
@@ -70,6 +72,7 @@
                       @"hotelId": @"12347",
                       @"imageUrl": @"http://embassysuites3.hilton.com/resources/media/es/PDXPSES/en_US/img/shared/full_page_image_gallery/main/ES_entrance2_2_712x342_FitToBoxSmallDimension_LowerCenter.jpg",
                       @"starsUrl": @"",
+                      @"starRating": @"4.0",
                       @"price": @"253",
                       @"currencyCode": @"USD",
                       @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
@@ -86,6 +89,7 @@
         hotelObject[@"hotelId"] = dictionary[@"hotelId"];
         hotelObject[@"imageUrl"] = dictionary[@"imageUrl"];
         hotelObject[@"starsUrl"] = dictionary[@"starsUrl"];
+        hotelObject[@"starRating"] = dictionary[@"starRating"];
         hotelObject[@"price"] = dictionary[@"price"];
         hotelObject[@"lat"] = dictionary[@"lat"];
         hotelObject[@"lng"] = dictionary[@"lng"];
@@ -134,7 +138,6 @@
             NSLog(@"Error");
         }
     }];
-
     
 }
 

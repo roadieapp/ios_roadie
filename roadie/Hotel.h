@@ -29,6 +29,9 @@
 @property (strong, nonatomic) NSString *currencyCode;
 
 @property (strong, nonatomic) NSURL *starsUrl;
+
+// "3.0", "3.5", "4.0" etc.
+@property (strong, nonatomic) NSString *starRating;
 @property (strong, nonatomic) NSString *amenities;
 @property (strong, nonatomic) NSString *hotelDescription;
 @property (strong, nonatomic) NSString *finePrint;
