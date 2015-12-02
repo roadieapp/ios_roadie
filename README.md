@@ -9,11 +9,13 @@
 **Version 1.0** [Required]
 
 - [ ] Home page should have following functionality
-	- [ ] Default to load Google Maps
 	- [ ] Users should be able to select departure date and time
-	- [ ] Two text fields where users can input starting point and destination, they should support destination auto complete
-	- [ ] When users finish inputing, call Google Maps API to get route information
-	- [ ] A subview where users can browse hotel deals images, hotel deals should come from certain distance along the route (mock)
+	- [X] Two text fields where users can input starting point and destination, they should support destination auto complete
+	- [X] Users can add multiple stay at places, they should also support destination auto complete
+- [ ] Search result view
+	- [ ] Load Google maps with route information
+	- [X] A subview where users can browse hotel deals images, hotel deals should come from stay at places (mock)
+	- [X] Pins are dropped for hotel locations
 - [ ] Hamburger menu
 	- [ ] Login: this should redirect users to login page
 	- [ ] Logout
@@ -22,7 +24,7 @@
 	- [X] Login with username & password
 	- [X] Sign up with Parse
 - [ ] Deal details page
-	- [ ] Image view of hotels, hotel description, price, location, book button
+	- [X] Image view of hotels, hotel description, price, location, book button
 	- [ ] After users finish booking, users are asked to select checkout time and pops back to home page with updated route information
 
 **Version 2.0** [Optional]
