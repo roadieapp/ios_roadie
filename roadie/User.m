@@ -51,13 +51,16 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:roadieCurrentUserKey];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
-    NSLog(@"synchronized");
 }
 
 - (NSDictionary *)toDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     dictionary[@"username"] = self.username;
     return dictionary;
+}
+
++ (void)logout {
+    [User setCurrentUser:nil];
 }
 
 @end

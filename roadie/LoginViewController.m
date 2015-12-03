@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 #import "User.h"
 #import "Constants.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface LoginViewController ()
 
@@ -34,6 +36,13 @@
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
             dictionary[@"username"] = user.username;
             [User setCurrentUser:[[User alloc] initWithDictionary:dictionary]];
+            
+            HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+            MenuViewController *menuVC = [[MenuViewController alloc] init];
+            UINavigationController *menuNVC = [[UINavigationController alloc]initWithRootViewController:menuVC];
+            [menuVC setHamburgerViewController:hamburgerVC];
+            [hamburgerVC setMenuViewController:menuNVC];
+            [self presentViewController:hamburgerVC animated:YES completion:nil];
         } else {
             NSString *errorString = [error userInfo][@"error"];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log In Error" message:errorString preferredStyle:UIAlertControllerStyleAlert];

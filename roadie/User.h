@@ -16,6 +16,7 @@
 
 + (User *)currentUser;
 + (void)setCurrentUser:(User *)currentUser;
++ (void)logout;
 
 - (NSDictionary *)toDictionary;
 
