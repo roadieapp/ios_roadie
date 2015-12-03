@@ -16,9 +16,10 @@
 	- [X] Load Google maps with route information
 	- [X] A subview where users can browse hotel deals images, hotel deals should come from stay at places (mock)
 	- [X] Pins are dropped for hotel locations
-- [ ] Hamburger menu
-	- [ ] Login: this should redirect users to login page
-	- [ ] Logout
+- [X] Hamburger menu
+	- [X] Login: this should redirect users to login page
+	- [X] Home: this should redirect users to home page
+	- [X] Logout
 - [ ] Login page
 	- [ ] Login with Facebook
 	- [X] Login with username & password
