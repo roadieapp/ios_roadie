@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "Constants.h"
 #import "StartTimeCell.h"
-#import "DestinationCell.h"
 #import "StayPlaceCell.h"
 #import "SearchResultViewController.h"
 #import "Hotel.h"
@@ -17,7 +16,7 @@
 @import GoogleMaps;
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DestinationCellDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate, StartTimeCellDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate, StartTimeCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger numOfStayPlaces;
@@ -50,7 +49,6 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerNib:[UINib nibWithNibName:@"StartTimeCell" bundle:nil] forCellReuseIdentifier:@"StartTimeCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"DestinationCell" bundle:nil] forCellReuseIdentifier:@"DestinationCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"StayPlaceCell" bundle:nil] forCellReuseIdentifier:@"StayPlaceCell"];
     self.tableView.allowsSelection = NO;
 }
@@ -66,11 +64,6 @@
 
 - (void)stayPlaceCell:(StayPlaceCell *)cell {
     self.currentTextField = cell.destinationTextField;
-    [self presentPlaceAutoComplete];
-}
-
-- (void)destinationCellDelegate:(DestinationCell *)cell {
-    self.currentTextField = cell.destinationField;
     [self presentPlaceAutoComplete];
 }
 
@@ -117,14 +110,23 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
-        [cell.destinationField setPlaceholder:@"Choose your departure place"];
+        StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.destinationTextField setPlaceholder:@"Choose your departure place"];
         cell.delegate = self;
+        cell.destinationDelegate = self;
+        cell.removeButton.hidden = YES;
+        if (self.numOfStayPlaces == 0) {
+            cell.addButton.hidden = NO;
+        } else {
+            cell.addButton.hidden = YES;
+        }
         return cell;
     } else if (indexPath.row == self.numOfStayPlaces + 1) {
-        DestinationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DestinationCell"];
-        [cell.destinationField setPlaceholder:@"Choose your destination"];
-        cell.delegate = self;
+        StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.destinationTextField setPlaceholder:@"Choose your destination"];
+        cell.destinationDelegate = self;
+        cell.addButton.hidden = YES;
+        cell.removeButton.hidden = YES;
         return cell;
     } else if (indexPath.row == self.numOfStayPlaces + 2) {
         StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
@@ -133,6 +135,7 @@ didFailAutocompleteWithError:(NSError *)error {
         return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.destinationTextField setPlaceholder:@"Choose a place to stay"];
         cell.delegate = self;
         cell.destinationDelegate = self;
         cell.addButton.hidden = YES;
