@@ -15,6 +15,7 @@
 #import "Parse.h"
 @import GoogleMaps;
 #import <GoogleMaps/GoogleMaps.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate, StartTimeCellDelegate>
 
@@ -131,6 +132,10 @@ didFailAutocompleteWithError:(NSError *)error {
     } else if (indexPath.row == self.numOfStayPlaces + 2) {
         StartTimeCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StartTimeCell"];
         [cell.timeButton setTitle:[NSString stringWithFormat:@"Leave by %@", self.pickedDate] forState:UIControlStateNormal];
+        [cell.timeButton sizeToFit];
+        [[cell.timeButton layer] setBorderWidth:0.6f];
+        [[cell.timeButton layer] setCornerRadius:5.0f];
+        [[cell.timeButton layer] setBorderColor:[UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor];
         cell.delegate = self;
         return cell;
     } else {
