@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *hotels;
 @property (nonatomic, strong) NSDictionary *trip;
 @property (nonatomic, strong) NSArray *tripUnits;
+@property (nonatomic, strong) NSArray *tripLocations;
 
 @end
 
@@ -189,6 +190,8 @@
 - (IBAction)addTripTapped:(UIButton *)sender {
     NSLog(@"Add Trip");
 //    [self addTrip];
+//    [self addTripVersion2];
+    [self addTripVersion3];
 }
 
 - (void) addTrip {
@@ -263,6 +266,151 @@
         
     }
 
+}
+
+// One to Many relations using Pointers
+- (void) addTripVersion2 {
+    self.trip = @{@"tripId": @"12345",
+                  @"tripName": @"Trip from Seattle WA to Los Angelos CA 20151201"
+                  };
+    
+    self.tripUnits = @[
+                       
+                       @{
+                         @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
+                         @"hotelName": @"Hotel Lucia",
+                         @"location": @"Portland, OR",
+                         @"checkIn": @"2015-12-01",
+                         @"checkOut": @"2015-12-03"
+                         },
+                       @{
+                         @"hotelAddress": @"55 Cyril Magnin St, San Francisco, CA 94102",
+                         @"hotelName": @"Parc 55",
+                         @"location": @"San Francisco, CA",
+                         @"checkIn": @"2015-12-04",
+                         @"checkOut": @"2015-12-07"
+                         }
+                       
+                       ];
+
+    
+    PFObject *tripObject = [PFObject objectWithClassName:@"TripV2"];
+    tripObject[@"tripId"] = self.trip[@"tripId"];
+    tripObject[@"tripName"] = self.trip[@"tripName"];
+    
+    [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            NSLog(@"Trip has been saved");
+            
+            for (NSDictionary *dictionary in self.tripUnits) {
+                
+                PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnitV2"];
+                tripUnitObject[@"hotelAddress"] = dictionary[@"hotelAddress"];
+                tripUnitObject[@"location"] = dictionary[@"location"];
+                tripUnitObject[@"checkIn"] = dictionary[@"checkIn"];
+                tripUnitObject[@"checkOut"] = dictionary[@"checkOut"];
+                [tripUnitObject setObject:tripObject forKey:@"forTrip"];
+                
+                [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        // The object has been saved.
+                        NSLog(@"Trip Unit has been saved");
+                        
+                    } else {
+                        // There was a problem, check error.description
+                        NSLog(@"Error in saving Trip Unit");
+                    }
+                }];
+                
+            }
+            
+            
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"Error in saving Trip");
+        }
+    }];
+    
+}
+
+// One to Many relations using arrays
+- (void) addTripVersion3 {
+    self.trip = @{@"tripId": @"12345",
+                  @"tripName": @"Trip from Seattle WA to Los Angelos CA 20151201"
+                  };
+    
+    self.tripLocations = @[
+                          @{
+                            @"location": @"Portland, OR"
+                           },
+                          @{
+                            @"location": @"San Francisco, CA"
+                           }
+                          ];
+
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSDictionary *dictionary in self.tripLocations) {
+        PFObject *tripLocationObject = [PFObject objectWithClassName:@"TripLocationV3"];
+        tripLocationObject[@"location"] = dictionary[@"location"];
+        
+        [array addObject:tripLocationObject];
+    }
+    
+    PFObject *tripObject = [PFObject objectWithClassName:@"TripV3"];
+    tripObject[@"tripId"] = self.trip[@"tripId"];
+    tripObject[@"tripName"] = self.trip[@"tripName"];
+    [tripObject setObject:array forKey:@"locationList"];
+    
+    [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            NSLog(@"Trip has been saved");
+            
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"Error in saving Trip");
+        }
+    }];
+
+
+}
+
+
+
+- (IBAction)queryTripButtonTapped:(UIButton *)sender {
+    NSLog(@"Query Trip");
+//    [self queryTripV2];
+//    [self queryTripV3];
+    [self nowString];
+}
+
+// one to many using pointers
+- (void) queryTripV2 {
+    PFQuery *query = [PFQuery queryWithClassName:@"TripV2"];
+    [query whereKey:@"tripId" equalTo:@"12345"];
+    NSArray* tripArray = [query findObjects];
+    NSLog(@"Debug Here");
+}
+
+// one to many using arrays
+- (void) queryTripV3 {
+    PFQuery *query = [PFQuery queryWithClassName:@"TripV3"];
+    [query whereKey:@"tripId" equalTo:@"12345"];
+    NSArray* tripArray = [query findObjects];
+    NSLog(@"Debug Here");
+    
+}
+
+// used for generating trip id
+- (void) nowString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyMMddHHmmss"];
+    
+    NSDate *date = [NSDate date];
+    
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    NSLog(@"formattedDateString: %@", formattedDateString);
 }
 
 
