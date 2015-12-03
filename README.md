@@ -8,12 +8,12 @@
 
 **Version 1.0** [Required]
 
-- [ ] Home page should have following functionality
-	- [ ] Users should be able to select departure date and time
+- [X] Home page should have following functionality
+	- [X] Users should be able to select departure date and time
 	- [X] Two text fields where users can input starting point and destination, they should support destination auto complete
 	- [X] Users can add multiple stay at places, they should also support destination auto complete
-- [ ] Search result view
-	- [ ] Load Google maps with route information
+- [X] Search result view
+	- [X] Load Google maps with route information
 	- [X] A subview where users can browse hotel deals images, hotel deals should come from stay at places (mock)
 	- [X] Pins are dropped for hotel locations
 - [ ] Hamburger menu
