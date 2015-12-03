@@ -338,8 +338,9 @@
 
 - (IBAction)queryTripButtonTapped:(UIButton *)sender {
     NSLog(@"Query Trip");
-    [self queryTripV2];
-    [self queryTripV3];
+//    [self queryTripV2];
+//    [self queryTripV3];
+    [self nowString];
 }
 
 // one to many using pointers
@@ -357,6 +358,17 @@
     NSArray* tripArray = [query findObjects];
     NSLog(@"Debug Here");
     
+}
+
+// used for generating trip id
+- (void) nowString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyMMddHHmmss"];
+    
+    NSDate *date = [NSDate date];
+    
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    NSLog(@"formattedDateString: %@", formattedDateString);
 }
 
 
