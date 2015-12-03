@@ -337,7 +337,26 @@
 
 
 - (IBAction)queryTripButtonTapped:(UIButton *)sender {
-    NSLog(@"Add Trip");
+    NSLog(@"Query Trip");
+    [self queryTripV2];
+    [self queryTripV3];
+}
+
+// one to many using pointers
+- (void) queryTripV2 {
+    PFQuery *query = [PFQuery queryWithClassName:@"TripV2"];
+    [query whereKey:@"tripId" equalTo:@"12345"];
+    NSArray* tripArray = [query findObjects];
+    NSLog(@"Debug Here");
+}
+
+// one to many using arrays
+- (void) queryTripV3 {
+    PFQuery *query = [PFQuery queryWithClassName:@"TripV3"];
+    [query whereKey:@"tripId" equalTo:@"12345"];
+    NSArray* tripArray = [query findObjects];
+    NSLog(@"Debug Here");
+    
 }
 
 
