@@ -16,6 +16,7 @@
 @import GoogleMaps;
 #import <GoogleMaps/GoogleMaps.h>
 #import <QuartzCore/QuartzCore.h>
+#import "DatePickerCell.h"
 
 static NSString *kDatePickerCellID = @"datePickerCell";
 
@@ -23,7 +24,7 @@ static NSString *kDatePickerCellID = @"datePickerCell";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSInteger numOfStayPlaces;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) NSString *pickedDate;
 //@property (weak, nonatomic) IBOutlet UIButton *mybutton;
 @property (nonatomic, strong) UITextField *currentTextField;
@@ -56,7 +57,20 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerNib:[UINib nibWithNibName:@"StartTimeCell" bundle:nil] forCellReuseIdentifier:@"StartTimeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"StayPlaceCell" bundle:nil] forCellReuseIdentifier:@"StayPlaceCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"DatePickerCell" bundle:nil] forCellReuseIdentifier:@"DatePickerCell"];
     self.tableView.allowsSelection = NO;
+    
+    self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    [self.datePicker addTarget:self action:@selector(onDatePickerValueChanged) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)onDatePickerValueChanged {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    NSString *formattedDate = [dateFormatter stringFromDate:self.datePicker.date];
+    self.pickedDate = formattedDate;
+    [self.tableView reloadData];
 }
 
 - (void)stayPlaceCell:(StayPlaceCell *)cell click:(int)buttonType{
@@ -111,6 +125,7 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 - (void)showDatePicker {
+    self.datePickerIsShowing = YES;
     self.datePicker.hidden = NO;
     self.datePicker.alpha = 0.0f;
     
@@ -120,6 +135,7 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 - (void)hideDatePicker {
+    self.datePickerIsShowing = NO;
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.datePicker.alpha = 0.0f;
@@ -130,7 +146,7 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.numOfStayPlaces + 3;
+    return self.numOfStayPlaces + 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -162,6 +178,14 @@ didFailAutocompleteWithError:(NSError *)error {
         [[cell.timeButton layer] setBorderColor:[UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor];
         cell.delegate = self;
         return cell;
+    } else if (indexPath.row == self.numOfStayPlaces + 3) {
+        DatePickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
+        self.datePicker = cell.datePicker;
+        if (!self.datePickerIsShowing) {
+            self.datePicker.alpha = 0.0f;
+            self.datePicker.hidden = YES;
+        }
+        return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
         [cell.destinationTextField setPlaceholder:@"Choose a place to stay"];
@@ -177,14 +201,6 @@ didFailAutocompleteWithError:(NSError *)error {
     }
 }
 
-- (IBAction)onDatePicked:(id)sender {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm"];
-    NSString *formattedDate = [dateFormatter stringFromDate:self.datePicker.date];
-    self.pickedDate = formattedDate;
-    [self.tableView reloadData];
-}
-
 - (NSString *)getCurrentDateString {
     NSDate * now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
@@ -196,8 +212,7 @@ didFailAutocompleteWithError:(NSError *)error {
 - (void)setUpInitialData {
     self.numOfStayPlaces = 1;
     self.pickedDate = [self getCurrentDateString];
-    self.datePicker.alpha = 0.0f;
-    self.datePicker.hidden = YES;
+    self.datePickerIsShowing = NO;
 }
 
 - (void)setUpNavigationBar {

@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
-                <outlet property="datePicker" destination="M2T-sN-X9X" id="vao-Ea-0Xt"/>
                 <outlet property="tableView" destination="5l2-zx-zHK" id="wZ4-eX-Kob"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,28 +20,12 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="M2T-sN-X9X">
-                    <rect key="frame" x="0.0" y="428" width="320" height="140"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="140" id="Sf7-qe-uYM"/>
-                    </constraints>
-                    <date key="date" timeIntervalSinceReferenceDate="470195308.28607702">
-                        <!--2015-11-26 01:48:28 +0000-->
-                    </date>
-                    <connections>
-                        <action selector="onDatePicked:" destination="-1" eventType="valueChanged" id="nFy-J1-fEC"/>
-                    </connections>
-                </datePicker>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="M2T-sN-X9X" secondAttribute="bottom" id="7Ws-Tn-sFb"/>
                 <constraint firstItem="5l2-zx-zHK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Erf-vU-dZV"/>
                 <constraint firstAttribute="trailing" secondItem="5l2-zx-zHK" secondAttribute="trailing" id="JPq-17-jG7"/>
-                <constraint firstAttribute="trailing" secondItem="M2T-sN-X9X" secondAttribute="trailing" id="U9n-eu-dg6"/>
-                <constraint firstItem="M2T-sN-X9X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bnM-c6-c3a"/>
                 <constraint firstItem="5l2-zx-zHK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="l8t-gW-aRv"/>
                 <constraint firstAttribute="bottom" secondItem="5l2-zx-zHK" secondAttribute="bottom" id="rDG-7R-AMn"/>
             </constraints>
