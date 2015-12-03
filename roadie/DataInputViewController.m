@@ -77,8 +77,41 @@
                       @"currencyCode": @"USD",
                       @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
                       @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
-                      @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."}
+                      @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
+                    
+                    @{@"location": @"Portland, OR",
+                      @"hotelAddress": @"11938 NE Airport Way, Portland, OR 97220",
+                      @"lat": @45.5664724,
+                      @"lng": @-122.5422032,
+                      @"hotelName": @"Holiday Inn Express & Suites Portland Airport",
+                      @"hotelId": @"12348",
+                      @"imageUrl": @"http://www.kayak.com/rimg/himg/4b/d5/b2/leonardo-1083394-WELCM_EXTR_07_S-image.jpg",
+                      @"starsUrl": @"",
+                      @"starRating": @"2.0",
+                      @"price": @"89",
+                      @"currencyCode": @"USD",
+                      @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
+                      @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
+                      @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."},
+                    
+                    @{@"location": @"Portland, OR",
+                      @"hotelAddress": @"9750 NE Cascades Pkwy, Portland, OR 97220",
+                      @"lat": @45.5740756,
+                      @"lng": @-122.5651282,
+                      @"hotelName": @"Hyatt Place Portland Airport/Cascade Station",
+                      @"hotelId": @"12348",
+                      @"imageUrl": @"http://s1.pclncdn.com/pclnhtlimg/images/i/10/10206505/10206505_0.jpg",
+                      @"starsUrl": @"",
+                      @"starRating": @"3.0",
+                      @"price": @"143",
+                      @"currencyCode": @"USD",
+                      @"amenities": @"Complimentary amenities include breakfast, parking, and an airport shuttle. There's also an indoor pool and whirlpool tub, plus a 24-hour fitness center.",
+                      @"description": @"An 2.5-mile drive from Portland International Airport, this relaxed hotel is also 7.1 miles from downtown Portland and 10.9 miles from the Portland Art Museum.",
+                      @"finePrint": @"Featuring free Wi-Fi and work desks, the modern rooms also have flat-screen TVs, minifridges and pull-out sofas. Upgraded rooms add separate living areas."}
+                    
                    ];
+    
+    
     
     for (NSDictionary *dictionary in self.hotels) {
         
