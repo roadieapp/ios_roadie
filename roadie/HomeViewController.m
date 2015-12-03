@@ -17,6 +17,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <QuartzCore/QuartzCore.h>
 
+static NSString *kDatePickerCellID = @"datePickerCell";
+
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, StayPlaceCellDelegate, GMSAutocompleteViewControllerDelegate, StayPlaceCellDestinationDelegate, StartTimeCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,6 +30,9 @@
 
 // Array of Dictionary
 @property (nonatomic, strong) NSArray *searchResults;
+
+@property (nonatomic) BOOL datePickerIsShowing;
+
 
 @end
 
@@ -70,9 +75,9 @@
 
 - (void)startTimeCell:(StartTimeCell *)cell {
     if ([self.datePicker isHidden]) {
-        [self.datePicker setHidden:NO];
+        [self showDatePicker];
     } else {
-        [self.datePicker setHidden:YES];
+        [self hideDatePicker];
     }
 }
 
@@ -103,6 +108,25 @@
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didFailAutocompleteWithError:(NSError *)error {
     NSLog(@"Error: %@", [error description]);
+}
+
+- (void)showDatePicker {
+    self.datePicker.hidden = NO;
+    self.datePicker.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.datePicker.alpha = 1.0f;
+    }];
+}
+
+- (void)hideDatePicker {
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.datePicker.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         self.datePicker.hidden = YES;
+                     }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -172,7 +196,8 @@ didFailAutocompleteWithError:(NSError *)error {
 - (void)setUpInitialData {
     self.numOfStayPlaces = 1;
     self.pickedDate = [self getCurrentDateString];
-    [self.datePicker setHidden:YES];
+    self.datePicker.alpha = 0.0f;
+    self.datePicker.hidden = YES;
 }
 
 - (void)setUpNavigationBar {

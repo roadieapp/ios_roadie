@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0Z-QU-4xK">
-                        <rect key="frame" x="46" y="14" width="219" height="30"/>
+                        <rect key="frame" x="46" y="12" width="219" height="30"/>
                         <animations/>
                         <state key="normal">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -24,47 +24,42 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="CFR-zp-33W">
-                        <rect key="frame" x="8" y="12" width="30" height="34"/>
+                        <rect key="frame" x="8" y="12" width="30" height="30"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="1PS-5B-2Cl"/>
-                            <constraint firstAttribute="width" constant="30" id="qLv-Um-SON"/>
+                            <constraint firstAttribute="height" constant="30" id="Fbd-lc-Tx6"/>
+                            <constraint firstAttribute="width" constant="30" id="Z71-6p-mW5"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-Nh-26B">
-                        <rect key="frame" x="271" y="19" width="20" height="20"/>
+                        <rect key="frame" x="271" y="17" width="20" height="20"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="JTt-U0-Sie"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="YaJ-Nz-JfW"/>
-                            <constraint firstAttribute="height" constant="20" id="ZVA-8w-nl7"/>
-                            <constraint firstAttribute="width" constant="20" id="gvH-Xp-MhO"/>
+                            <constraint firstAttribute="width" constant="20" id="gz4-mc-D9d"/>
+                            <constraint firstAttribute="height" constant="20" id="tPb-2a-tZp"/>
                         </constraints>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWJ-06-U7y">
-                        <rect key="frame" x="292" y="19" width="20" height="20"/>
+                        <rect key="frame" x="292" y="17" width="20" height="20"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="4br-Tm-6M9"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="CRq-WD-7Eh"/>
-                            <constraint firstAttribute="height" constant="20" id="IFj-0I-f0A"/>
-                            <constraint firstAttribute="width" constant="20" id="aEn-wf-ZBj"/>
+                            <constraint firstAttribute="width" constant="20" id="0Q7-Z7-D2P"/>
+                            <constraint firstAttribute="height" constant="20" id="C4F-yU-U3I"/>
                         </constraints>
                     </button>
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="CFR-zp-33W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="5OZ-eU-Stp"/>
-                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="leading" secondItem="CFR-zp-33W" secondAttribute="trailing" constant="8" id="71y-6d-eUk"/>
-                    <constraint firstItem="kWJ-06-U7y" firstAttribute="leading" secondItem="zW6-Nh-26B" secondAttribute="trailing" constant="1" id="EgG-WA-NHK"/>
-                    <constraint firstAttribute="trailing" secondItem="kWJ-06-U7y" secondAttribute="trailing" constant="8" id="MVI-hf-qGE"/>
-                    <constraint firstAttribute="bottom" secondItem="CFR-zp-33W" secondAttribute="bottom" id="URD-R2-YMZ"/>
-                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="nHp-fM-ZIT"/>
-                    <constraint firstItem="zW6-Nh-26B" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="rTo-HM-Qh4"/>
-                    <constraint firstItem="CFR-zp-33W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="wFc-ZK-cGO"/>
-                    <constraint firstItem="zW6-Nh-26B" firstAttribute="leading" secondItem="G0Z-QU-4xK" secondAttribute="trailing" constant="6" id="xs7-J5-WCy"/>
-                    <constraint firstItem="kWJ-06-U7y" firstAttribute="leading" secondItem="zW6-Nh-26B" secondAttribute="trailing" constant="1" id="zCh-fa-yeZ"/>
-                    <constraint firstItem="kWJ-06-U7y" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="zMK-Fa-2Yc"/>
+                    <constraint firstAttribute="bottom" secondItem="CFR-zp-33W" secondAttribute="bottom" constant="10" id="6jL-48-hl9"/>
+                    <constraint firstAttribute="trailing" secondItem="kWJ-06-U7y" secondAttribute="trailing" constant="8" id="KKH-NH-1Pk"/>
+                    <constraint firstItem="CFR-zp-33W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="T25-RP-Kuk"/>
+                    <constraint firstItem="zW6-Nh-26B" firstAttribute="leading" secondItem="G0Z-QU-4xK" secondAttribute="trailing" constant="6" id="Xgf-XW-8KW"/>
+                    <constraint firstItem="zW6-Nh-26B" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="h2i-Un-qm9"/>
+                    <constraint firstItem="kWJ-06-U7y" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="nGW-mH-bAE"/>
+                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="centerY" secondItem="CFR-zp-33W" secondAttribute="centerY" id="qpW-99-Kif"/>
+                    <constraint firstItem="kWJ-06-U7y" firstAttribute="leading" secondItem="zW6-Nh-26B" secondAttribute="trailing" constant="1" id="tGn-Yg-1Rs"/>
+                    <constraint firstItem="G0Z-QU-4xK" firstAttribute="leading" secondItem="CFR-zp-33W" secondAttribute="trailing" constant="8" id="yon-FR-ebo"/>
+                    <constraint firstItem="CFR-zp-33W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="zzX-Kk-geZ"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
