@@ -59,10 +59,6 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"StayPlaceCell" bundle:nil] forCellReuseIdentifier:@"StayPlaceCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DatePickerCell" bundle:nil] forCellReuseIdentifier:@"DatePickerCell"];
     self.tableView.allowsSelection = NO;
-    
-    self.datePicker = [[UIDatePicker alloc] init];
-    self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-    [self.datePicker addTarget:self action:@selector(onDatePickerValueChanged) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)onDatePickerValueChanged {
@@ -181,6 +177,7 @@ didFailAutocompleteWithError:(NSError *)error {
     } else if (indexPath.row == self.numOfStayPlaces + 3) {
         DatePickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
         self.datePicker = cell.datePicker;
+        [self.datePicker addTarget:self action:@selector(onDatePickerValueChanged) forControlEvents:UIControlEventValueChanged];
         if (!self.datePickerIsShowing) {
             self.datePicker.alpha = 0.0f;
             self.datePicker.hidden = YES;

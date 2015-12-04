@@ -115,7 +115,6 @@
 
 
 - (IBAction)bookButtonTapped:(UIButton *)sender {
-    NSLog(@"Hotel has been booked");
     [self displayNoticeInfo];
 }
 
