@@ -17,6 +17,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DatePickerCell.h"
+#import "Trip.h"
 
 static NSString *kDatePickerCellID = @"datePickerCell";
 
@@ -45,6 +46,7 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     [super viewDidLoad];
     _placesClient = [[GMSPlacesClient alloc] init];
     [self setUpNavigationBar];
+    [self customizeLeftNavBarButtons];
     [self customizeRightNavBarButtons];
     [self setUpInitialData];
     [self setUpTable];
@@ -226,9 +228,19 @@ didFailAutocompleteWithError:(NSError *)error {
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
+- (void)customizeLeftNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"New"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(onNewButton)];
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
 - (void)customizeRightNavBarButtons {
     UIBarButtonItem *barButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"Search"
+    [[UIBarButtonItem alloc] initWithTitle:@"Next"
                                      style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(onSearchButton)];
@@ -236,7 +248,17 @@ didFailAutocompleteWithError:(NSError *)error {
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
+- (void) onNewButton {
+    [Trip clear];
+}
+
 - (void) onSearchButton {
+    if ([Trip currentTrip] == nil) {
+        [Trip createTrip];
+        NSLog(@"%@", [Trip currentTrip].tripId);
+    }
+    return;
+    
 //    [self initSearchResult];
 //    [self displaySearchResult];
     PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
