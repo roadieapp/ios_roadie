@@ -120,7 +120,7 @@
 }
 
 - (void) displayNoticeInfo {
-    NSString *message = @"Booked";
+    NSString *message = @"Added to trip!";
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
