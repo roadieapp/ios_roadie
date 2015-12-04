@@ -35,8 +35,9 @@
         self.originalLeftMargin = self.leftMarginConstraint.constant;
         
     } else if (sender.state == UIGestureRecognizerStateChanged) {
-        self.leftMarginConstraint.constant = self.originalLeftMargin + translation.x;
-        
+        if (translation.x > 0) {
+            self.leftMarginConstraint.constant = self.originalLeftMargin + translation.x;
+        }
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         
         [UIView animateWithDuration:0.3 animations:^{
