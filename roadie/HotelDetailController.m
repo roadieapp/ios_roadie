@@ -76,9 +76,6 @@
     [self.hotelAddressLabel sizeToFit];
     
     CALayer *layer = [self.hotelImageView layer];
-    [layer setCornerRadius:6.0];
-    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    [layer setBorderWidth:3.0];
     [layer setMasksToBounds:YES];
     [self.hotelImageView setImageWithURL:self.hotel.imageUrl];
     
