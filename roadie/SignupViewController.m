@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "HomeViewController.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface SignupViewController ()
 
@@ -34,7 +36,12 @@
     user.email = self.emailTextField.text;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error) {
-            
+            HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+            MenuViewController *menuVC = [[MenuViewController alloc] init];
+            UINavigationController *menuNVC = [[UINavigationController alloc]initWithRootViewController:menuVC];
+            [menuVC setHamburgerViewController:hamburgerVC];
+            [hamburgerVC setMenuViewController:menuNVC];
+            [self presentViewController:hamburgerVC animated:YES completion:nil];
         } else {
             NSString *errorString = [error userInfo][@"error"];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Cannot create account" message:errorString preferredStyle:UIAlertControllerStyleAlert];
