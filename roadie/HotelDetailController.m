@@ -31,11 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *checkOutTextField;
 
-@property (strong, nonatomic) UIDynamicAnimator *animator;
-
-@property (weak, nonatomic) IBOutlet UIView *noticeView;
-@property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
-
 @end
 
 @implementation HotelDetailController
