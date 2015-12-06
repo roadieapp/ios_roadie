@@ -243,7 +243,7 @@ didFailAutocompleteWithError:(NSError *)error {
     [[UIBarButtonItem alloc] initWithTitle:@"Next"
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(onSearchButton)];
+                                    action:@selector(onNextButton)];
     
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
@@ -252,15 +252,13 @@ didFailAutocompleteWithError:(NSError *)error {
     [Trip clear];
 }
 
-- (void) onSearchButton {
+- (void) onNextButton {
     if ([Trip currentTrip] == nil) {
         [Trip createTrip];
+        [self createTripData];
         NSLog(@"%@", [Trip currentTrip].tripId);
     }
-    return;
     
-//    [self initSearchResult];
-//    [self displaySearchResult];
     PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -276,6 +274,25 @@ didFailAutocompleteWithError:(NSError *)error {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+- (void) createTripData {
+    PFObject *tripObject = [PFObject objectWithClassName:@"Trip"];
+    tripObject[@"tripId"] = [Trip currentTrip].tripId;
+    tripObject[@"tripName"] = @"My Trip";
+    tripObject[@"tripStartTime"] = @"201512011302";
+    
+    [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            NSLog(@"Trip has been saved");
+            
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"Error in saving Trip");
+        }
+    }];
+
 }
 
 - (void) displaySearchResult {
