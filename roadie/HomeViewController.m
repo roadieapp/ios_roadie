@@ -277,10 +277,27 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 - (void) createTripData {
+    
+    NSArray *locations = @[
+                           @{
+                               @"location": @"Seattle, WA"
+                               },
+                           @{
+                               @"location": @"Portland, OR"
+                               },
+                           @{
+                               @"location": @"San Francisco, CA"
+                               },
+                           @{
+                               @"location": @"Los Angeles, CA"
+                               }
+                           ];
+
     PFObject *tripObject = [PFObject objectWithClassName:@"Trip"];
     tripObject[@"tripId"] = [Trip currentTrip].tripId;
     tripObject[@"tripName"] = @"My Trip";
     tripObject[@"tripStartTime"] = @"201512011302";
+    tripObject[@"tripLocations"] = locations;
     
     [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

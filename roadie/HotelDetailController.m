@@ -8,6 +8,8 @@
 
 #import "HotelDetailController.h"
 #import "UIImageView+AFNetworking.h"
+#import "Trip.h"
+#import "Parse.h"
 
 @interface HotelDetailController ()
 
@@ -121,6 +123,8 @@
 - (void) displayNoticeInfo {
     NSString *message = @"Added to trip!";
     
+    [self addToTrip];
+    
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
                                                    delegate:nil
@@ -133,6 +137,28 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
+}
+
+- (void) addToTrip {
+    PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnit"];
+    tripUnitObject[@"hotelAddress"] = [[self hotel]hotelAddress];
+    tripUnitObject[@"location"] = [[self hotel]location];
+    tripUnitObject[@"checkIn"] = @"2015-12-01";
+    tripUnitObject[@"checkOut"] = @"2015-12-04";
+    tripUnitObject[@"tripId"] = [[Trip currentTrip]tripId];
+    
+    [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            NSLog(@"Trip Unit has been saved");
+            
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"Error in saving Trip Unit");
+        }
+    }];
+
+    
 }
 
 @end
