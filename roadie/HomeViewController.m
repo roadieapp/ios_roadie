@@ -17,6 +17,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DatePickerCell.h"
+#import "Trip.h"
 
 static NSString *kDatePickerCellID = @"datePickerCell";
 
@@ -45,6 +46,7 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     [super viewDidLoad];
     _placesClient = [[GMSPlacesClient alloc] init];
     [self setUpNavigationBar];
+    [self customizeLeftNavBarButtons];
     [self customizeRightNavBarButtons];
     [self setUpInitialData];
     [self setUpTable];
@@ -226,19 +228,37 @@ didFailAutocompleteWithError:(NSError *)error {
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
-- (void)customizeRightNavBarButtons {
+- (void)customizeLeftNavBarButtons {
     UIBarButtonItem *barButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"Search"
+    [[UIBarButtonItem alloc] initWithTitle:@"New"
                                      style:UIBarButtonItemStylePlain
                                     target:self
-                                    action:@selector(onSearchButton)];
+                                    action:@selector(onNewButton)];
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(onNextButton)];
     
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
-- (void) onSearchButton {
-//    [self initSearchResult];
-//    [self displaySearchResult];
+- (void) onNewButton {
+    [Trip clear];
+}
+
+- (void) onNextButton {
+    if ([Trip currentTrip] == nil) {
+        [Trip createTrip];
+        [self createTripData];
+        NSLog(@"%@", [Trip currentTrip].tripId);
+    }
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -254,6 +274,42 @@ didFailAutocompleteWithError:(NSError *)error {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+- (void) createTripData {
+    
+    NSArray *locations = @[
+                           @{
+                               @"location": @"Seattle, WA"
+                               },
+                           @{
+                               @"location": @"Portland, OR"
+                               },
+                           @{
+                               @"location": @"San Francisco, CA"
+                               },
+                           @{
+                               @"location": @"Los Angeles, CA"
+                               }
+                           ];
+
+    PFObject *tripObject = [PFObject objectWithClassName:@"Trip"];
+    tripObject[@"tripId"] = [Trip currentTrip].tripId;
+    tripObject[@"tripName"] = @"My Trip";
+    tripObject[@"tripStartTime"] = @"201512011302";
+    tripObject[@"tripLocations"] = locations;
+    
+    [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            NSLog(@"Trip has been saved");
+            
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"Error in saving Trip");
+        }
+    }];
+
 }
 
 - (void) displaySearchResult {

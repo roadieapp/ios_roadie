@@ -44,6 +44,7 @@
 		8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB091C02D8F700E58895 /* RedViewController.xib */; };
 		8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* DataInputViewController.m */; };
 		8374FB101C02D93200E58895 /* DataInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* DataInputViewController.xib */; };
+		83ECDF281C117964000CC94D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECDF271C117964000CC94D /* Trip.m */; settings = {ASSET_TAGS = (); }; };
 		C7E456811C0ED1E800338003 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E456801C0ED1E800338003 /* MDDirectionService.m */; };
 		C7F140251C02EACB00FBC0ED /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140231C02EACB00FBC0ED /* SearchResultViewController.m */; };
 		C7F140261C02EACB00FBC0ED /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F140241C02EACB00FBC0ED /* SearchResultViewController.xib */; };
@@ -112,6 +113,8 @@
 		8374FB0C1C02D93200E58895 /* DataInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataInputViewController.h; sourceTree = "<group>"; };
 		8374FB0D1C02D93200E58895 /* DataInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInputViewController.m; sourceTree = "<group>"; };
 		8374FB0E1C02D93200E58895 /* DataInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataInputViewController.xib; sourceTree = "<group>"; };
+		83ECDF261C117964000CC94D /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
+		83ECDF271C117964000CC94D /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		C7E4567F1C0ED1E800338003 /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
 		C7E456801C0ED1E800338003 /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		C7F140221C02EACB00FBC0ED /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				C7F1402E1C02FB2D00FBC0ED /* Hotel.m */,
 				831531BB1C0813D30038F6CD /* TripUnit.h */,
 				831531BC1C0813D30038F6CD /* TripUnit.m */,
+				83ECDF261C117964000CC94D /* Trip.h */,
+				83ECDF271C117964000CC94D /* Trip.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				0275ACB41C10222B002046E1 /* DatePickerCell.m in Sources */,
 				8374FB051C02D8A300E58895 /* MenuViewController.m in Sources */,
 				02EBFFD51BFD54AC00B81A53 /* LoginViewController.m in Sources */,
+				83ECDF281C117964000CC94D /* Trip.m in Sources */,
 				02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */,
 				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
 				831531B91C07BFAA0038F6CD /* TripDetailController.m in Sources */,
