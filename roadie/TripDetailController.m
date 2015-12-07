@@ -11,12 +11,16 @@
 #import "TripHeaderCell.h"
 #import "TripUnit.h"
 #import "Constants.h"
+#import "Parse.h"
+#import "Trip.h"
 
 @interface TripDetailController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *trip;
+
+@property (nonatomic, strong) NSString *tripStartTime;
 
 @end
 
@@ -36,7 +40,49 @@
     [super viewDidLoad];
     
     [self setUpNavigationBar];
+    [self customizeRightNavBarButtons];
     [self setUpTableView];
+//    [self refreshData];
+}
+
+- (void) refreshData {
+    NSLog(@"refresh data");
+    NSString *currentTripId = [[Trip currentTrip] tripId];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:currentTripId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error == nil) {
+            // Should be one object only.
+            NSLog(@"Debug here");
+            
+            // tripStartTime
+            // tripLocations
+            NSDictionary *dictionary = [objects lastObject];
+            self.tripStartTime = dictionary[@"tripStartTime"];
+            NSDictionary *dictionary1 = dictionary[@"tripLocations"];
+            
+            
+            PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+            [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+            [tripUnitQuery orderByAscending:@"checkIn"];
+            
+            [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+                if (error1 == nil) {
+
+                    NSLog(@"Debug here");
+                    
+                    
+                    [self.tableView reloadData];
+                } else {
+                    NSLog(@"Error 1");
+                }
+            }];
+        } else {
+            NSLog(@"Error");
+        }
+    }];
+
+    
 }
 
 - (void)setUpNavigationBar {
@@ -53,6 +99,15 @@
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
+- (void)customizeRightNavBarButtons {
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"History"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(onHistoryButton)];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
 
 - (void)setUpTableView {
     self.tableView.dataSource = self;
@@ -64,6 +119,10 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TripCell" bundle:nil] forCellReuseIdentifier:@"TripCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TripHeaderCell" bundle:nil] forCellReuseIdentifier:@"TripHeaderCell"];
+}
+
+- (void) onHistoryButton {
+    NSLog(@"on History");
 }
 
 - (void)didReceiveMemoryWarning {
