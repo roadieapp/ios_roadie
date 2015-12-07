@@ -14,6 +14,7 @@
 #import "TripDetailController.h"
 #import "User.h"
 #import "Constants.h"
+#import "MenuCell.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -21,6 +22,7 @@
 
 @property (strong, nonatomic) NSArray *viewControllers;
 @property (strong, nonatomic) NSArray *texts;
+@property (strong, nonatomic) NSArray *icons;
 @property (strong, nonatomic) UINavigationController *blueNVC;
 @property (strong, nonatomic) UINavigationController *loginNVC;
 @property (strong, nonatomic) UINavigationController *homeNVC;
@@ -55,6 +57,8 @@
 
     UIViewController *tripDetailController = [[TripDetailController alloc]init];
     self.tripNVC = [[UINavigationController alloc] initWithRootViewController:tripDetailController];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:@"MenuCell"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -84,13 +88,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
     [self updateMenus];
-    cell.textLabel.text = self.texts[indexPath.row];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [[Constants sharedInstance] themeColor];
-    
+    MenuCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
+    cell.menuLabel.text = self.texts[indexPath.row];
+    [cell.iconImage setImage:[UIImage imageNamed:self.icons[indexPath.row]]];
     return cell;
 }
 
@@ -99,10 +100,12 @@
         self.viewControllers = [NSArray arrayWithObjects:self.homeNVC, self.tripNVC, self.blueNVC, nil];
         self.hamburgerViewController.contentViewController = self.homeNVC;
         self.texts = [NSArray arrayWithObjects:@"Home", @"My Trip", @"Settings", @"Logout", nil];
+        self.icons = [NSArray arrayWithObjects:@"homepage.png", @"trips.png", @"settings.png", @"logout.png", nil];
     } else {
         self.viewControllers = [NSArray arrayWithObjects:self.loginNVC, self.homeNVC, self.tripNVC, self.blueNVC, nil];
         self.hamburgerViewController.contentViewController = self.homeNVC;
         self.texts = [NSArray arrayWithObjects:@"Login", @"Home", @"My Trip", @"Settings", nil];
+        self.icons = [NSArray arrayWithObjects:@"login.png", @"homepage.png", @"trips.png", @"settings.png", nil];
     }
 }
 
