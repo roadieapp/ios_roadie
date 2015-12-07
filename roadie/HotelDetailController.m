@@ -141,8 +141,8 @@
     PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnit"];
     tripUnitObject[@"hotelAddress"] = [[self hotel]hotelAddress];
     tripUnitObject[@"location"] = [[self hotel]location];
-    tripUnitObject[@"checkIn"] = @"2015-12-01";
-    tripUnitObject[@"checkOut"] = @"2015-12-04";
+    tripUnitObject[@"checkIn"] = self.checkInTextField.text;
+    tripUnitObject[@"checkOut"] = self.checkOutTextField.text;
     tripUnitObject[@"tripId"] = [[Trip currentTrip]tripId];
     
     [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
