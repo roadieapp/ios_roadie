@@ -27,12 +27,14 @@ PODS:
   - GoogleMaps (1.11.0)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
+  - SSMaterialCalendarPicker (1.1.2)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
   - GoogleMaps
   - Parse
+  - SSMaterialCalendarPicker
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -40,5 +42,6 @@ SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   GoogleMaps: 272cf7e7b8aacf4319eac47d57f3b7d142c0826a
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
+  SSMaterialCalendarPicker: 02334afaeb82f540bb1d3b1590992c0c27441ed0
 
 COCOAPODS: 0.39.0

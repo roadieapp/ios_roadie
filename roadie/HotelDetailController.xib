@@ -14,6 +14,7 @@
                 <outlet property="hotelName" destination="wiI-zc-0JZ" id="9ae-0w-KfR"/>
                 <outlet property="hotelStarsImageView" destination="y5b-to-zxA" id="d3x-Ha-KTm"/>
                 <outlet property="priceLabel" destination="k40-49-6qp" id="Y5c-lp-wtK"/>
+                <outlet property="selectDatesButton" destination="Dia-3M-RE3" id="Df9-nG-x0n"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -154,7 +155,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="bookButtonTapped:" destination="-1" eventType="touchUpInside" id="Ztk-q3-IqZ"/>
+                        <action selector="onSelectDates:" destination="-1" eventType="touchUpInside" id="xIf-Dv-WTH"/>
                     </connections>
                 </button>
             </subviews>

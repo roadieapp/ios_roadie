@@ -8,24 +8,23 @@
 
 #import "HotelDetailController.h"
 #import "UIImageView+AFNetworking.h"
+#import "Constants.h"
+#import "SSMaterialCalendarPicker.h"
 
-@interface HotelDetailController ()
+@interface HotelDetailController () <SSMaterialCalendarPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *hotelImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *hotelName;
-
 @property (weak, nonatomic) IBOutlet UIImageView *hotelStarsImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *amenitiesLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *hotelAddressLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *finePrintLabel;
+@property (weak, nonatomic) IBOutlet UIButton *selectDatesButton;
+
+@property (nonatomic, strong) SSMaterialCalendarPicker *datePicker;
+@property (nonatomic, strong) NSDateFormatter *formatter;
 
 @end
 
@@ -33,14 +32,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
+    [self initCalendar];
 //    [self initHotel];
     [self updateView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)initCalendar {
+    self.datePicker = [SSMaterialCalendarPicker initCalendarOn:self.view withDelegate:self];
+    self.datePicker.calendarTitle = @"Select Dates";
+    self.datePicker.primaryColor = [Constants sharedInstance].themeColor;
+    self.datePicker.secondaryColor = [Constants sharedInstance].themeColor;
+    
+    self.formatter = [[NSDateFormatter alloc] init];
+    [self.formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [self.formatter setDateFormat:@"dd/MM/yy"];
+}
+
+- (void)loadCalendar {
+    if (![self.selectDatesButton.currentTitle  isEqual: @"Select Dates"]) {
+        NSArray *dates = [self.selectDatesButton.currentTitle componentsSeparatedByString:@" - "];
+        self.datePicker.startDate = [self.formatter dateFromString:dates[0]];
+        self.datePicker.endDate = [self.formatter dateFromString:dates[1]];
+    }
+    [self.datePicker showAnimated];
+}
+
+- (void)rangeSelectedWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate {
+    NSString *title = [NSString stringWithFormat:@"%@ - %@", [self.formatter stringFromDate:startDate], [self.formatter stringFromDate:endDate]];
+    [self.selectDatesButton setTitle:title forState:UIControlStateNormal];
+}
+
+- (IBAction)onSelectDates:(id)sender {
+    [self loadCalendar];
 }
 
 - (void) initHotel {
@@ -84,23 +111,6 @@
     self.finePrintLabel.text = self.hotel.finePrint;
     [self.finePrintLabel sizeToFit];
 }
-
-- (NSString *) defaultCheckInDate {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd";
-    return [formatter stringFromDate:[NSDate date]];
-}
-
-- (NSString *) defaultCheckOutDate {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd";
-    
-    NSDate *now = [NSDate date];
-    int daysToAdd = 1;
-    NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
-    return [formatter stringFromDate:newDate];
-}
-
 
 - (IBAction)bookButtonTapped:(UIButton *)sender {
     [self displayNoticeInfo];
