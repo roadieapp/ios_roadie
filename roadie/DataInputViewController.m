@@ -381,23 +381,36 @@
 - (IBAction)queryTripButtonTapped:(UIButton *)sender {
     NSLog(@"Query Trip");
 //    [self queryTripV2];
-//    [self queryTripV3];
+    [self queryTripV3];
     [self nowString];
 }
 
 // one to many using pointers
 - (void) queryTripV2 {
-    PFQuery *query = [PFQuery queryWithClassName:@"TripV2"];
-    [query whereKey:@"tripId" equalTo:@"12345"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:@"151205230028"];
+    [query includeKey:@"tripLocations"];
     NSArray* tripArray = [query findObjects];
+    for (PFObject *object in tripArray) {
+        NSLog(@"Debug");
+    }
     NSLog(@"Debug Here");
 }
 
 // one to many using arrays
 - (void) queryTripV3 {
     PFQuery *query = [PFQuery queryWithClassName:@"TripV3"];
-    [query whereKey:@"tripId" equalTo:@"12345"];
+//    [query whereKey:@"tripId" equalTo:@"12345"];
     NSArray* tripArray = [query findObjects];
+    for (PFObject *object in tripArray) {
+        NSString *tripName = [object objectForKey:@"tripName"];
+        NSLog(@"Debug");
+        
+//        NSString *someValue = [pfObject objectForKey:@"someKey"];
+//        //or if it's a number
+//        NSNumber *someNumber = [pfObject objectForKey:@"someOtherKey"];
+    }
+
     NSLog(@"Debug Here");
     
 }
