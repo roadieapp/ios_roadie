@@ -45,6 +45,8 @@
 		8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* DataInputViewController.m */; };
 		8374FB101C02D93200E58895 /* DataInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* DataInputViewController.xib */; };
 		83ECDF281C117964000CC94D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECDF271C117964000CC94D /* Trip.m */; settings = {ASSET_TAGS = (); }; };
+		C7BFDCF91C14F8B500B5C612 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCF81C14F8B500B5C612 /* City.m */; settings = {ASSET_TAGS = (); }; };
+		C7BFDCFC1C15122900B5C612 /* UICityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCFB1C15122900B5C612 /* UICityButton.m */; settings = {ASSET_TAGS = (); }; };
 		C7E456811C0ED1E800338003 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E456801C0ED1E800338003 /* MDDirectionService.m */; };
 		C7F140251C02EACB00FBC0ED /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140231C02EACB00FBC0ED /* SearchResultViewController.m */; };
 		C7F140261C02EACB00FBC0ED /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F140241C02EACB00FBC0ED /* SearchResultViewController.xib */; };
@@ -115,6 +117,10 @@
 		8374FB0E1C02D93200E58895 /* DataInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataInputViewController.xib; sourceTree = "<group>"; };
 		83ECDF261C117964000CC94D /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
 		83ECDF271C117964000CC94D /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
+		C7BFDCF71C14F8B500B5C612 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		C7BFDCF81C14F8B500B5C612 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		C7BFDCFA1C15122900B5C612 /* UICityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICityButton.h; sourceTree = "<group>"; };
+		C7BFDCFB1C15122900B5C612 /* UICityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICityButton.m; sourceTree = "<group>"; };
 		C7E4567F1C0ED1E800338003 /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
 		C7E456801C0ED1E800338003 /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		C7F140221C02EACB00FBC0ED /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -241,6 +247,8 @@
 				831531BC1C0813D30038F6CD /* TripUnit.m */,
 				83ECDF261C117964000CC94D /* Trip.h */,
 				83ECDF271C117964000CC94D /* Trip.m */,
+				C7BFDCF71C14F8B500B5C612 /* City.h */,
+				C7BFDCF81C14F8B500B5C612 /* City.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -283,6 +291,8 @@
 				0275ACB11C10222B002046E1 /* DatePickerCell.h */,
 				0275ACB21C10222B002046E1 /* DatePickerCell.m */,
 				0275ACB31C10222B002046E1 /* DatePickerCell.xib */,
+				C7BFDCFA1C15122900B5C612 /* UICityButton.h */,
+				C7BFDCFB1C15122900B5C612 /* UICityButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -447,12 +457,14 @@
 				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
 				831531B91C07BFAA0038F6CD /* TripDetailController.m in Sources */,
 				02EB00301C04080B00B81A53 /* StartTimeCell.m in Sources */,
+				C7BFDCF91C14F8B500B5C612 /* City.m in Sources */,
 				8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */,
 				02EBFFE61BFDA9C100B81A53 /* User.m in Sources */,
 				02EBFFB71BFCF18E00B81A53 /* main.m in Sources */,
 				C7F1402F1C02FB2D00FBC0ED /* Hotel.m in Sources */,
 				C7F1402B1C02F6F200FBC0ED /* HotelViewCell.m in Sources */,
 				831531C61C097FE90038F6CD /* HotelDetailController.m in Sources */,
+				C7BFDCFC1C15122900B5C612 /* UICityButton.m in Sources */,
 				C7E456811C0ED1E800338003 /* MDDirectionService.m in Sources */,
 				02EBFFD01BFCF83100B81A53 /* HomeViewController.m in Sources */,
 				02EB00131BFEA28500B81A53 /* Constants.m in Sources */,

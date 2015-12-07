@@ -11,5 +11,6 @@
 @interface SearchResultViewController : UIViewController
 
 @property (strong, nonatomic) NSArray *hotels;
+@property (strong, nonatomic) NSArray *cities;
 
 @end

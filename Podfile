@@ -9,6 +9,7 @@ pod 'GoogleMaps'
 pod 'Parse'
 pod 'BDBOAuth1Manager'
 pod 'AFNetworking'
+pod 'DRPageScrollView'
 
 end
 

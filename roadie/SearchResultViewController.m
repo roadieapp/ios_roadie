@@ -11,11 +11,15 @@
 #import "HotelDetailController.h"
 #import "MDDirectionService.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "City.h"
+#import "UICityButton.h"
+#import "DRPageScrollView.h"
 
 @interface SearchResultViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *cityChooserView;
 
 @end
 
@@ -37,10 +41,45 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HotelViewCell" bundle:nil] forCellReuseIdentifier:@"HotelViewCell"];
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
+    // Init cities (need to be set dynamically later)
+    City *allCities = [City new];
+    allCities.hotels = self.hotels;
+    allCities.name = @"All Cities";
+    allCities.lat = 45.5425353;
+    allCities.lng = -122.7042106;
+    
+    City *portland = [City new];
+    portland.hotels = self.hotels;
+    portland.name = @"Portland";
+    portland.lat = 45.5263883;
+    portland.lng = -122.7244615;
+    
+    City *sanfrancisco = [City new];
+    sanfrancisco.hotels = self.hotels;
+    sanfrancisco.name = @"Sanfrancisco";
+    sanfrancisco.lat = 37.757815;
+    sanfrancisco.lng = -122.50764;
+    
+    City *losangeles = [City new];
+    losangeles.hotels = self.hotels;
+    losangeles.name = @"Los Angeles";
+    losangeles.lat = 34.0207504;
+    losangeles.lng = -118.691914;
+    
+    // City Chooser View
+    [self addCityButton:allCities andRect:CGRectMake(0.0, 0.0, 100.0, 30.0)];
+    [self addCityButton:portland andRect:CGRectMake(110.0, 0.0, 80.0, 30.0)];
+    [self addCityButton:sanfrancisco andRect:CGRectMake(200.0, 0.0, 120.0, 30.0)];
+    [self addCityButton:losangeles andRect:CGRectMake(330.0, 0.0, 110.0, 30.0)];
+    
+    self.cityChooserView.contentSize = CGSizeMake(450.0, 30.0);
+    [self.cityChooserView setShowsHorizontalScrollIndicator:NO];
+    [self.cityChooserView setShowsVerticalScrollIndicator:NO];
+    
     // Init Map View
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:45.5263883
                                                             longitude:-122.7042106
-                                                                 zoom:6];
+                                                                 zoom:4];
     self.mapView.camera = camera;
     self.mapView.myLocationEnabled = YES;
     
@@ -56,11 +95,34 @@
     waypoints_ = [[NSMutableArray alloc]init];
     waypointStrings_ = [[NSMutableArray alloc]init];
     
-    CLLocationCoordinate2D seattle = CLLocationCoordinate2DMake(47.6149942,-122.4759891);
-    [self mapView:self.mapView addSpot:seattle];
+    CLLocationCoordinate2D seattleSpot = CLLocationCoordinate2DMake(47.6149942,-122.4759891);
+    [self mapView:self.mapView addSpot:seattleSpot];
     
-    CLLocationCoordinate2D sanfrancisco = CLLocationCoordinate2DMake(37.757815,-122.50764);
-    [self mapView:self.mapView addSpot:sanfrancisco];
+    CLLocationCoordinate2D losangelesSpot = CLLocationCoordinate2DMake(34.0207504, -118.691914);
+    [self mapView:self.mapView addSpot:losangelesSpot];
+}
+
+- (void)addCityButton:(City*)city andRect:(CGRect) rect {
+    UICityButton *button = [UICityButton buttonWithType:UIButtonTypeCustom];
+    button.city = city;
+    [button addTarget:self action:@selector(onClickCities:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:city.name forState:UIControlStateNormal];
+    button.frame = rect;
+    [self.cityChooserView addSubview:button];
+}
+
+- (void)onClickCities:(id)sender {
+    UICityButton *cityButton = (UICityButton*)sender;
+    City *city = cityButton.city;
+    
+    float zoomLevel = 10;
+    if ([city.name isEqualToString:@"All Cities"]) {
+        zoomLevel = 4;
+    }
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:city.lat
+                                                            longitude:city.lng
+                                                                 zoom:zoomLevel];
+    self.mapView.camera = camera;
 }
 
 - (void)mapView:(GMSMapView *)mapView addSpot:
