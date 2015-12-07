@@ -51,7 +51,7 @@
     
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
-    [self.formatter setDateFormat:@"dd/MM/yy"];
+    [self.formatter setDateFormat:@"MM/dd/yy"];
 }
 
 - (void)loadCalendar {
