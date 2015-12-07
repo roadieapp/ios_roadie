@@ -24,9 +24,9 @@
 	- [ ] Login with Facebook
 	- [X] Login with username & password
 	- [X] Sign up with Parse
-- [ ] Deal details page
-	- [X] Image view of hotels, hotel description, price, location, book button
-	- [ ] After users finish booking, users are asked to select checkout time and pops back to home page with updated route information
+- [X] Deal details page
+	- [X] Image view of hotels, hotel description, price, location, add to trip button
+	- [X] Calendar where users can input check in and check out date.
 
 **Version 2.0** [Optional]
 

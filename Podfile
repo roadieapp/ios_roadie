@@ -10,6 +10,7 @@ pod 'Parse'
 pod 'BDBOAuth1Manager'
 pod 'AFNetworking'
 pod 'DRPageScrollView'
+pod 'SSMaterialCalendarPicker'
 
 end
 
