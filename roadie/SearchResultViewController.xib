@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchResultViewController">
             <connections>
+                <outlet property="cityChooserView" destination="T2N-CP-GB1" id="kE6-TL-cU4"/>
                 <outlet property="mapView" destination="tz9-GX-jNc" id="GCT-eh-FB3"/>
                 <outlet property="tableView" destination="GzR-ot-gy6" id="7nG-vC-aIY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -17,32 +18,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tz9-GX-jNc" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                    <rect key="frame" x="0.0" y="30" width="320" height="300"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="240" id="fVY-Dv-XOQ"/>
+                        <constraint firstAttribute="height" constant="300" id="HQe-ak-NpT"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GzR-ot-gy6">
-                    <rect key="frame" x="0.0" y="240" width="320" height="328"/>
+                    <rect key="frame" x="0.0" y="330" width="320" height="238"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2N-CP-GB1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="T6y-VK-NMK"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="tz9-GX-jNc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CwQ-Za-vM6"/>
-                <constraint firstAttribute="bottom" secondItem="GzR-ot-gy6" secondAttribute="bottom" id="Kaf-LR-bs6"/>
+                <constraint firstItem="tz9-GX-jNc" firstAttribute="top" secondItem="T2N-CP-GB1" secondAttribute="bottom" id="N6L-2c-c48"/>
+                <constraint firstAttribute="trailing" secondItem="T2N-CP-GB1" secondAttribute="trailing" id="O62-U0-fe7"/>
                 <constraint firstItem="GzR-ot-gy6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Odf-k0-e4Q"/>
+                <constraint firstItem="T2N-CP-GB1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ow5-Pq-eAX"/>
+                <constraint firstItem="T2N-CP-GB1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bwb-kK-Ggf"/>
                 <constraint firstAttribute="trailing" secondItem="tz9-GX-jNc" secondAttribute="trailing" id="eVt-8U-WRf"/>
                 <constraint firstItem="GzR-ot-gy6" firstAttribute="top" secondItem="tz9-GX-jNc" secondAttribute="bottom" id="fcA-FS-50e"/>
+                <constraint firstAttribute="bottom" secondItem="GzR-ot-gy6" secondAttribute="bottom" id="lmm-WP-HO2"/>
                 <constraint firstItem="tz9-GX-jNc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uZz-LI-LoQ"/>
                 <constraint firstItem="GzR-ot-gy6" firstAttribute="top" secondItem="tz9-GX-jNc" secondAttribute="bottom" id="v8S-nk-AC5"/>
                 <constraint firstAttribute="trailing" secondItem="GzR-ot-gy6" secondAttribute="trailing" id="zx2-SV-ihe"/>
             </constraints>
-            <point key="canvasLocation" x="275" y="407"/>
+            <point key="canvasLocation" x="278" y="399"/>
         </view>
     </objects>
 </document>
