@@ -27,10 +27,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *finePrintLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *checkInTextField;
-
-@property (weak, nonatomic) IBOutlet UITextField *checkOutTextField;
-
 @end
 
 @implementation HotelDetailController
@@ -87,9 +83,6 @@
     
     self.finePrintLabel.text = self.hotel.finePrint;
     [self.finePrintLabel sizeToFit];
-    
-    self.checkInTextField.text = [self defaultCheckInDate];
-    self.checkOutTextField.text = [self defaultCheckOutDate];
 }
 
 - (NSString *) defaultCheckInDate {
