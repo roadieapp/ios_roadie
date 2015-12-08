@@ -24,6 +24,7 @@
 
 @interface StayPlaceCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
 @property (weak, nonatomic) IBOutlet UITextField *destinationTextField;

@@ -150,6 +150,7 @@ didFailAutocompleteWithError:(NSError *)error {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.iconImage setImage:[UIImage imageNamed:@"departure.png"]];
         [cell.destinationTextField setPlaceholder:@"Choose your departure place"];
         cell.delegate = self;
         cell.destinationDelegate = self;
@@ -162,6 +163,7 @@ didFailAutocompleteWithError:(NSError *)error {
         return cell;
     } else if (indexPath.row == self.numOfStayPlaces + 1) {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.iconImage setImage:[UIImage imageNamed:@"destination.png"]];
         [cell.destinationTextField setPlaceholder:@"Choose your destination"];
         cell.destinationDelegate = self;
         cell.addButton.hidden = YES;
@@ -187,6 +189,7 @@ didFailAutocompleteWithError:(NSError *)error {
         return cell;
     } else {
         StayPlaceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"StayPlaceCell"];
+        [cell.iconImage setImage:[UIImage imageNamed:@"stayat.png"]];
         [cell.destinationTextField setPlaceholder:@"Choose a place to stay"];
         cell.delegate = self;
         cell.destinationDelegate = self;
