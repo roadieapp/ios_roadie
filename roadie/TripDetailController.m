@@ -29,9 +29,9 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) {
-        [self initTrip];
-    }
+//    if (self) {
+//        [self initTrip];
+//    }
     
     return self;
 }
@@ -77,9 +77,10 @@
                     NSLog(@"Debug here");
                     for (NSDictionary *dict2 in objects1) {
                         NSLog(@"Location: %@", dict2[@"location"]);
+                        NSLog(@"Hotel Name: %@", dict2[@"hotelName"]);
                         NSLog(@"Hotel Address: %@", dict2[@"hotelAddress"]);
-                        NSLog(@"Check In: %@", dict2[@"checkIn"]);
-                        NSLog(@"Check Out: %@", dict2[@"checkOut"]);
+                        NSLog(@"Check In: %@", dict2[@"hotelCheckIn"]);
+                        NSLog(@"Check Out: %@", dict2[@"hotelCheckOut"]);
                         NSLog(@"Trip ID: %@", dict2[@"tripId"]);
                     };
                     

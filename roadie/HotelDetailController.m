@@ -139,10 +139,11 @@
 
 - (void) addToTrip {
     PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnit"];
+    tripUnitObject[@"hotelName"] = [[self hotel]hotelName];
     tripUnitObject[@"hotelAddress"] = [[self hotel]hotelAddress];
     tripUnitObject[@"location"] = [[self hotel]location];
-    tripUnitObject[@"checkIn"] = @"2015-12-09";
-    tripUnitObject[@"checkOut"] = @"2015-12-10";
+    tripUnitObject[@"hotelCheckIn"] = @"2015-12-09";
+    tripUnitObject[@"hotelCheckOut"] = @"2015-12-10";
     tripUnitObject[@"tripId"] = [[Trip currentTrip]tripId];
     
     [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
