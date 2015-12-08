@@ -22,6 +22,11 @@
 
 @property (nonatomic, strong) NSString *tripStartTime;
 
+@property (weak, nonatomic) IBOutlet UIButton *bookButton;
+
+// user can pull to refresh the trip information
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation TripDetailController
@@ -37,8 +42,61 @@
     
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
+//    [self customizeBookButton];
     [self setUpTableView];
+    [self setUpRefreshControl];
     [self refreshData];
+}
+
+- (void) onRefresh {
+    NSLog(@"onRefresh");
+    
+    if ([Trip currentTrip] == nil) {
+        NSLog(@"The current trip is not created yet");
+        [self.refreshControl endRefreshing];
+        return;
+    }
+    
+    NSString *currentTripId = [[Trip currentTrip] tripId];
+    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:currentTripId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // Should be one object only.
+            
+            NSDictionary *dictionary = [objects lastObject];
+            self.tripStartTime = dictionary[@"tripStartTime"];
+            NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            
+            NSArray *locations = dictionary[@"tripLocations"];
+            [tripUnits addObject:[locations firstObject]];
+            
+            PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+            [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+            [tripUnitQuery orderByAscending:@"checkIn"];
+            
+            [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+                if (!error1) {
+                    
+                    [tripUnits addObjectsFromArray:objects1];
+                    [tripUnits addObject:[locations lastObject]];
+                    
+                    self.trip = [TripUnit tripWithArray:tripUnits];
+                    
+                    [self.tableView reloadData];
+                } else {
+                    NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
+                }
+                [self.refreshControl endRefreshing];
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            [self.refreshControl endRefreshing];
+        }
+    }];
 }
 
 - (void) refreshData {
@@ -114,6 +172,18 @@
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
+- (void)setUpRefreshControl {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (void) customizeBookButton {
+    UIImage *image = [[UIImage imageNamed:@"book"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.bookButton setImage:image forState:UIControlStateNormal];
+    self.bookButton.tintColor = [[Constants sharedInstance] themeColor];
+}
+
 - (void)customizeRightNavBarButtons {
     UIBarButtonItem *barButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"History"
@@ -163,6 +233,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.trip.count;
+}
+
+
+- (IBAction)onBookButtonTapped:(id)sender {
+    NSString *message = @"Trip is booked!";
+    
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    
+    int duration = 1; // duration in seconds
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+
+    self.bookButton.hidden = YES;
 }
 
 // NOT used, for reference only
