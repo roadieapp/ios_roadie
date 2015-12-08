@@ -301,6 +301,7 @@ didFailAutocompleteWithError:(NSError *)error {
     tripObject[@"tripName"] = @"My Trip";
     tripObject[@"tripStartTime"] = @"201512011302";
     tripObject[@"tripLocations"] = locations;
+    tripObject[@"booked"] = [NSNumber numberWithBool:NO];
     
     [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

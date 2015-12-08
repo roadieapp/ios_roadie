@@ -40,6 +40,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // initial state
+    self.bookButton.hidden = YES;
+    
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
 //    [self customizeBookButton];
@@ -70,6 +73,9 @@
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            
+            NSNumber *bookedInfo = dictionary[@"booked"];
+            self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
             [tripUnits addObject:[locations firstObject]];
@@ -120,6 +126,9 @@
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            
+            NSNumber *bookedInfo = dictionary[@"booked"];
+            self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
             [tripUnits addObject:[locations firstObject]];
@@ -237,6 +246,12 @@
 
 
 - (IBAction)onBookButtonTapped:(id)sender {
+    [self tripBookedNotification];
+    self.bookButton.hidden = YES;
+    [self bookTrip];
+}
+
+- (void) tripBookedNotification {
     NSString *message = @"Trip is booked!";
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -251,8 +266,23 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
+}
 
-    self.bookButton.hidden = YES;
+- (void) bookTrip {
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:[[Trip currentTrip] tripId]];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * myTrip, NSError *error) {
+        if (!error) {
+            // Found UserStats
+            [myTrip setObject:[NSNumber numberWithBool:YES] forKey:@"booked"];
+            
+            // Save
+            [myTrip saveInBackground];
+        } else {
+            // Did not find any Trip for the current user
+            NSLog(@"Error: %@", error);
+        }
+    }];
 }
 
 // NOT used, for reference only
