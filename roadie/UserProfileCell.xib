@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="KGk-i7-Jjw" customClass="UserProfileCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZtK-z2-HUB">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="DFf-q5-hub"/>
+                            <constraint firstAttribute="height" constant="40" id="svo-ND-2Cd"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suo Xin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0l-bw-rEI">
+                        <rect key="frame" x="56" y="18" width="60" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" red="0.32549019610000002" green="0.41568627450000001" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="p0l-bw-rEI" firstAttribute="leading" secondItem="ZtK-z2-HUB" secondAttribute="trailing" constant="8" id="7Wr-SD-dA6"/>
+                    <constraint firstItem="p0l-bw-rEI" firstAttribute="centerY" secondItem="ZtK-z2-HUB" secondAttribute="centerY" id="SAf-0G-vRv"/>
+                    <constraint firstAttribute="bottom" secondItem="ZtK-z2-HUB" secondAttribute="bottom" constant="8" id="cmj-k4-FVn"/>
+                    <constraint firstItem="ZtK-z2-HUB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="f65-oW-vsg"/>
+                    <constraint firstItem="ZtK-z2-HUB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="wfs-A8-cbM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="profileImage" destination="ZtK-z2-HUB" id="WgL-RX-UjX"/>
+                <outlet property="userNameLabel" destination="p0l-bw-rEI" id="gfw-ek-285"/>
+            </connections>
+            <point key="canvasLocation" x="338" y="359.5"/>
+        </tableViewCell>
+    </objects>
+</document>

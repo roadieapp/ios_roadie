@@ -13,6 +13,8 @@
 		0275ACBA1C1539AF002046E1 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0275ACB81C1539AF002046E1 /* MenuCell.xib */; };
 		0275ACBC1C167AE0002046E1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0275ACBB1C167AE0002046E1 /* FBSDKLoginKit.framework */; };
 		0275ACC21C167B74002046E1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0275ACC11C167B74002046E1 /* FBSDKCoreKit.framework */; };
+		0275ACC61C16BE44002046E1 /* UserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275ACC41C16BE44002046E1 /* UserProfileCell.m */; };
+		0275ACC71C16BE44002046E1 /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0275ACC51C16BE44002046E1 /* UserProfileCell.xib */; };
 		02EB00131BFEA28500B81A53 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00121BFEA28500B81A53 /* Constants.m */; };
 		02EB002B1C04072E00B81A53 /* StayPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00291C04072E00B81A53 /* StayPlaceCell.m */; };
 		02EB002C1C04072E00B81A53 /* StayPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EB002A1C04072E00B81A53 /* StayPlaceCell.xib */; };
@@ -68,6 +70,9 @@
 		0275ACB81C1539AF002046E1 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		0275ACBB1C167AE0002046E1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0275ACC11C167B74002046E1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		0275ACC31C16BE44002046E1 /* UserProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileCell.h; sourceTree = "<group>"; };
+		0275ACC41C16BE44002046E1 /* UserProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileCell.m; sourceTree = "<group>"; };
+		0275ACC51C16BE44002046E1 /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
 		02EB00111BFEA28500B81A53 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		02EB00121BFEA28500B81A53 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		02EB00281C04072E00B81A53 /* StayPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayPlaceCell.h; sourceTree = "<group>"; };
@@ -309,6 +314,9 @@
 				0275ACB81C1539AF002046E1 /* MenuCell.xib */,
 				C7BFDCFA1C15122900B5C612 /* UICityButton.h */,
 				C7BFDCFB1C15122900B5C612 /* UICityButton.m */,
+				0275ACC31C16BE44002046E1 /* UserProfileCell.h */,
+				0275ACC41C16BE44002046E1 /* UserProfileCell.m */,
+				0275ACC51C16BE44002046E1 /* UserProfileCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,6 +395,7 @@
 				02EBFFE21BFD911900B81A53 /* SignupViewController.xib in Resources */,
 				0275ACBA1C1539AF002046E1 /* MenuCell.xib in Resources */,
 				02EB002C1C04072E00B81A53 /* StayPlaceCell.xib in Resources */,
+				0275ACC71C16BE44002046E1 /* UserProfileCell.xib in Resources */,
 				02EB00311C04080B00B81A53 /* StartTimeCell.xib in Resources */,
 				02EBFFD61BFD54AC00B81A53 /* LoginViewController.xib in Resources */,
 				8374FB011C02D87600E58895 /* HamburgerViewController.xib in Resources */,
@@ -473,6 +482,7 @@
 				02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */,
 				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
 				831531B91C07BFAA0038F6CD /* TripDetailController.m in Sources */,
+				0275ACC61C16BE44002046E1 /* UserProfileCell.m in Sources */,
 				02EB00301C04080B00B81A53 /* StartTimeCell.m in Sources */,
 				C7BFDCF91C14F8B500B5C612 /* City.m in Sources */,
 				8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */,

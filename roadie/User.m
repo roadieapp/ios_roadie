@@ -26,6 +26,7 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
         self.dictionary = dictionary;
         self.username = dictionary[@"username"];
         self.profileUrl = dictionary[@"profileUrl"];
+        self.userType = dictionary[@"userType"];
     }
     return self;
 }
@@ -58,7 +59,16 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     dictionary[@"username"] = self.username;
     dictionary[@"profileUrl"] = self.profileUrl;
+    dictionary[@"userType"] = self.userType;
     return dictionary;
+}
+
+- (BOOL)hasProfileImage {
+    if ([self.userType isEqual:@"1"]) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 + (void)logout {

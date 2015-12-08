@@ -37,6 +37,7 @@
         if (user) {
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
             dictionary[@"username"] = user.username;
+            dictionary[@"userType"] = @"0";
             [User setCurrentUser:[[User alloc] initWithDictionary:dictionary]];
             
             HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
@@ -154,6 +155,7 @@
              NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
              dictionary[@"username"] = [result objectForKey:@"name"];
              dictionary[@"profileUrl"] = [result objectForKey:@"picture"][@"data"][@"url"];
+             dictionary[@"userType"] = @"1";
              [User setCurrentUser:[[User alloc] initWithDictionary:dictionary]];
          } else{
              NSLog(@"%@", [error localizedDescription]);

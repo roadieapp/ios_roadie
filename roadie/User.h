@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *profileUrl;
+@property (nonatomic, strong) NSString *userType;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
@@ -20,5 +21,6 @@
 + (void)logout;
 
 - (NSDictionary *)toDictionary;
+- (BOOL)hasProfileImage;
 
 @end
