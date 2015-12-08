@@ -29,10 +29,6 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-//    if (self) {
-//        [self initTrip];
-//    }
-    
     return self;
 }
 
@@ -47,60 +43,57 @@
 
 - (void) refreshData {
     NSLog(@"refresh data");
-    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+
+    if ([Trip currentTrip] == nil) {
+        NSLog(@"The current trip is not created yet");
+        return;
+    }
     
     NSString *currentTripId = [[Trip currentTrip] tripId];
+    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
     [query whereKey:@"tripId" equalTo:currentTripId];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error == nil) {
+        if (!error) {
             // Should be one object only.
-            NSLog(@"Debug here");
             
-            // tripStartTime
-            // tripLocations
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
-            NSArray *array1 = dictionary[@"tripLocations"];
-            [tripUnits addObject:[array1 firstObject]];
             
-            for (NSDictionary *dict1 in array1) {
-                NSLog(@"Location: %@", dict1[@"location"]);
-            }
-            NSLog(@"trip id: %@", dictionary[@"tripId"]);
-            
+            NSArray *locations = dictionary[@"tripLocations"];
+            [tripUnits addObject:[locations firstObject]];
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
             [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
             [tripUnitQuery orderByAscending:@"checkIn"];
             
             [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
-                if (error1 == nil) {
+                if (!error1) {
 
-                    NSLog(@"Debug here");
-                    for (NSDictionary *dict2 in objects1) {
-                        NSLog(@"Location: %@", dict2[@"location"]);
-                        NSLog(@"Hotel Name: %@", dict2[@"hotelName"]);
-                        NSLog(@"Hotel Address: %@", dict2[@"hotelAddress"]);
-                        NSLog(@"Check In: %@", dict2[@"hotelCheckIn"]);
-                        NSLog(@"Check Out: %@", dict2[@"hotelCheckOut"]);
-                        NSLog(@"Trip ID: %@", dict2[@"tripId"]);
-                        
-                    };
+//                    for (NSDictionary *dict2 in objects1) {
+//                        NSLog(@"Location: %@", dict2[@"location"]);
+//                        NSLog(@"Hotel Name: %@", dict2[@"hotelName"]);
+//                        NSLog(@"Hotel Address: %@", dict2[@"hotelAddress"]);
+//                        NSLog(@"Check In: %@", dict2[@"hotelCheckIn"]);
+//                        NSLog(@"Check Out: %@", dict2[@"hotelCheckOut"]);
+//                        NSLog(@"Trip ID: %@", dict2[@"tripId"]);
+//                    };
                     
                     [tripUnits addObjectsFromArray:objects1];
-                    [tripUnits addObject:[array1 lastObject]];
+                    [tripUnits addObject:[locations lastObject]];
                     
                     self.trip = [TripUnit tripWithArray:tripUnits];
                     
                     [self.tableView reloadData];
                 } else {
-                    NSLog(@"Error 1");
+                    NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
                 }
             }];
         } else {
-            NSLog(@"Error");
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 
@@ -172,6 +165,7 @@
     return self.trip.count;
 }
 
+// NOT used, for reference only
 - (void) initTrip {
     NSArray *tripInput = @[
                   @{@"location": @"Seattle, WA",
