@@ -25,6 +25,7 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
     if (self) {
         self.dictionary = dictionary;
         self.username = dictionary[@"username"];
+        self.profileUrl = dictionary[@"profileUrl"];
     }
     return self;
 }
@@ -56,6 +57,7 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
 - (NSDictionary *)toDictionary {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     dictionary[@"username"] = self.username;
+    dictionary[@"profileUrl"] = self.profileUrl;
     return dictionary;
 }
 
