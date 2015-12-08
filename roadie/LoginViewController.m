@@ -13,6 +13,8 @@
 #import "Constants.h"
 #import "HamburgerViewController.h"
 #import "MenuViewController.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface LoginViewController ()
 
@@ -117,6 +119,46 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onLoginWithFacebook:(id)sender {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             if (result.token) {
+                 [self getFacebookProfileInfo];
+             }
+             HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+             MenuViewController *menuVC = [[MenuViewController alloc] init];
+             UINavigationController *menuNVC = [[UINavigationController alloc]initWithRootViewController:menuVC];
+             [menuVC setHamburgerViewController:hamburgerVC];
+             [hamburgerVC setMenuViewController:menuNVC];
+             [self presentViewController:hamburgerVC animated:YES completion:nil];
+         }
+     }];
+}
+
+- (void)getFacebookProfileInfo {
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                       parameters:@{@"fields": @"picture, name"}]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+         if (!error) {
+             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+             dictionary[@"username"] = [result objectForKey:@"name"];
+             dictionary[@"profileUrl"] = [result objectForKey:@"picture"][@"data"][@"url"];
+             [User setCurrentUser:[[User alloc] initWithDictionary:dictionary]];
+         } else{
+             NSLog(@"%@", [error localizedDescription]);
+         }
+     }];
 }
 
 /*

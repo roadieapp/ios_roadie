@@ -66,6 +66,14 @@
                     <rect key="frame" x="100" y="37" width="120" height="120"/>
                     <animations/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xs9-kY-tS2">
+                    <rect key="frame" x="140" y="333" width="40" height="40"/>
+                    <animations/>
+                    <state key="normal" title="Button" image="facebook"/>
+                    <connections>
+                        <action selector="onLoginWithFacebook:" destination="-1" eventType="touchUpInside" id="uYz-qQ-3KR"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.32549019607843138" green="0.41568627450980394" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,6 +81,7 @@
         </view>
     </objects>
     <resources>
+        <image name="facebook" width="512" height="512"/>
         <image name="icon" width="512" height="512"/>
     </resources>
 </document>

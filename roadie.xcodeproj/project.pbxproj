@@ -11,6 +11,8 @@
 		0275ACB51C10222B002046E1 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0275ACB31C10222B002046E1 /* DatePickerCell.xib */; };
 		0275ACB91C1539AF002046E1 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275ACB71C1539AF002046E1 /* MenuCell.m */; };
 		0275ACBA1C1539AF002046E1 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0275ACB81C1539AF002046E1 /* MenuCell.xib */; };
+		0275ACBC1C167AE0002046E1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0275ACBB1C167AE0002046E1 /* FBSDKLoginKit.framework */; };
+		0275ACC21C167B74002046E1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0275ACC11C167B74002046E1 /* FBSDKCoreKit.framework */; };
 		02EB00131BFEA28500B81A53 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00121BFEA28500B81A53 /* Constants.m */; };
 		02EB002B1C04072E00B81A53 /* StayPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EB00291C04072E00B81A53 /* StayPlaceCell.m */; };
 		02EB002C1C04072E00B81A53 /* StayPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02EB002A1C04072E00B81A53 /* StayPlaceCell.xib */; };
@@ -46,9 +48,9 @@
 		8374FB0B1C02D8F700E58895 /* RedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB091C02D8F700E58895 /* RedViewController.xib */; };
 		8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* DataInputViewController.m */; };
 		8374FB101C02D93200E58895 /* DataInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* DataInputViewController.xib */; };
-		83ECDF281C117964000CC94D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECDF271C117964000CC94D /* Trip.m */; settings = {ASSET_TAGS = (); }; };
-		C7BFDCF91C14F8B500B5C612 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCF81C14F8B500B5C612 /* City.m */; settings = {ASSET_TAGS = (); }; };
-		C7BFDCFC1C15122900B5C612 /* UICityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCFB1C15122900B5C612 /* UICityButton.m */; settings = {ASSET_TAGS = (); }; };
+		83ECDF281C117964000CC94D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECDF271C117964000CC94D /* Trip.m */; };
+		C7BFDCF91C14F8B500B5C612 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCF81C14F8B500B5C612 /* City.m */; };
+		C7BFDCFC1C15122900B5C612 /* UICityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCFB1C15122900B5C612 /* UICityButton.m */; };
 		C7E456811C0ED1E800338003 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E456801C0ED1E800338003 /* MDDirectionService.m */; };
 		C7F140251C02EACB00FBC0ED /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F140231C02EACB00FBC0ED /* SearchResultViewController.m */; };
 		C7F140261C02EACB00FBC0ED /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F140241C02EACB00FBC0ED /* SearchResultViewController.xib */; };
@@ -64,6 +66,8 @@
 		0275ACB61C1539AF002046E1 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		0275ACB71C1539AF002046E1 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		0275ACB81C1539AF002046E1 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		0275ACBB1C167AE0002046E1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0275ACC11C167B74002046E1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		02EB00111BFEA28500B81A53 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		02EB00121BFEA28500B81A53 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		02EB00281C04072E00B81A53 /* StayPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayPlaceCell.h; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0275ACBC1C167AE0002046E1 /* FBSDKLoginKit.framework in Frameworks */,
+				0275ACC21C167B74002046E1 /* FBSDKCoreKit.framework in Frameworks */,
 				23B4C287AE5E146B9BC5D53A /* libPods-roadie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +276,8 @@
 		BCD54DD8B8DABAAD3D125FC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0275ACC11C167B74002046E1 /* FBSDKCoreKit.framework */,
+				0275ACBB1C167AE0002046E1 /* FBSDKLoginKit.framework */,
 				5ED29B5D9F0CE02497D50DB7 /* libPods-roadie.a */,
 			);
 			name = Frameworks;
@@ -594,6 +602,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = roadie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -610,6 +622,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = roadie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
