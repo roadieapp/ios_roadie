@@ -222,10 +222,10 @@
 
 - (IBAction)addTripUnitTapped:(UIButton *)sender {
     NSLog(@"Add Trip Unit");
-//    [self addTripUnits];
+    [self addTripUnitsV4];
 }
 
-- (void) addTripUnits {
+- (void) addTripUnitsV4 {
     self.tripUnits = @[
                        
                     @{@"tripId": @"12345",
@@ -247,7 +247,7 @@
     
     for (NSDictionary *dictionary in self.tripUnits) {
         
-        PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnit"];
+        PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnitV4"];
         tripUnitObject[@"tripId"] = dictionary[@"tripId"];
         tripUnitObject[@"hotelAddress"] = dictionary[@"hotelAddress"];
         tripUnitObject[@"location"] = dictionary[@"location"];

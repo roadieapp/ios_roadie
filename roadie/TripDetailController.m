@@ -42,7 +42,7 @@
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
     [self setUpTableView];
-//    [self refreshData];
+    [self refreshData];
 }
 
 - (void) refreshData {
@@ -59,7 +59,12 @@
             // tripLocations
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
-            NSDictionary *dictionary1 = dictionary[@"tripLocations"];
+            NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            NSArray *array1 = dictionary[@"tripLocations"];
+            for (NSDictionary *dict1 in array1) {
+                NSLog(@"Location: %@", dict1[@"location"]);
+            }
+            NSLog(@"trip id: %@", dictionary[@"tripId"]);
             
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
@@ -70,9 +75,15 @@
                 if (error1 == nil) {
 
                     NSLog(@"Debug here");
+                    for (NSDictionary *dict2 in objects1) {
+                        NSLog(@"Location: %@", dict2[@"location"]);
+                        NSLog(@"Hotel Address: %@", dict2[@"hotelAddress"]);
+                        NSLog(@"Check In: %@", dict2[@"checkIn"]);
+                        NSLog(@"Check Out: %@", dict2[@"checkOut"]);
+                        NSLog(@"Trip ID: %@", dict2[@"tripId"]);
+                    };
                     
-                    
-                    [self.tableView reloadData];
+//                    [self.tableView reloadData];
                 } else {
                     NSLog(@"Error 1");
                 }
