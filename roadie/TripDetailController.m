@@ -47,6 +47,8 @@
 
 - (void) refreshData {
     NSLog(@"refresh data");
+    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+    
     NSString *currentTripId = [[Trip currentTrip] tripId];
     PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
     [query whereKey:@"tripId" equalTo:currentTripId];
@@ -61,6 +63,8 @@
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
             NSArray *array1 = dictionary[@"tripLocations"];
+            [tripUnits addObject:[array1 firstObject]];
+            
             for (NSDictionary *dict1 in array1) {
                 NSLog(@"Location: %@", dict1[@"location"]);
             }
@@ -82,9 +86,15 @@
                         NSLog(@"Check In: %@", dict2[@"hotelCheckIn"]);
                         NSLog(@"Check Out: %@", dict2[@"hotelCheckOut"]);
                         NSLog(@"Trip ID: %@", dict2[@"tripId"]);
+                        
                     };
                     
-//                    [self.tableView reloadData];
+                    [tripUnits addObjectsFromArray:objects1];
+                    [tripUnits addObject:[array1 lastObject]];
+                    
+                    self.trip = [TripUnit tripWithArray:tripUnits];
+                    
+                    [self.tableView reloadData];
                 } else {
                     NSLog(@"Error 1");
                 }
