@@ -27,6 +27,10 @@
 
 @property (nonatomic, strong) SSMaterialCalendarPicker *datePicker;
 @property (nonatomic, strong) NSDateFormatter *formatter;
+@property (nonatomic, strong) NSDateFormatter *dataFormatter;
+
+@property (nonatomic, strong) NSString *checkInDate;
+@property (nonatomic, strong) NSString *checkOutDate;
 
 @end
 
@@ -52,6 +56,10 @@
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     [self.formatter setDateFormat:@"MM/dd/yy"];
+    
+    self.dataFormatter = [[NSDateFormatter alloc] init];
+    [self.dataFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [self.dataFormatter setDateFormat:@"yyyy-MM-dd"];
 }
 
 - (void)loadCalendar {
@@ -65,6 +73,10 @@
 
 - (void)rangeSelectedWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate {
     NSString *title = [NSString stringWithFormat:@"%@ - %@", [self.formatter stringFromDate:startDate], [self.formatter stringFromDate:endDate]];
+    
+    self.checkInDate = [self.dataFormatter stringFromDate:startDate];
+    self.checkOutDate = [self.dataFormatter stringFromDate:endDate];
+    
     [self.selectDatesButton setTitle:title forState:UIControlStateNormal];
 }
 
@@ -139,10 +151,13 @@
 
 - (void) addToTrip {
     PFObject *tripUnitObject = [PFObject objectWithClassName:@"TripUnit"];
+    tripUnitObject[@"hotelName"] = [[self hotel]hotelName];
     tripUnitObject[@"hotelAddress"] = [[self hotel]hotelAddress];
     tripUnitObject[@"location"] = [[self hotel]location];
-    tripUnitObject[@"checkIn"] = @"2015-12-09";
-    tripUnitObject[@"checkOut"] = @"2015-12-10";
+    
+    // TODO. make sure the date is set. 
+    tripUnitObject[@"hotelCheckIn"] = self.checkInDate;
+    tripUnitObject[@"hotelCheckOut"] = self.checkOutDate;
     tripUnitObject[@"tripId"] = [[Trip currentTrip]tripId];
     
     [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -152,7 +167,7 @@
             
         } else {
             // There was a problem, check error.description
-            NSLog(@"Error in saving Trip Unit");
+            NSLog(@"Error in saving Trip Unit: %@ %@", error, [error userInfo]);
         }
     }];
 
