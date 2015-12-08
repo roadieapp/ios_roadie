@@ -40,6 +40,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // initial state
+    self.bookButton.hidden = YES;
+    
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
 //    [self customizeBookButton];
@@ -70,6 +73,9 @@
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            
+            NSNumber *bookedInfo = dictionary[@"booked"];
+            self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
             [tripUnits addObject:[locations firstObject]];
@@ -120,6 +126,9 @@
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             NSLog(@"Trip Start Time: %@", self.tripStartTime);
+            
+            NSNumber *bookedInfo = dictionary[@"booked"];
+            self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
             [tripUnits addObject:[locations firstObject]];
