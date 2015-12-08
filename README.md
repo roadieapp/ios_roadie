@@ -20,8 +20,8 @@
 	- [X] Login: this should redirect users to login page
 	- [X] Home: this should redirect users to home page
 	- [X] Logout
-- [ ] Login page
-	- [ ] Login with Facebook
+- [X] Login page
+	- [X] Login with Facebook
 	- [X] Login with username & password
 	- [X] Sign up with Parse
 - [X] Deal details page
