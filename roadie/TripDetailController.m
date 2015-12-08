@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) NSString *tripStartTime;
 
+@property (weak, nonatomic) IBOutlet UIButton *bookButton;
+
 @end
 
 @implementation TripDetailController
@@ -37,8 +39,10 @@
     
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
+//    [self customizeBookButton];
     [self setUpTableView];
     [self refreshData];
+    
 }
 
 - (void) refreshData {
@@ -114,6 +118,12 @@
     [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
+- (void) customizeBookButton {
+    UIImage *image = [[UIImage imageNamed:@"book"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.bookButton setImage:image forState:UIControlStateNormal];
+    self.bookButton.tintColor = [[Constants sharedInstance] themeColor];
+}
+
 - (void)customizeRightNavBarButtons {
     UIBarButtonItem *barButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"History"
@@ -163,6 +173,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.trip.count;
+}
+
+
+- (IBAction)onBookButtonTapped:(id)sender {
+    NSString *message = @"Trip is booked!";
+    
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    
+    int duration = 1; // duration in seconds
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+
+    self.bookButton.hidden = YES;
 }
 
 // NOT used, for reference only
