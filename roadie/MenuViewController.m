@@ -72,9 +72,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    User *user = [User currentUser];
-    if (user != nil) {
-        if ([user hasProfileImage]) {
+    if ([User currentUser]) {
+        if ([User hasProfileImage]) {
             if (indexPath.row == 0) {
                 // nothing
             } else if (indexPath.row == 4) {
@@ -106,8 +105,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    User *user = [User currentUser];
-    if (user != nil && [user hasProfileImage]) {
+    if ([User hasProfileImage]) {
         return 5;
     } else {
         return 4;

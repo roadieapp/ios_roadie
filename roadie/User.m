@@ -65,8 +65,8 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
     return dictionary;
 }
 
-- (BOOL)hasProfileImage {
-    if ([self.userType isEqual:@"1"]) {
++ (BOOL)hasProfileImage {
+    if (_currentUser != nil && [_currentUser.userType isEqual:@"1"]) {
         return true;
     } else {
         return false;
