@@ -32,7 +32,7 @@
     
     self.dateTimeformatter = [[NSDateFormatter alloc] init];
     [self.dateTimeformatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
-    [self.dateTimeformatter setDateFormat:@"yyyyMMddHHmm"];
+    [self.dateTimeformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
     
     self.dateOnlyFormatter = [[NSDateFormatter alloc] init];
     [self.dateOnlyFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];

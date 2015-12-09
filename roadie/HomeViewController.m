@@ -281,25 +281,34 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (void) createTripData {
     
-    NSArray *locations = @[
-                           @{
-                               @"location": @"Seattle, WA, USA"
-                               },
-                           @{
-                               @"location": @"Portland, OR, USA"
-                               },
-                           @{
-                               @"location": @"San Francisco, CA, USA"
-                               },
-                           @{
-                               @"location": @"Los Angeles, CA, USA"
-                               }
-                           ];
+//    NSArray *locations = @[
+//                           @{
+//                               @"location": @"Seattle, WA, USA"
+//                               },
+//                           @{
+//                               @"location": @"Portland, OR, USA"
+//                               },
+//                           @{
+//                               @"location": @"San Francisco, CA, USA"
+//                               },
+//                           @{
+//                               @"location": @"Los Angeles, CA, USA"
+//                               }
+//                           ];
+    
+    NSMutableArray *locations = [[NSMutableArray alloc]init];
+    for (int i = 0; i <= self.numOfStayPlaces + 1; i++) {
+        StayPlaceCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSDictionary *location = @{
+                                    @"location" : cell.destinationTextField.text
+                                    };
+        [locations addObject:location];
+    }
 
     PFObject *tripObject = [PFObject objectWithClassName:@"Trip"];
     tripObject[@"tripId"] = [Trip currentTrip].tripId;
     tripObject[@"tripName"] = @"My Trip";
-    tripObject[@"tripStartTime"] = @"201512011302";
+    tripObject[@"tripStartTime"] = self.pickedDate;
     tripObject[@"tripLocations"] = locations;
     tripObject[@"booked"] = [NSNumber numberWithBool:NO];
     
