@@ -16,6 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *startDateValueLabel;
+
 @end
 
 @implementation TripHeaderCell
@@ -29,11 +33,14 @@
     
     self.locationLabel.text = tripUnit.location;
     [self.locationLabel sizeToFit];
+    NSLog(@"Trip Start Time: %@", tripUnit.tripStartTime);
     
     if (header) {
         self.bottomDistanceConstraint.constant = 48;
     } else {
         [self.connectImageView setHidden:YES];
+        [self.startDateLabel setHidden:YES];
+        [self.startDateValueLabel setHidden:YES];
         self.bottomDistanceConstraint.constant = 6;
     }
     

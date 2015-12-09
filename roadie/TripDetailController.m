@@ -132,7 +132,10 @@
             self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
-            [tripUnits addObject:[locations firstObject]];
+            NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
+            [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
+            
+            [tripUnits addObject:departDict];
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
             [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
@@ -141,15 +144,6 @@
             [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                 if (!error1) {
 
-//                    for (NSDictionary *dict2 in objects1) {
-//                        NSLog(@"Location: %@", dict2[@"location"]);
-//                        NSLog(@"Hotel Name: %@", dict2[@"hotelName"]);
-//                        NSLog(@"Hotel Address: %@", dict2[@"hotelAddress"]);
-//                        NSLog(@"Check In: %@", dict2[@"hotelCheckIn"]);
-//                        NSLog(@"Check Out: %@", dict2[@"hotelCheckOut"]);
-//                        NSLog(@"Trip ID: %@", dict2[@"tripId"]);
-//                    };
-                    
                     [tripUnits addObjectsFromArray:objects1];
                     [tripUnits addObject:[locations lastObject]];
                     
@@ -222,7 +216,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
