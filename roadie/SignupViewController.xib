@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignupViewController">
@@ -17,27 +17,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mi7-6d-KAs">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mi7-6d-KAs">
                     <rect key="frame" x="8" y="189" width="304" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isg-CL-CaG">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isg-CL-CaG">
                     <rect key="frame" x="8" y="218" width="304" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHz-by-cTM">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHz-by-cTM">
                     <rect key="frame" x="8" y="247" width="304" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbC-w2-S12">
-                    <rect key="frame" x="8" y="285" width="304" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbC-w2-S12">
+                    <rect key="frame" x="8" y="285" width="304" height="31"/>
                     <animations/>
                     <color key="backgroundColor" red="0.40000000000000002" green="0.50196078430000002" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -48,7 +48,7 @@
                         <action selector="onSignUpTapped:" destination="-1" eventType="touchUpInside" id="WU1-ln-gOA"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3T8-OG-QUf">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3T8-OG-QUf">
                     <rect key="frame" x="91" y="534" width="139" height="26"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
@@ -59,13 +59,35 @@
                         <action selector="onAlreadyHaveAnAccountTapped:" destination="-1" eventType="touchUpInside" id="0go-Qx-3Mg"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="n7l-lM-hkv">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="n7l-lM-hkv">
                     <rect key="frame" x="100" y="39" width="120" height="120"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="fgf-QS-28P"/>
+                        <constraint firstAttribute="width" constant="120" id="uM6-Ka-dak"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.32549019610000002" green="0.41568627450000001" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="XHz-by-cTM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="0G7-Tr-TAk"/>
+                <constraint firstItem="3T8-OG-QUf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2dE-Wz-diI"/>
+                <constraint firstAttribute="trailing" secondItem="XHz-by-cTM" secondAttribute="trailing" constant="8" id="7pX-41-nax"/>
+                <constraint firstItem="UbC-w2-S12" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="8Rg-5f-LSn"/>
+                <constraint firstItem="UbC-w2-S12" firstAttribute="top" secondItem="XHz-by-cTM" secondAttribute="bottom" constant="8" id="9OF-xg-5Dk"/>
+                <constraint firstItem="XHz-by-cTM" firstAttribute="top" secondItem="mi7-6d-KAs" secondAttribute="bottom" constant="28" id="CmX-vG-lvy"/>
+                <constraint firstItem="n7l-lM-hkv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="39" id="GGI-5w-ShP"/>
+                <constraint firstAttribute="trailing" secondItem="mi7-6d-KAs" secondAttribute="trailing" constant="8" id="Jtt-QF-2Io"/>
+                <constraint firstAttribute="trailing" secondItem="UbC-w2-S12" secondAttribute="trailing" constant="8" id="KyG-3u-ZXg"/>
+                <constraint firstAttribute="trailing" secondItem="isg-CL-CaG" secondAttribute="trailing" constant="8" id="LYA-aD-kQO"/>
+                <constraint firstItem="n7l-lM-hkv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RKf-1k-tc0"/>
+                <constraint firstItem="mi7-6d-KAs" firstAttribute="top" secondItem="n7l-lM-hkv" secondAttribute="bottom" constant="30" id="cHn-uc-6t8"/>
+                <constraint firstItem="isg-CL-CaG" firstAttribute="top" secondItem="n7l-lM-hkv" secondAttribute="bottom" constant="59" id="gDE-Mf-5tN"/>
+                <constraint firstItem="isg-CL-CaG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="oBd-Ha-cFL"/>
+                <constraint firstItem="mi7-6d-KAs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="sTd-La-xgM"/>
+                <constraint firstAttribute="bottom" secondItem="3T8-OG-QUf" secondAttribute="bottom" constant="8" id="yhp-iL-0Zi"/>
+            </constraints>
             <point key="canvasLocation" x="485" y="354"/>
         </view>
     </objects>
