@@ -235,9 +235,10 @@
 }
 
 - (IBAction)onBookButtonTapped:(id)sender {
-    [self tripBookedNotification];
     self.bookButton.hidden = YES;
     [self bookTrip];
+    [self tripBookedNotification];
+    [self refreshData];
 }
 
 - (void) tripBookedNotification {
