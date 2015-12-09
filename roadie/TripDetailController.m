@@ -41,6 +41,7 @@
     [super viewDidLoad];
     
     // initial state
+    self.bookButton.layer.cornerRadius = 20;
     self.bookButton.hidden = YES;
     
     [self setUpNavigationBar];
