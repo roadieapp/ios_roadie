@@ -283,16 +283,16 @@ didFailAutocompleteWithError:(NSError *)error {
     
     NSArray *locations = @[
                            @{
-                               @"location": @"Seattle, WA"
+                               @"location": @"Seattle, WA, USA"
                                },
                            @{
-                               @"location": @"Portland, OR"
+                               @"location": @"Portland, OR, USA"
                                },
                            @{
-                               @"location": @"San Francisco, CA"
+                               @"location": @"San Francisco, CA, USA"
                                },
                            @{
-                               @"location": @"Los Angeles, CA"
+                               @"location": @"Los Angeles, CA, USA"
                                }
                            ];
 
