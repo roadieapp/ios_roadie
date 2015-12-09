@@ -14,20 +14,25 @@
 	- [X] Users can add multiple stay at places, they should also support destination auto complete
 - [X] Search result view
 	- [X] Load Google maps with route information
-	- [X] A subview where users can browse hotel deals images, hotel deals should come from stay at places (mock)
+	- [X] A subview where users can browse hotel deals images, hotel deals should come from stay at places
 	- [X] Pins are dropped for hotel locations
 - [X] Hamburger menu
 	- [X] Login: this should redirect users to login page
-	- [X] Home: this should redirect users to home page
+	- [X] Home: this should redirect users to home page where the user is able to start a new trip or continue with current trip
 	- [X] Logout
 - [X] Login page
 	- [X] Login with Facebook
-	- [X] Login with username & password
+	- [X] Login with username & password with Parse
 	- [X] Sign up with Parse
 - [X] Deal details page
 	- [X] Image view of hotels, hotel description, price, location, add to trip button
 	- [X] Calendar where users can input check in and check out date.
-
+	- [X] Add to Trip should add the hotel with check in and check out date to my trip considered for further booking later.
+- [X] My Trip page
+	- [X] It should display the information of my current trip.
+	- [X] The page should have routing information with depart from, staying hotels and destination.
+	- [X] The page should allow the user to book the trip with all the planned hotels.
+	
 **Version 2.0** [Optional]
 
 - [ ] Home page improvement
@@ -43,7 +48,7 @@
 - [ ] Hamburger menu
 	- [ ] My Trips: this should redirect users to my trips page
 - [ ] My Trips page
-	- [ ] Display a list of trips users saved
+	- [ ] Display a list of trips users saved in past trips page
 - [ ] Trip details page
 	- [ ] Load Google Maps along with route information and deals information
 
