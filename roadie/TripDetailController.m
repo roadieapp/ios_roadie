@@ -235,9 +235,10 @@
 }
 
 - (IBAction)onBookButtonTapped:(id)sender {
-    [self tripBookedNotification];
     self.bookButton.hidden = YES;
     [self bookTrip];
+    [self tripBookedNotification];
+    [self refreshData];
 }
 
 - (void) tripBookedNotification {
@@ -250,7 +251,7 @@
                                           otherButtonTitles:nil, nil];
     [toast show];
     
-    int duration = 1; // duration in seconds
+    int duration = 2; // duration in seconds
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
@@ -258,8 +259,10 @@
 }
 
 - (void) bookTrip {
+    NSString *currentTripId = [[Trip currentTrip] tripId];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
-    [query whereKey:@"tripId" equalTo:[[Trip currentTrip] tripId]];
+    [query whereKey:@"tripId" equalTo:currentTripId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * myTrip, NSError *error) {
         if (!error) {
             // Found UserStats
@@ -270,6 +273,20 @@
         } else {
             // Did not find any Trip for the current user
             NSLog(@"Error: %@", error);
+        }
+    }];
+    
+    PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+    [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+    
+    [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+        if (!error1) {
+            for (PFObject *tripUnit in objects1) {
+                [tripUnit setObject:[NSNumber numberWithBool:YES] forKey:@"booked"];
+                [tripUnit saveInBackground];
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
         }
     }];
 }

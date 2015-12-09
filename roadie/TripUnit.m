@@ -20,6 +20,7 @@
         self.hotelAddress = dictionary[@"hotelAddress"];
         self.hotelCheckIn = dictionary[@"hotelCheckIn"];
         self.hotelCheckOut = dictionary[@"hotelCheckOut"];
+        self.booked = dictionary[@"booked"];
     }
     
     return self;
