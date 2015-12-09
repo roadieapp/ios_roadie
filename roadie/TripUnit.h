@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *hotelAddress;
 @property (strong, nonatomic) NSString *hotelCheckIn;
 @property (strong, nonatomic) NSString *hotelCheckOut;
+@property (strong, nonatomic) NSNumber *booked;
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 
