@@ -279,23 +279,7 @@ didFailAutocompleteWithError:(NSError *)error {
     }];
 }
 
-- (void) createTripData {
-    
-//    NSArray *locations = @[
-//                           @{
-//                               @"location": @"Seattle, WA, USA"
-//                               },
-//                           @{
-//                               @"location": @"Portland, OR, USA"
-//                               },
-//                           @{
-//                               @"location": @"San Francisco, CA, USA"
-//                               },
-//                           @{
-//                               @"location": @"Los Angeles, CA, USA"
-//                               }
-//                           ];
-    
+- (void) createTripData {    
     NSMutableArray *locations = [[NSMutableArray alloc]init];
     for (int i = 0; i <= self.numOfStayPlaces + 1; i++) {
         StayPlaceCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];

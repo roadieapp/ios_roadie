@@ -22,6 +22,6 @@
 + (void)logout;
 
 - (NSDictionary *)toDictionary;
-- (BOOL)hasProfileImage;
++ (BOOL)hasProfileImage;
 
 @end
