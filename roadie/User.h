@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *profileUrl;
 @property (nonatomic, strong) NSString *userType;
+@property (nonatomic, strong) NSString *city;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

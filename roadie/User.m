@@ -27,6 +27,7 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
         self.username = dictionary[@"username"];
         self.profileUrl = dictionary[@"profileUrl"];
         self.userType = dictionary[@"userType"];
+        self.city = dictionary[@"city"];
     }
     return self;
 }
@@ -60,6 +61,7 @@ NSString * const roadieCurrentUserKey = @"roadieCurrentUserKey";
     dictionary[@"username"] = self.username;
     dictionary[@"profileUrl"] = self.profileUrl;
     dictionary[@"userType"] = self.userType;
+    dictionary[@"city"] = self.city;
     return dictionary;
 }
 

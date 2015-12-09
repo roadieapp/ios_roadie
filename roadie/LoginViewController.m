@@ -125,7 +125,7 @@
 - (IBAction)onLoginWithFacebook:(id)sender {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
-     logInWithReadPermissions: @[@"public_profile"]
+     logInWithReadPermissions: @[@"public_profile", @"user_location"]
      fromViewController:self
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
@@ -149,12 +149,13 @@
 - (void)getFacebookProfileInfo {
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                       parameters:@{@"fields": @"picture, name"}]
+                                       parameters:@{@"fields": @"picture, name, location"}]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
          if (!error) {
              NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
              dictionary[@"username"] = [result objectForKey:@"name"];
              dictionary[@"profileUrl"] = [result objectForKey:@"picture"][@"data"][@"url"];
+             dictionary[@"city"] = [result objectForKey:@"location"][@"name"];
              dictionary[@"userType"] = @"1";
              [User setCurrentUser:[[User alloc] initWithDictionary:dictionary]];
          } else{

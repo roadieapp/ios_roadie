@@ -123,6 +123,7 @@
             UserProfileCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"UserProfileCell"];
             [cell.profileImage setImageWithURL:[NSURL URLWithString:user.profileUrl]];
             cell.userNameLabel.text = user.username;
+            cell.locationLabel.text = user.city;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
