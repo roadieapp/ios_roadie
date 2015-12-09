@@ -52,6 +52,9 @@
     
     if (header) {
         self.bottomDistanceConstraint.constant = 48;
+        [self.connectImageView setHidden:NO];
+        [self.startDateLabel setHidden:NO];
+        [self.startDateValueLabel setHidden:NO];
     } else {
         [self.connectImageView setHidden:YES];
         [self.startDateLabel setHidden:YES];

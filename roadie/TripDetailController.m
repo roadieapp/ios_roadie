@@ -46,7 +46,6 @@
     
     [self setUpNavigationBar];
     [self customizeRightNavBarButtons];
-//    [self customizeBookButton];
     [self setUpTableView];
     [self setUpRefreshControl];
     [self refreshData];
@@ -181,12 +180,6 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
-- (void) customizeBookButton {
-    UIImage *image = [[UIImage imageNamed:@"book"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.bookButton setImage:image forState:UIControlStateNormal];
-    self.bookButton.tintColor = [[Constants sharedInstance] themeColor];
-}
-
 - (void)customizeRightNavBarButtons {
     UIBarButtonItem *barButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"History"
@@ -280,26 +273,5 @@
         }
     }];
 }
-
-// NOT used, for reference only
-- (void) initTrip {
-    NSArray *tripInput = @[
-                  @{@"location": @"Seattle, WA",
-                    @"hotelName": @"", @"hotelAddress": @"",
-                    @"hotelCheckIn": @"", @"hotelCheckOut": @""},
-                  @{@"location": @"Portland, OR",
-                    @"hotelName": @"Hotel Lucia", @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
-                    @"hotelCheckIn": @"2015-12-02", @"hotelCheckOut": @"2015-12-04"},
-                  @{@"location": @"San Francisco, CA",
-                    @"hotelName": @"Parc 55", @"hotelAddress": @"55 Cyril Magnin St, San Francisco, CA 94102",
-                    @"hotelCheckIn": @"2015-12-04", @"hotelCheckOut": @"2015012007"},
-                  @{@"location": @"Los Angeles, CA",
-                    @"hotelName": @"", @"hotelAddress": @"",
-                    @"hotelCheckIn": @"", @"hotelCheckOut": @""}
-                 ];
-    
-    self.trip = [TripUnit tripWithArray:tripInput];
-}
-
 
 @end

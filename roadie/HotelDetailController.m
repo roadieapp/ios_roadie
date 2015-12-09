@@ -39,7 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCalendar];
-//    [self initHotel];
     [self updateView];
 }
 
@@ -82,22 +81,6 @@
 
 - (IBAction)onSelectDates:(id)sender {
     [self loadCalendar];
-}
-
-- (void) initHotel {
-    NSDictionary *dictionary = @{@"location": @"Portland, OR",
-                                 @"hotelAddress": @"400 SW Broadway, Portland, OR 97205",
-                                 @"hotelName": @"Hotel Lucia",
-                                 @"hotelId": @"12345",
-                                 @"imageUrl": @"http://exp.cdn-hotels.com/hotels/1000000/20000/16000/15988/15988_118_z.jpg",
-                                 @"starsUrl": @"",
-                                 @"price": @"189",
-                                 @"currencyCode": @"USD",
-                                 @"amenities": @"Amenities include 2 eateries, an exercise room, a business center and meeting space. The property is also home to a collection of work by local Pulitzer Prize-winning photographer, David Hume Kennerly.",
-                                 @"description": @"Set in a 1909 landmark, this chic downtown hotel is 3 blocks from the Pioneer Square North MAX Station and 7 blocks from the Governor Tom McCall Waterfront Park. ",
-                                 @"finePrint": @"The posh rooms feature pillow-top mattresses, flat-screen TVs and free WiFi. Suites add sitting areas."};
-    
-    _hotel = [[Hotel alloc]initWithDictionary:dictionary];
 }
 
 - (void) updateView {
@@ -169,9 +152,7 @@
             // There was a problem, check error.description
             NSLog(@"Error in saving Trip Unit: %@ %@", error, [error userInfo]);
         }
-    }];
-
-    
+    }];    
 }
 
 @end
