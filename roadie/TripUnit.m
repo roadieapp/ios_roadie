@@ -15,6 +15,7 @@
     
     if (self) {
         self.location = dictionary[@"location"];
+        self.tripStartTime = dictionary[@"tripStartTime"];
         self.hotelName = dictionary[@"hotelName"];
         self.hotelAddress = dictionary[@"hotelAddress"];
         self.hotelCheckIn = dictionary[@"hotelCheckIn"];

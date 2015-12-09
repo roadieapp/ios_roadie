@@ -33,6 +33,7 @@
     
     self.locationLabel.text = tripUnit.location;
     [self.locationLabel sizeToFit];
+    NSLog(@"Trip Start Time: %@", tripUnit.tripStartTime);
     
     if (header) {
         self.bottomDistanceConstraint.constant = 48;

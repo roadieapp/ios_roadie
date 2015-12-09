@@ -11,6 +11,7 @@
 @interface TripUnit : NSObject
 
 @property (strong, nonatomic) NSString *location;
+@property (strong, nonatomic) NSString *tripStartTime;
 @property (strong, nonatomic) NSString *hotelName;
 @property (strong, nonatomic) NSString *hotelAddress;
 @property (strong, nonatomic) NSString *hotelCheckIn;
