@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -21,7 +21,7 @@
                             <constraint firstAttribute="height" constant="18" id="h7d-ht-FmF"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.21016078699999999" green="0.29256221770000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="short_connect" translatesAutoresizingMaskIntoConstraints="NO" id="7lP-Yf-nro">
@@ -32,22 +32,62 @@
                             <constraint firstAttribute="height" constant="45" id="yZS-JD-B8O"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eee-7p-9qe">
+                        <rect key="frame" x="31" y="32" width="83" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="9Tv-gA-gQg"/>
+                            <constraint firstAttribute="width" constant="83" id="ZET-SU-Z4M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-12-05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAl-12-SRf">
+                        <rect key="frame" x="117" y="32" width="97" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Cig-q0-Sh7"/>
+                            <constraint firstAttribute="width" constant="97" id="kGS-7u-kFC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.21016078699999999" green="0.29256221770000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <animations/>
                 <constraints>
+                    <constraint firstItem="tAl-12-SRf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BLV-Lk-rfD"/>
+                    <constraint firstItem="eee-7p-9qe" firstAttribute="leading" secondItem="7lP-Yf-nro" secondAttribute="trailing" constant="3" id="HaP-7h-kZc"/>
                     <constraint firstAttribute="trailing" secondItem="7Lj-hy-nod" secondAttribute="trailing" constant="10" id="IfA-tm-keJ"/>
                     <constraint firstItem="7Lj-hy-nod" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="MEC-R8-Her"/>
                     <constraint firstAttribute="bottom" secondItem="7Lj-hy-nod" secondAttribute="bottom" constant="53" id="Nki-n6-Igu"/>
+                    <constraint firstItem="tAl-12-SRf" firstAttribute="leading" secondItem="eee-7p-9qe" secondAttribute="trailing" constant="3" id="R6V-ND-Ymy"/>
+                    <constraint firstItem="eee-7p-9qe" firstAttribute="top" secondItem="7Lj-hy-nod" secondAttribute="bottom" constant="10" id="S6e-St-Fff"/>
+                    <constraint firstItem="eee-7p-9qe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aYN-5t-UIL"/>
                     <constraint firstItem="7lP-Yf-nro" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="cdA-3c-JXR"/>
+                    <constraint firstItem="tAl-12-SRf" firstAttribute="centerY" secondItem="eee-7p-9qe" secondAttribute="centerY" id="ff6-uV-csz"/>
                     <constraint firstItem="7lP-Yf-nro" firstAttribute="top" secondItem="7Lj-hy-nod" secondAttribute="bottom" constant="2" id="ji3-aa-iAO"/>
+                    <constraint firstItem="tAl-12-SRf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kAm-IS-v67"/>
                     <constraint firstItem="7Lj-hy-nod" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="nAO-2V-xa7"/>
+                    <constraint firstItem="eee-7p-9qe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="w8f-f9-wd8"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="aYN-5t-UIL"/>
+                        <exclude reference="w8f-f9-wd8"/>
+                        <exclude reference="BLV-Lk-rfD"/>
+                        <exclude reference="kAm-IS-v67"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
                 <outlet property="bottomDistanceConstraint" destination="Nki-n6-Igu" id="aUt-L1-9F9"/>
                 <outlet property="connectImageView" destination="7lP-Yf-nro" id="sTm-vl-dhc"/>
                 <outlet property="locationLabel" destination="7Lj-hy-nod" id="8La-0j-z0F"/>
+                <outlet property="startDateLabel" destination="eee-7p-9qe" id="cFZ-Iy-jB4"/>
+                <outlet property="startDateValueLabel" destination="tAl-12-SRf" id="RiM-sl-e2V"/>
             </connections>
             <point key="canvasLocation" x="328.5" y="364"/>
         </tableViewCell>
