@@ -258,8 +258,10 @@
 }
 
 - (void) bookTrip {
+    NSString *currentTripId = [[Trip currentTrip] tripId];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
-    [query whereKey:@"tripId" equalTo:[[Trip currentTrip] tripId]];
+    [query whereKey:@"tripId" equalTo:currentTripId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * myTrip, NSError *error) {
         if (!error) {
             // Found UserStats
@@ -270,6 +272,20 @@
         } else {
             // Did not find any Trip for the current user
             NSLog(@"Error: %@", error);
+        }
+    }];
+    
+    PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+    [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+    
+    [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+        if (!error1) {
+            for (PFObject *tripUnit in objects1) {
+                [tripUnit setObject:[NSNumber numberWithBool:YES] forKey:@"booked"];
+                [tripUnit saveInBackground];
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
         }
     }];
 }

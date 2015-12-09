@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *checkOutDateLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bookedImageView;
+
 @end
 
 @implementation TripCell
