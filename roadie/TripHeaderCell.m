@@ -20,12 +20,23 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *startDateValueLabel;
 
+@property (nonatomic, strong) NSDateFormatter *dateTimeformatter;
+@property (nonatomic, strong) NSDateFormatter *dateOnlyFormatter;
+
 @end
 
 @implementation TripHeaderCell
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.dateTimeformatter = [[NSDateFormatter alloc] init];
+    [self.dateTimeformatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [self.dateTimeformatter setDateFormat:@"yyyyMMddHHmm"];
+    
+    self.dateOnlyFormatter = [[NSDateFormatter alloc] init];
+    [self.dateOnlyFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [self.dateOnlyFormatter setDateFormat:@"yyyy-MM-dd"];
 }
 
 - (void) setTripUnit:(TripUnit *)tripUnit withHeader:(BOOL)header {
@@ -33,7 +44,11 @@
     
     self.locationLabel.text = tripUnit.location;
     [self.locationLabel sizeToFit];
+    
     NSLog(@"Trip Start Time: %@", tripUnit.tripStartTime);
+    NSDate *date = [self.dateTimeformatter dateFromString:tripUnit.tripStartTime];
+    NSString *startDate = [self.dateOnlyFormatter stringFromDate:date];
+    self.startDateValueLabel.text = startDate;
     
     if (header) {
         self.bottomDistanceConstraint.constant = 48;

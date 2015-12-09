@@ -72,13 +72,14 @@
             
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
-            NSLog(@"Trip Start Time: %@", self.tripStartTime);
             
             NSNumber *bookedInfo = dictionary[@"booked"];
             self.bookButton.hidden =  [bookedInfo boolValue];
             
             NSArray *locations = dictionary[@"tripLocations"];
-            [tripUnits addObject:[locations firstObject]];
+            NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
+            [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
+            [tripUnits addObject:departDict];
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
             [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
@@ -125,7 +126,6 @@
             
             NSDictionary *dictionary = [objects lastObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
-            NSLog(@"Trip Start Time: %@", self.tripStartTime);
             
             NSNumber *bookedInfo = dictionary[@"booked"];
             self.bookButton.hidden =  [bookedInfo boolValue];
@@ -133,7 +133,6 @@
             NSArray *locations = dictionary[@"tripLocations"];
             NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
             [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
-            
             [tripUnits addObject:departDict];
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
