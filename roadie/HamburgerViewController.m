@@ -43,7 +43,7 @@
         [UIView animateWithDuration:0.3 animations:^{
             if (velocity.x > 0) {
                 // open
-                self.leftMarginConstraint.constant = 170;
+                self.leftMarginConstraint.constant = 220;
             } else {
                 // close
                 self.leftMarginConstraint.constant = 0;
