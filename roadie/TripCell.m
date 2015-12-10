@@ -7,6 +7,7 @@
 //
 
 #import "TripCell.h"
+#import "Constants.h"
 
 @interface TripCell()
 
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *checkInDateLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *checkOutDateLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *bookedImageView;
 
 @end
 
@@ -53,6 +56,13 @@
     
     self.checkInDateLabel.text = tripUnit.hotelCheckIn;
     self.checkOutDateLabel.text = tripUnit.hotelCheckOut;
+    
+    self.bookedImageView.image = [self.bookedImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if ([tripUnit.booked boolValue] == YES) {
+        self.bookedImageView.tintColor = [[Constants sharedInstance]themeColor];
+    } else {
+        self.bookedImageView.tintColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

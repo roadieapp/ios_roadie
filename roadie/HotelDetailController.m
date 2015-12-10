@@ -138,10 +138,10 @@
     tripUnitObject[@"hotelAddress"] = [[self hotel]hotelAddress];
     tripUnitObject[@"location"] = [[self hotel]location];
     
-    // TODO. make sure the date is set. 
     tripUnitObject[@"hotelCheckIn"] = self.checkInDate;
     tripUnitObject[@"hotelCheckOut"] = self.checkOutDate;
     tripUnitObject[@"tripId"] = [[Trip currentTrip]tripId];
+    tripUnitObject[@"booked"] = [NSNumber numberWithBool:NO];
     
     [tripUnitObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
