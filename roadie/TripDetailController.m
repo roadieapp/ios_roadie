@@ -66,7 +66,7 @@
             if (!error) {
                 // display one object only.
                 
-                NSDictionary *dictionary = [objects lastObject];
+                NSDictionary *dictionary = [objects firstObject];
                 self.tripStartTime = dictionary[@"tripStartTime"];
                 
                 NSNumber *bookedInfo = dictionary[@"booked"];
@@ -113,7 +113,7 @@
             if (!error) {
                 // Should be one object only.
                 
-                NSDictionary *dictionary = [objects lastObject];
+                NSDictionary *dictionary = [objects firstObject];
                 self.tripStartTime = dictionary[@"tripStartTime"];
                 
                 NSNumber *bookedInfo = dictionary[@"booked"];
@@ -172,7 +172,7 @@
         if (!error) {
             // display one object only.
             
-            NSDictionary *dictionary = [objects lastObject];
+            NSDictionary *dictionary = [objects firstObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             
             NSNumber *bookedInfo = dictionary[@"booked"];
@@ -217,7 +217,7 @@
         if (!error) {
             // Should be one object only.
             
-            NSDictionary *dictionary = [objects lastObject];
+            NSDictionary *dictionary = [objects firstObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             
             NSNumber *bookedInfo = dictionary[@"booked"];
