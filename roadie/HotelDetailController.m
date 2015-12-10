@@ -110,6 +110,10 @@
 }
 
 - (IBAction)bookButtonTapped:(UIButton *)sender {
+    if (self.checkInDate == nil || self.checkOutDate == nil) {
+        [self showDateNotSelectedError];
+        return;
+    }
     [self displayNoticeInfo];
 }
 
@@ -153,6 +157,14 @@
             NSLog(@"Error in saving Trip Unit: %@ %@", error, [error userInfo]);
         }
     }];    
+}
+
+- (void) showDateNotSelectedError {
+    NSString *errorString = @"Please select check in/out dates";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add Trip Error" message:errorString preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

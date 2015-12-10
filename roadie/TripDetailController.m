@@ -79,7 +79,7 @@
                 
                 PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
                 [tripUnitQuery whereKey:@"tripId" equalTo:dictionary[@"tripId"]];
-                [tripUnitQuery orderByAscending:@"checkIn"];
+                [tripUnitQuery orderByAscending:@"hotelCheckIn"];
                 
                 [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                     if (!error1) {
@@ -126,7 +126,7 @@
                 
                 PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
                 [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
-                [tripUnitQuery orderByAscending:@"checkIn"];
+                [tripUnitQuery orderByAscending:@"hotelCheckIn"];
                 
                 [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                     if (!error1) {
@@ -185,7 +185,7 @@
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
             [tripUnitQuery whereKey:@"tripId" equalTo:dictionary[@"tripId"]];
-            [tripUnitQuery orderByAscending:@"checkIn"];
+            [tripUnitQuery orderByAscending:@"hotelCheckIn"];
             
             [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                 if (!error1) {
@@ -230,7 +230,7 @@
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
             [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
-            [tripUnitQuery orderByAscending:@"checkIn"];
+            [tripUnitQuery orderByAscending:@"hotelCheckIn"];
             
             [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                 if (!error1) {
