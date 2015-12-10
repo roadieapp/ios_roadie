@@ -55,76 +55,124 @@
     NSLog(@"onRefresh");
     
     if ([Trip currentTrip] == nil) {
-        NSLog(@"The current trip is not created yet");
-        [self.refreshControl endRefreshing];
-        return;
-    }
-    
-    NSString *currentTripId = [[Trip currentTrip] tripId];
-    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
-    [query whereKey:@"tripId" equalTo:currentTripId];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // Should be one object only.
-            
-            NSDictionary *dictionary = [objects lastObject];
-            self.tripStartTime = dictionary[@"tripStartTime"];
-            
-            NSNumber *bookedInfo = dictionary[@"booked"];
-            self.bookButton.hidden =  [bookedInfo boolValue];
-            
-            NSArray *locations = dictionary[@"tripLocations"];
-            NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
-            [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
-            [tripUnits addObject:departDict];
-            
-            PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
-            [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
-            [tripUnitQuery orderByAscending:@"checkIn"];
-            
-            [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
-                if (!error1) {
-                    
-                    [tripUnits addObjectsFromArray:objects1];
-                    [tripUnits addObject:[locations lastObject]];
-                    
-                    self.trip = [TripUnit tripWithArray:tripUnits];
-                    
-                    [self.tableView reloadData];
-                } else {
-                    NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
-                }
+        NSLog(@"The current trip is not created yet, show most recent trip");
+        
+        NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+        [query orderByDescending:@"tripId"];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // display one object only.
+                
+                NSDictionary *dictionary = [objects firstObject];
+                self.tripStartTime = dictionary[@"tripStartTime"];
+                
+                NSNumber *bookedInfo = dictionary[@"booked"];
+                self.bookButton.hidden =  [bookedInfo boolValue];
+                
+                NSArray *locations = dictionary[@"tripLocations"];
+                NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
+                [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
+                [tripUnits addObject:departDict];
+                
+                PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+                [tripUnitQuery whereKey:@"tripId" equalTo:dictionary[@"tripId"]];
+                [tripUnitQuery orderByAscending:@"hotelCheckIn"];
+                
+                [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+                    if (!error1) {
+                        
+                        [tripUnits addObjectsFromArray:objects1];
+                        [tripUnits addObject:[locations lastObject]];
+                        
+                        self.trip = [TripUnit tripWithArray:tripUnits];
+                        
+                        [self.tableView reloadData];
+                    } else {
+                        NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
+                    }
+                    [self.refreshControl endRefreshing];
+                }];
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
                 [self.refreshControl endRefreshing];
-            }];
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-            [self.refreshControl endRefreshing];
-        }
-    }];
+            }
+        }];
+        
+    } else {
+    
+        NSString *currentTripId = [[Trip currentTrip] tripId];
+        NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+        [query whereKey:@"tripId" equalTo:currentTripId];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // Should be one object only.
+                
+                NSDictionary *dictionary = [objects firstObject];
+                self.tripStartTime = dictionary[@"tripStartTime"];
+                
+                NSNumber *bookedInfo = dictionary[@"booked"];
+                self.bookButton.hidden =  [bookedInfo boolValue];
+                
+                NSArray *locations = dictionary[@"tripLocations"];
+                NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
+                [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
+                [tripUnits addObject:departDict];
+                
+                PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+                [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+                [tripUnitQuery orderByAscending:@"hotelCheckIn"];
+                
+                [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+                    if (!error1) {
+                        
+                        [tripUnits addObjectsFromArray:objects1];
+                        [tripUnits addObject:[locations lastObject]];
+                        
+                        self.trip = [TripUnit tripWithArray:tripUnits];
+                        
+                        [self.tableView reloadData];
+                    } else {
+                        NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
+                    }
+                    [self.refreshControl endRefreshing];
+                }];
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                [self.refreshControl endRefreshing];
+            }
+        }];
+        
+    }
 }
 
 - (void) refreshData {
     NSLog(@"refresh data");
 
     if ([Trip currentTrip] == nil) {
-        NSLog(@"The current trip is not created yet");
-        return;
+        NSLog(@"The current trip is not created yet, show most recent trip");
+        [self showMostRecentTrip];
+    } else {
+        [self showCurrentTrip];
     }
-    
-    NSString *currentTripId = [[Trip currentTrip] tripId];
+}
+
+- (void) showMostRecentTrip {
     NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
-    [query whereKey:@"tripId" equalTo:currentTripId];
+    [query orderByDescending:@"tripId"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // Should be one object only.
+            // display one object only.
             
-            NSDictionary *dictionary = [objects lastObject];
+            NSDictionary *dictionary = [objects firstObject];
             self.tripStartTime = dictionary[@"tripStartTime"];
             
             NSNumber *bookedInfo = dictionary[@"booked"];
@@ -136,12 +184,12 @@
             [tripUnits addObject:departDict];
             
             PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
-            [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
-            [tripUnitQuery orderByAscending:@"checkIn"];
+            [tripUnitQuery whereKey:@"tripId" equalTo:dictionary[@"tripId"]];
+            [tripUnitQuery orderByAscending:@"hotelCheckIn"];
             
             [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
                 if (!error1) {
-
+                    
                     [tripUnits addObjectsFromArray:objects1];
                     [tripUnits addObject:[locations lastObject]];
                     
@@ -156,8 +204,51 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
 
+- (void) showCurrentTrip {
+    NSString *currentTripId = [[Trip currentTrip] tripId];
+    NSMutableArray *tripUnits = [[NSMutableArray alloc]init];
     
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:currentTripId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // Should be one object only.
+            
+            NSDictionary *dictionary = [objects firstObject];
+            self.tripStartTime = dictionary[@"tripStartTime"];
+            
+            NSNumber *bookedInfo = dictionary[@"booked"];
+            self.bookButton.hidden =  [bookedInfo boolValue];
+            
+            NSArray *locations = dictionary[@"tripLocations"];
+            NSMutableDictionary *departDict = [NSMutableDictionary dictionaryWithDictionary:[locations firstObject]];
+            [departDict setValue:self.tripStartTime forKey:@"tripStartTime"];
+            [tripUnits addObject:departDict];
+            
+            PFQuery *tripUnitQuery = [PFQuery queryWithClassName:@"TripUnit"];
+            [tripUnitQuery whereKey:@"tripId" equalTo:currentTripId];
+            [tripUnitQuery orderByAscending:@"hotelCheckIn"];
+            
+            [tripUnitQuery findObjectsInBackgroundWithBlock:^(NSArray *objects1, NSError *error1) {
+                if (!error1) {
+                    
+                    [tripUnits addObjectsFromArray:objects1];
+                    [tripUnits addObject:[locations lastObject]];
+                    
+                    self.trip = [TripUnit tripWithArray:tripUnits];
+                    
+                    [self.tableView reloadData];
+                } else {
+                    NSLog(@"Error: %@ %@", error1, [error1 userInfo]);
+                }
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)setUpNavigationBar {

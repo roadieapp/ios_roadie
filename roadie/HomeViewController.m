@@ -253,6 +253,13 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (void) onNewButton {
     [Trip clear];
+    for (int i = 0; i <= self.numOfStayPlaces + 1; i++) {
+        StayPlaceCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        cell.destinationTextField.text = @"";
+    }
+    
+    [self.tableView reloadData];
+
 }
 
 - (void) onNextButton {
@@ -260,6 +267,8 @@ didFailAutocompleteWithError:(NSError *)error {
         [Trip createTrip];
         [self createTripData];
         NSLog(@"%@", [Trip currentTrip].tripId);
+    } else {
+        [self updateTripData];
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
@@ -279,16 +288,21 @@ didFailAutocompleteWithError:(NSError *)error {
     }];
 }
 
-- (void) createTripData {    
+- (NSArray *) findTripLocations {
     NSMutableArray *locations = [[NSMutableArray alloc]init];
     for (int i = 0; i <= self.numOfStayPlaces + 1; i++) {
         StayPlaceCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         NSDictionary *location = @{
-                                    @"location" : cell.destinationTextField.text
-                                    };
+                                   @"location" : cell.destinationTextField.text
+                                   };
         [locations addObject:location];
     }
 
+    return locations;
+}
+
+- (void) createTripData {
+    NSArray *locations = [self findTripLocations];
     PFObject *tripObject = [PFObject objectWithClassName:@"Trip"];
     tripObject[@"tripId"] = [Trip currentTrip].tripId;
     tripObject[@"tripName"] = @"My Trip";
@@ -306,7 +320,36 @@ didFailAutocompleteWithError:(NSError *)error {
             NSLog(@"Error in saving Trip");
         }
     }];
+}
 
+- (void) updateTripData {
+    NSLog(@"updateTripData");
+    PFQuery *query = [PFQuery queryWithClassName:@"Trip"];
+    [query whereKey:@"tripId" equalTo:[Trip currentTrip].tripId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // Should be one object only.
+            PFObject *tripObject = [objects lastObject];
+            
+            NSArray *locations = [self findTripLocations];
+            tripObject[@"tripStartTime"] = self.pickedDate;
+            tripObject[@"tripLocations"] = locations;
+            
+            [tripObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been updated.
+                    NSLog(@"Trip has been updated");
+                    
+                } else {
+                    // There was a problem, check error.description
+                    NSLog(@"Error in updating Trip");
+                }
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void) displaySearchResult {
