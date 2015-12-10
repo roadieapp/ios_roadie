@@ -47,7 +47,7 @@
 }
 
 - (void)initCalendar {
-    self.datePicker = [SSMaterialCalendarPicker initCalendarOn:self.view withDelegate:self];
+    self.datePicker = [SSMaterialCalendarPicker initCalendarOn:[UIApplication sharedApplication].keyWindow withDelegate:self];
     self.datePicker.calendarTitle = @"Select Dates";
     self.datePicker.primaryColor = [Constants sharedInstance].themeColor;
     self.datePicker.secondaryColor = [Constants sharedInstance].themeColor;
