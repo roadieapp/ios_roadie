@@ -14,6 +14,7 @@
 #import "City.h"
 #import "UICityButton.h"
 #import "DRPageScrollView.h"
+#import "Parse.h"
 
 @interface SearchResultViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -52,24 +53,28 @@
     City *allCities = [City new];
     allCities.hotels = self.hotels;
     allCities.name = @"All Cities";
+    allCities.location = nil;
     allCities.lat = 45.5425353;
     allCities.lng = -122.7042106;
     
     City *portland = [City new];
     portland.hotels = self.hotels;
     portland.name = @"Portland";
+    portland.location = @"Portland, OR, USA";
     portland.lat = 45.5263883;
     portland.lng = -122.7244615;
     
     City *sanfrancisco = [City new];
     sanfrancisco.hotels = self.hotels;
     sanfrancisco.name = @"Sanfrancisco";
+    sanfrancisco.location = @"San Francisco, CA, USA";
     sanfrancisco.lat = 37.7559489;
     sanfrancisco.lng = -122.4639522;
     
     City *losangeles = [City new];
     losangeles.hotels = self.hotels;
     losangeles.name = @"Los Angeles";
+    losangeles.location = @"Los Angeles, CA, USA";
     losangeles.lat = 34.0412372;
     losangeles.lng = -118.2506402;
     
@@ -139,6 +144,39 @@
                                                             longitude:city.lng
                                                                  zoom:zoomLevel];
     mapView_.camera = camera;
+    
+    [self filterCityByLocation:city];
+}
+
+- (void) filterCityByLocation: (City*) city {
+    PFQuery *query = [PFQuery queryWithClassName:@"Hotel"];
+    if (city.location != nil) {
+        [query whereKey:@"location" equalTo:city.location];
+    }
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved hotels");
+            self.hotels = [self hotelsWithArray:objects];
+            
+            [self.tableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+}
+
+- (NSArray *) hotelsWithArray: (NSArray *)array {
+    NSMutableArray *hotels = [NSMutableArray array];
+    
+    for (NSDictionary *dictionary in array) {
+        [hotels addObject:[[Hotel alloc] initWithDictionary:dictionary]];
+    }
+    
+    return hotels;
 }
 
 - (void)mapView:(GMSMapView *)mapView addSpot:

@@ -12,6 +12,7 @@
 
 @property(nonatomic, strong) NSArray *hotels;
 @property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSString *location;
 @property (assign, nonatomic) double lat;
 @property (assign, nonatomic) double lng;
 
