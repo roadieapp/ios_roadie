@@ -253,6 +253,13 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (void) onNewButton {
     [Trip clear];
+    for (int i = 0; i <= self.numOfStayPlaces + 1; i++) {
+        StayPlaceCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        cell.destinationTextField.text = @"";
+    }
+    
+    [self.tableView reloadData];
+
 }
 
 - (void) onNextButton {
