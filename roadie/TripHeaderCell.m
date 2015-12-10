@@ -42,7 +42,11 @@
 - (void) setTripUnit:(TripUnit *)tripUnit withHeader:(BOOL)header {
     _tripUnit = tripUnit;
     
-    self.locationLabel.text = tripUnit.location;
+    if (tripUnit.location == nil || [tripUnit.location isEqualToString:@""]) {
+        self.locationLabel.text = @"Unknown";
+    } else {
+        self.locationLabel.text = tripUnit.location;
+    }
     [self.locationLabel sizeToFit];
     
     NSLog(@"Trip Start Time: %@", tripUnit.tripStartTime);
