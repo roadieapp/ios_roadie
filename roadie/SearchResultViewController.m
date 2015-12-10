@@ -27,12 +27,14 @@
     NSMutableArray *waypoints_;
     NSMutableArray *waypointStrings_;
     UIScrollView *cityChooserView_;
+    NSArray *cityHotels_;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Search Results";
+    cityHotels_ = self.hotels;
     
     // Init table View
     self.tableView.delegate = self;
@@ -42,6 +44,22 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HotelViewCell" bundle:nil] forCellReuseIdentifier:@"HotelViewCell"];
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.bounces = NO;
+    
+    
+    NSMutableArray *portlandHotels = [NSMutableArray new];
+    NSMutableArray *sanfranciscoHotels = [NSMutableArray new];
+    NSMutableArray *losangelesHotels = [NSMutableArray new];
+    for (int i = 0; i < self.hotels.count; i++) {
+        Hotel *hotel = self.hotels[i];
+        if ([hotel.location rangeOfString:@"Portland"].location != NSNotFound) {
+            [portlandHotels addObject:hotel];
+        } else if ([hotel.location rangeOfString:@"San Francisco"].location != NSNotFound) {
+            [sanfranciscoHotels addObject:hotel];
+        } else if ([hotel.location rangeOfString:@"Los Angeles"].location != NSNotFound) {
+            [losangelesHotels addObject:hotel];
+        }
+        
+    }
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
@@ -58,21 +76,21 @@
     allCities.lng = -122.7042106;
     
     City *portland = [City new];
-    portland.hotels = self.hotels;
+    portland.hotels = portlandHotels;
     portland.name = @"Portland";
     portland.location = @"Portland, OR, USA";
     portland.lat = 45.5263883;
     portland.lng = -122.7244615;
     
     City *sanfrancisco = [City new];
-    sanfrancisco.hotels = self.hotels;
+    sanfrancisco.hotels = sanfranciscoHotels;
     sanfrancisco.name = @"Sanfrancisco";
     sanfrancisco.location = @"San Francisco, CA, USA";
     sanfrancisco.lat = 37.7559489;
     sanfrancisco.lng = -122.4639522;
     
     City *losangeles = [City new];
-    losangeles.hotels = self.hotels;
+    losangeles.hotels = losangelesHotels;
     losangeles.name = @"Los Angeles";
     losangeles.location = @"Los Angeles, CA, USA";
     losangeles.lat = 34.0412372;
@@ -135,6 +153,8 @@
 - (void)onClickCities:(id)sender {
     UICityButton *cityButton = (UICityButton*)sender;
     City *city = cityButton.city;
+    cityHotels_ = city.hotels;
+    [self.tableView reloadData];
     
     float zoomLevel = 10;
     if ([city.name isEqualToString:@"All Cities"]) {
@@ -216,19 +236,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.hotels.count;
+    return cityHotels_.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HotelViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelViewCell"];
-    [cell setHotel:self.hotels[indexPath.row]];
+    [cell setHotel:cityHotels_[indexPath.row]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HotelDetailController *vc = [[HotelDetailController alloc] init];
-    vc.hotel = self.hotels[indexPath.row];
+    vc.hotel = cityHotels_[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
