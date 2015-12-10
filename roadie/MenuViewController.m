@@ -11,6 +11,7 @@
 #import "RedViewController.h"
 #import "LoginViewController.h"
 #import "HomeViewController.h"
+#import "SettingsViewController.h"
 #import "TripDetailController.h"
 #import "User.h"
 #import "Constants.h"
@@ -48,7 +49,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     
-    UIViewController *blueViewController = [[DataInputViewController alloc]init];
+    // change it to DataInputViewController for adding data
+    UIViewController *blueViewController = [[SettingsViewController alloc]init];
     self.blueNVC = [[UINavigationController alloc] initWithRootViewController:blueViewController];
     
     UIViewController *loginViewController = [[LoginViewController alloc]init];

@@ -51,6 +51,8 @@
 		8374FB0F1C02D93200E58895 /* DataInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374FB0D1C02D93200E58895 /* DataInputViewController.m */; };
 		8374FB101C02D93200E58895 /* DataInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374FB0E1C02D93200E58895 /* DataInputViewController.xib */; };
 		83ECDF281C117964000CC94D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECDF271C117964000CC94D /* Trip.m */; };
+		83EEB32F1C1966CD00D63316 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EEB32D1C1966CD00D63316 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		83EEB3301C1966CD00D63316 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83EEB32E1C1966CD00D63316 /* SettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C7BFDCF91C14F8B500B5C612 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCF81C14F8B500B5C612 /* City.m */; };
 		C7BFDCFC1C15122900B5C612 /* UICityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BFDCFB1C15122900B5C612 /* UICityButton.m */; };
 		C7E456811C0ED1E800338003 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E456801C0ED1E800338003 /* MDDirectionService.m */; };
@@ -131,6 +133,9 @@
 		8374FB0E1C02D93200E58895 /* DataInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataInputViewController.xib; sourceTree = "<group>"; };
 		83ECDF261C117964000CC94D /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
 		83ECDF271C117964000CC94D /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
+		83EEB32C1C1966CD00D63316 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		83EEB32D1C1966CD00D63316 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		83EEB32E1C1966CD00D63316 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		C7BFDCF71C14F8B500B5C612 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		C7BFDCF81C14F8B500B5C612 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		C7BFDCFA1C15122900B5C612 /* UICityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICityButton.h; sourceTree = "<group>"; };
@@ -248,6 +253,9 @@
 				831531C31C097FE90038F6CD /* HotelDetailController.h */,
 				831531C41C097FE90038F6CD /* HotelDetailController.m */,
 				831531C51C097FE90038F6CD /* HotelDetailController.xib */,
+				83EEB32C1C1966CD00D63316 /* SettingsViewController.h */,
+				83EEB32D1C1966CD00D63316 /* SettingsViewController.m */,
+				83EEB32E1C1966CD00D63316 /* SettingsViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -404,6 +412,7 @@
 				02EBFFC51BFCF18E00B81A53 /* LaunchScreen.storyboard in Resources */,
 				0275ACB51C10222B002046E1 /* DatePickerCell.xib in Resources */,
 				8374FB101C02D93200E58895 /* DataInputViewController.xib in Resources */,
+				83EEB3301C1966CD00D63316 /* SettingsViewController.xib in Resources */,
 				831531C21C096A790038F6CD /* TripHeaderCell.xib in Resources */,
 				831531C71C097FE90038F6CD /* HotelDetailController.xib in Resources */,
 				02EBFFC21BFCF18E00B81A53 /* Assets.xcassets in Resources */,
@@ -480,6 +489,7 @@
 				02EBFFD51BFD54AC00B81A53 /* LoginViewController.m in Sources */,
 				83ECDF281C117964000CC94D /* Trip.m in Sources */,
 				02EBFFBA1BFCF18E00B81A53 /* AppDelegate.m in Sources */,
+				83EEB32F1C1966CD00D63316 /* SettingsViewController.m in Sources */,
 				8374FB0A1C02D8F700E58895 /* RedViewController.m in Sources */,
 				831531B91C07BFAA0038F6CD /* TripDetailController.m in Sources */,
 				0275ACC61C16BE44002046E1 /* UserProfileCell.m in Sources */,
