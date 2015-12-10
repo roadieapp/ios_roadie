@@ -364,7 +364,7 @@
 				TargetAttributes = {
 					02EBFFB11BFCF18E00B81A53 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = ZR8C9Q3XC7;
+						DevelopmentTeam = 88Z927TPUG;
 					};
 				};
 			};
@@ -619,7 +619,7 @@
 				INFOPLIST_FILE = roadie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roadie.roadie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.groupon.roadie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -639,7 +639,7 @@
 				INFOPLIST_FILE = roadie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roadie.roadie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.groupon.roadie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
